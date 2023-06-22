@@ -26,6 +26,9 @@ export default {
     ],
 
     links: {
+        // Navigation links
+        signin: '/auth/signin',
+
         // Social media links
         socials: {
             github: '',

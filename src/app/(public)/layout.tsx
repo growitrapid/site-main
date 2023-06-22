@@ -1,7 +1,11 @@
 import { Metadata } from 'next';
-import './globals.css'
 import { Inter, Barlow } from 'next/font/google'
+import { cookies } from 'next/headers';
+import "nprogress/nprogress.css";
+import dynamic from "next/dynamic";
+
 import config from '@/utils/config';
+import NavBar from '@/components/navbar'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -9,19 +13,33 @@ const inter = Inter({
 });
 
 const barlow = Barlow({
-  weight: ["400"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ['latin'],
   variable: '--font-barlow',
 });
+
+const TopProgressBar = dynamic(
+  () => {
+      return import("@/utils/progressbar");
+  },
+  { ssr: false },
+);
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const cookieStore = cookies();
+  const theme = cookieStore.get('theme');
+
   return (
     <html lang="en">
-      <body className={`${inter.className} ${inter.variable} ${barlow.variable}`}>{children}</body>
+      <body className={`${inter.className} ${inter.variable} ${barlow.variable} ${theme?.value === "light" ? "" : "dark"}`}>
+        <NavBar />
+        <TopProgressBar />
+        {children}
+      </body>
     </html>
   )
 }

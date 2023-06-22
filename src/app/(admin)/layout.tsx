@@ -1,10 +1,10 @@
 import React from "react"
 
-import './admin-globals.scss'
+// import './admin-globals.scss'
 import { redirect } from "next/navigation";
 import { Metadata } from "next";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/(api)/api/auth/[...nextauth]/route";
+import { nextAuthOptions } from "../(api)/api/auth/[...nextauth]/authOptions";
 
 export const metadata: Metadata = {
     title: 'Admin',
@@ -23,11 +23,15 @@ export default async function AdminLayout({
         }
     },
 }) {
-    const session = await getServerSession(authOptions);
+    const session = await getServerSession(nextAuthOptions);
 
     // @ts-ignore
     if (!session || session.user?.role < 2) {
         redirect(`/`);
     }
-    return (<>{children}</>)
+    return (
+        <html lang="en">
+            <body>{children}</body>
+        </html>
+    )
 }
