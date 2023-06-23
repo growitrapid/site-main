@@ -18,7 +18,7 @@ export default function Page({ params, searchParams }: {
 }) {
     const [email, setEmail] = React.useState('');
     const { status, data: session } = useSession();
-    const error = searchParams?.error.toLocaleLowerCase();
+    let error = searchParams?.error;
     let errorMessage = '';
     let errorType = 'Error:';
 
@@ -43,6 +43,8 @@ export default function Page({ params, searchParams }: {
     };
 
     if (error) {
+        error = error.toLowerCase();
+
         if (errorMessages[error]) {
             errorMessage = errorMessages[error];
             errorType = 'Error:';
