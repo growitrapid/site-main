@@ -20,10 +20,13 @@ export type USER = {
 
     /**
      * User status flags
+     * 
+     * "Pending" => 0
+     * "Active" => 1
+     * "Inactive" => 2
+     * "Banned" => 3
      */
-    isBan: boolean;
-    isDisabled: boolean;
-    isVerified: boolean;
+    status: number;
 
     /**
      * extra data

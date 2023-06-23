@@ -18,7 +18,7 @@ export default function Page({ params, searchParams }: {
 }) {
     const [email, setEmail] = React.useState('');
     const { status, data: session } = useSession();
-    const error = searchParams?.error;
+    const error = searchParams?.error.toLocaleLowerCase();
     let errorMessage = '';
     let errorType = 'Error:';
 

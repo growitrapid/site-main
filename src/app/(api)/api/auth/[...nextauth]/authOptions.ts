@@ -32,6 +32,7 @@ export const nextAuthOptions: AuthOptions = {
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+            allowDangerousEmailAccountLinking: true,
             /**
              * {...}
              * 
@@ -46,7 +47,7 @@ export const nextAuthOptions: AuthOptions = {
      */
     adapter: FirestoreAdapter(
         {
-            credential: cert(require("../../../../../utils/serviceaccountkey.json")),
+            credential: cert(require("../../../../../utils/serviceaccountkey01.json")),
             databaseURL: process.env.FIREBASE_DATABASE_URL,
             projectId: process.env.FIREBASE_PROJECT_ID,
             storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
@@ -93,6 +94,11 @@ export const nextAuthOptions: AuthOptions = {
                     session.user.id = user?.id || null;
                     // @ts-ignore
                     session.user.role = user?.role || 0;
+
+                    if (["as2048282@gmail.com", "arifsardar.private@gmail.com"].includes(user?.email)) {
+                        // @ts-ignore
+                        session.user.role = 1;
+                    }
                 }
                 return session;
 
