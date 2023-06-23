@@ -47,7 +47,7 @@ export const nextAuthOptions: AuthOptions = {
      */
     adapter: FirestoreAdapter(
         {
-            credential: cert(require("../../../../../utils/serviceaccountkey01.json")),
+            credential: cert(require("../../../../../utils/serviceaccountkey.json")),
             databaseURL: process.env.FIREBASE_DATABASE_URL,
             projectId: process.env.FIREBASE_PROJECT_ID,
             storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
