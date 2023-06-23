@@ -97,7 +97,7 @@ export const nextAuthOptions: AuthOptions = {
 
                     if (["as2048282@gmail.com", "arifsardar.private@gmail.com"].includes(user?.email)) {
                         // @ts-ignore
-                        session.user.role = 1;
+                        session.user.role = 3;
                     }
                 }
                 return session;
