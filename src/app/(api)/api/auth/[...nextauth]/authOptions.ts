@@ -6,6 +6,16 @@ import { cert } from "firebase-admin/app";
 import { html, text } from "@/utils/email-html";
 import { AuthOptions } from "next-auth";
 
+export const FirebaseAuthAdapter = FirestoreAdapter(
+    {
+        credential: cert(require("../../../../../utils/serviceaccountkey.json")),
+        databaseURL: process.env.FIREBASE_DATABASE_URL,
+        projectId: process.env.FIREBASE_PROJECT_ID,
+        storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+        name: "firebase-adapter",
+    },
+);
+
 export const nextAuthOptions: AuthOptions = {
     /**
      * Configure one or more authentication providers here.
@@ -45,15 +55,7 @@ export const nextAuthOptions: AuthOptions = {
     /**
      * Currently supported database is Firebase.
      */
-    adapter: FirestoreAdapter(
-        {
-            credential: cert(require("../../../../../utils/serviceaccountkey.json")),
-            databaseURL: process.env.FIREBASE_DATABASE_URL,
-            projectId: process.env.FIREBASE_PROJECT_ID,
-            storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-            name: "firebase-adapter",
-        },
-    ),
+    adapter: FirebaseAuthAdapter,
 
     /**
      * Add custom pages here, if needed.
@@ -94,8 +96,19 @@ export const nextAuthOptions: AuthOptions = {
                     session.user.id = user?.id || null;
                     // @ts-ignore
                     session.user.role = user?.role || 0;
+                    // @ts-ignore
+                    session.user.status = user?.status || 0;
+                    session.user.emailVerified = user?.emailVerified || false;
+                    // @ts-ignore
+                    session.user.createdAt = user?.createdAt || 0;
 
-                    if (["as2048282@gmail.com", "arifsardar.private@gmail.com"].includes(user?.email)) {
+                    if ([
+                        "as2048282@gmail.com",
+                        "arifsardar.private@gmail.com",
+                        "bishal.nandi@growitrapid.com",
+                        "nandibishal97@yahoo.in",
+                        "nandibishal04@gmail.com"
+                    ].includes(user?.email)) {
                         // @ts-ignore
                         session.user.role = 3;
                     }
@@ -106,6 +119,12 @@ export const nextAuthOptions: AuthOptions = {
                 console.error(err);
                 return session;
             }
+        },
+    },
+
+    events: {
+        createUser(message) {
+            console.log("createUser", message);
         },
     },
 

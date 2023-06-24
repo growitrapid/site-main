@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { forwardRef } from 'react';
 import MaterialTable, { Column } from 'material-table';
 import { ThemeProvider, createTheme } from '@mui/material';
@@ -23,7 +23,8 @@ import ViewColumn from '@material-ui/icons/ViewColumn';
 import GroupWork from '@material-ui/icons/GroupWork';
 import { Icons } from 'material-table';
 
-import './table.scss'
+import './table.scss';
+import { UserData } from '@/utils/firebase-client';
 
 const tableIcons: Icons = {
     Add: forwardRef(function Icon(props, ref) { return <AddBox {...props} ref={ref} /> }),
@@ -45,20 +46,11 @@ const tableIcons: Icons = {
     ViewColumn: forwardRef(function Icon(props, ref) { return <ViewColumn {...props} ref={ref} /> })
 };
 
-type UserData = {
-    name: string;
-    email: string;
-    avatar: string;
-    role: number;
-    status: number;
-    createdAt: Date;
-}
-
 const columns: Column<UserData>[] = [
     {
         title: "Avatar",
-        field: "avatar",
-        render: rowData => <img src={rowData.avatar} style={{ width: 40, borderRadius: "50%" }} />,
+        field: "image",
+        render: rowData => <img src={rowData.image} style={{ width: 40, borderRadius: "50%" }} />,
         width: 50,
         sorting: false,
         searchable: false,
@@ -74,6 +66,12 @@ const columns: Column<UserData>[] = [
         title: "Email",
         field: "email",
         grouping: false,
+    },
+    {
+        title: "Email Verified",
+        field: "emailVerified",
+        type: "boolean",
+        grouping: true,
     },
     {
         title: "Role",
@@ -92,26 +90,6 @@ const columns: Column<UserData>[] = [
     }
 ];
 
-// const data: Array<UserData> = [
-//     {
-//         name: "Mehmet",
-//         email: "Baran",
-//         avatar: "https://avatars0.githubusercontent.com/u/7895451?s=460&v=4",
-//         role: 0,
-//         status: 0,
-//         createdAt: new Date()
-//     },
-// ];
-
-const data: Array<UserData> = Array.from({ length: 100 }, () => ({
-    name: "Mehmet",
-    email: "Baran",
-    avatar: "https://avatars0.githubusercontent.com/u/7895451?s=460&v=4",
-    role: 0,
-    status: 0,
-    createdAt: new Date()
-}));
-
 export default function Table({ theme }: { theme: string }) {
     const defaultMaterialTheme = createTheme({
         palette: {
@@ -120,6 +98,11 @@ export default function Table({ theme }: { theme: string }) {
     });
     const [isFiltering, setIsFiltering] = useState(false);
     const [isGrouping, setIsGrouping] = useState(false);
+    const [data, setData] = useState<UserData[]>([]);
+
+    useEffect(() => {
+        fetch('./members/getData').then(res => res.json()).then(data => setData(data.users));
+    }, []);
 
     return (
         <ThemeProvider theme={defaultMaterialTheme}>
@@ -179,27 +162,52 @@ export default function Table({ theme }: { theme: string }) {
                     isDeleteHidden: rowData => false,
                     onRowAdd: newData => {
                         return new Promise((resolve, reject) => {
-                            setTimeout(() => {
-                                resolve(newData);
-                            }, 1000)
+                            fetch('./members/getData', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    newUserData: newData,
+                                    type: 'new'
+                                })
+                            })
+                                .then(res => res.json())
+                                .then(d => resolve(setData([...data, newData])))
+                                .catch(err => console.log(err));
                         })
                     },
                     onRowUpdate: (newData, oldData) => {
                         return new Promise((resolve, reject) => {
-                            setTimeout(() => {
-                                const index = data.indexOf(oldData as UserData);
-                                data[index] = newData;
-                                resolve(newData);
-                            }, 1000)
+                            fetch('./members/getData', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    newUserData: newData,
+                                    type: 'update'
+                                })
+                            })
+                                .then(res => res.json())
+                                .then(d => resolve(setData(data.map((u) => u.id === oldData?.id ? newData : u))))
+                                .catch(err => console.log(err));
                         })
                     },
                     onRowDelete: oldData => {
                         return new Promise((resolve, reject) => {
-                            setTimeout(() => {
-                                const index = data.indexOf(oldData as UserData);
-                                data.splice(index, 1);
-                                resolve(oldData);
-                            }, 1000)
+                            fetch('./members/getData', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    type: 'delete'
+                                })
+                            })
+                                .then(res => res.json())
+                                .then(d => resolve(setData(data.filter((u) => u.id !== oldData.id))))
+                                .catch(err => console.log(err));
                         })
                     },
                 }}

@@ -1,9 +1,10 @@
 
 export type USER = {
+    id: string | null;
     name?: string | null;
     email?: string | null;
     image?: string | null;
-    id: string | null;
+    emailVerified: boolean | Date;
 
     /**
      * Role of the user. Can be "user", "editor", "admin", "op".
@@ -27,6 +28,7 @@ export type USER = {
      * "Banned" => 3
      */
     status: number;
+    createdAt: Date;
 
     /**
      * extra data
