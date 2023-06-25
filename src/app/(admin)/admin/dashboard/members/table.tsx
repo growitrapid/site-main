@@ -25,6 +25,7 @@ import { Icons } from 'material-table';
 
 import './table.scss';
 import { UserData } from '@/utils/firebase-client';
+import MyAvatar from '../../../../../assets/me.png'
 
 const tableIcons: Icons = {
     Add: forwardRef(function Icon(props, ref) { return <AddBox {...props} ref={ref} /> }),
@@ -50,7 +51,7 @@ const columns: Column<UserData>[] = [
     {
         title: "Avatar",
         field: "image",
-        render: rowData => <img src={rowData.image} style={{ width: 40, borderRadius: "50%" }} />,
+        render: rowData => <img src={rowData.image || MyAvatar.src} style={{ width: 40, borderRadius: "50%" }} />,
         width: 50,
         sorting: false,
         searchable: false,
@@ -96,18 +97,24 @@ export default function Table({ theme }: { theme: string }) {
             mode: theme === 'light' ? 'light' : 'dark',
         },
     });
+    const [isLoading, setIsLoading] = useState(true);
     const [isFiltering, setIsFiltering] = useState(false);
     const [isGrouping, setIsGrouping] = useState(false);
     const [data, setData] = useState<UserData[]>([]);
 
     useEffect(() => {
-        fetch('./members/getData').then(res => res.json()).then(data => setData(data.users));
+        setIsLoading(true);
+        fetch('./members/getData').then(res => res.json()).then(data => {
+            setData(data.users);
+            setIsLoading(false);
+        });
     }, []);
 
     return (
         <ThemeProvider theme={defaultMaterialTheme}>
             <MaterialTable
                 title="Members Management"
+                isLoading={isLoading}
                 icons={tableIcons}
                 style={{
                     height: "100%",
@@ -137,7 +144,7 @@ export default function Table({ theme }: { theme: string }) {
                     sorting: true,
                     search: true,
                     paging: true,
-                    selection: true,
+                    // selection: true,
                     pageSize: 10,
                     pageSizeOptions: [10, 20, 50, 100],
                     paginationType: "stepped",
@@ -147,9 +154,9 @@ export default function Table({ theme }: { theme: string }) {
                     exportAllData: true,
                     exportFileName: "members",
                     exportDelimiter: ",",
-                    exportCsv: (columns, data) => {
-                        alert('You should develop a code to export ' + data.length + ' rows');
-                    },
+                    // exportCsv: (columns, data) => {
+                    //     alert('You should develop a code to export ' + data.length + ' rows');
+                    // },
                     maxBodyHeight: "100%",
                     minBodyHeight: "100%",
                     padding: "dense",
@@ -162,6 +169,7 @@ export default function Table({ theme }: { theme: string }) {
                     isDeleteHidden: rowData => false,
                     onRowAdd: newData => {
                         return new Promise((resolve, reject) => {
+                            setIsLoading(true);
                             fetch('./members/getData', {
                                 method: 'POST',
                                 headers: {
@@ -173,12 +181,17 @@ export default function Table({ theme }: { theme: string }) {
                                 })
                             })
                                 .then(res => res.json())
-                                .then(d => resolve(setData([...data, newData])))
+                                .then(d => {
+                                    setData([...data, newData]);
+                                    resolve(newData);
+                                    setIsLoading(false);
+                                })
                                 .catch(err => console.log(err));
                         })
                     },
                     onRowUpdate: (newData, oldData) => {
                         return new Promise((resolve, reject) => {
+                            setIsLoading(true);
                             fetch('./members/getData', {
                                 method: 'POST',
                                 headers: {
@@ -190,12 +203,17 @@ export default function Table({ theme }: { theme: string }) {
                                 })
                             })
                                 .then(res => res.json())
-                                .then(d => resolve(setData(data.map((u) => u.id === oldData?.id ? newData : u))))
+                                .then(d => {
+                                    resolve(newData);
+                                    setData(data.map((u) => u.id === oldData?.id ? newData : u))
+                                    setIsLoading(false);
+                                })
                                 .catch(err => console.log(err));
                         })
                     },
                     onRowDelete: oldData => {
                         return new Promise((resolve, reject) => {
+                            setIsLoading(true);
                             fetch('./members/getData', {
                                 method: 'POST',
                                 headers: {
@@ -206,7 +224,11 @@ export default function Table({ theme }: { theme: string }) {
                                 })
                             })
                                 .then(res => res.json())
-                                .then(d => resolve(setData(data.filter((u) => u.id !== oldData.id))))
+                                .then(d => {
+                                    setData(data.filter((u) => u.id !== oldData.id));
+                                    resolve(oldData);
+                                    setIsLoading(false);
+                                })
                                 .catch(err => console.log(err));
                         })
                     },

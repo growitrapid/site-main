@@ -1,0 +1,22 @@
+.socialLinks {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    vertical-align: top;
+    gap: 0.5em;
+    font-size: 1.5em;
+
+    svg {
+        fill: (var(--primary-color));
+    }
+
+    :hover {
+        svg {
+            fill: (var(--link-secondary-color));
+        }
+    }
+
+    a::after {
+        display: none;
+    }
+}

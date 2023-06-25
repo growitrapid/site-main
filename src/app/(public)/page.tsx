@@ -21,7 +21,7 @@ export default function page({ }: Props) {
                     <div className={`relative flex flex-wrap items-stretch flex-shrink-0 py-8 px-4 basis-[100%] sm:basis-[75%] md:basis-[50%] max-w-full sm:max-w-[75%] md:max-w-[50%]`}>
 
                         <div className={`basis-[75%] xl:basis-[100%] self-start`}>
-                            <h1 className={`[font-family:var(--font-barlow)] text-[calc(2.25rem+.375*((100vw-42rem)/24))] xl:text-[calc(3rem+.75*((100vw-82rem)/17))] leading-tight font-light opacity-70`}>Scale your enterprise AI capabilities</h1>
+                            <h1 className={`[font-family:var(--font-barlow)] text-[calc(2.25rem+.375*((100vw-42rem)/24))] xl:text-[calc(3rem+.75*((100vw-82rem)/17))] leading-tight font-light opacity-70`}>Empower Your Brand&apos;s Digital Growth with GrowItRapid</h1>
                         </div>
 
                         <div className={`self-end w-full`}>

@@ -10,12 +10,13 @@ import Me from '@/assets/me.png';
 import style from './style.module.scss'
 
 import {
-    FaCaretDown, FaSearch, FaSignOutAlt,
+    FaCaretDown, FaSearch, FaSignOutAlt, FaSlidersH,
 } from "react-icons/fa";
 import { BsMoonStarsFill, BsSlashSquare } from "react-icons/bs";
 import { BiSun } from "react-icons/bi";
 import { setCookie } from '@/utils/cookie';
 import config from '@/utils/config';
+import { VscGraph } from 'react-icons/vsc';
 
 const menuItems = [
     {
@@ -29,19 +30,58 @@ const menuItems = [
         icon: null
     },
     {
-        name: "Researches",
-        link: "data.researchesUrl",
+        name: "Courses",
+        link: "data.blogUrl",
         icon: null,
         items: [
+            {
+                name: "AI",
+                link: "/courses/ai",
+                icon: null
+            },
+            {
+                name: "Data Science",
+                link: "/courses/data-science",
+                icon: null
+            }
+        ],
+    },
+    {
+        name: "Services",
+        link: "data.blogUrl",
+        icon: null,
+        items: [
+            {
+                name: "AI",
+                link: "/services/ai",
+                icon: null
+            },
+            {
+                name: "Data Science",
+                link: "/services/data-science",
+                icon: null
+            }
         ]
     },
     {
-        name: "Products",
-        link: "/products",
-        icon: null,
-        items: [
-        ]
+        name: "Developers",
+        link: "data.blogUrl",
+        icon: null
     },
+    // {
+    //     name: "Researches",
+    //     link: "data.researchesUrl",
+    //     icon: null,
+    //     items: [
+    //     ]
+    // },
+    // {
+    //     name: "Products",
+    //     link: "/products",
+    //     icon: null,
+    //     items: [
+    //     ]
+    // },
     {
         name: "Terms & Policy",
         link: "/terms-policies",
@@ -115,7 +155,7 @@ export default function Header({ }: Props) {
 
             <Link className={style.logo} href="/" style={{ color: "var(--primary-color)" }}>
                 <div>
-                    <Image src={Logo} alt="Logo" height={25} />
+                    {/* <Image src={Logo} alt="Logo" height={25} /> */}
                 </div>
             </Link>
 
@@ -157,7 +197,20 @@ export default function Header({ }: Props) {
                                 <BsMoonStarsFill fill='currentColor' />
                             }
                         </button>
+
+                        {((session?.user.role || 0) >= 1) &&
+                            <>
+                                <Link href="/admin/studio" target='_blank' title='Studio'>
+                                    <FaSlidersH fill='currentColor' />
+                                </Link>
+
+                                <Link href="/admin/dashboard" target='_blank' title='Dashboard'>
+                                    <VscGraph fill='currentColor' />
+                                </Link>
+                            </>
+                        }
                     </div>
+
                 </span>
 
                 <span><Link href="/about">

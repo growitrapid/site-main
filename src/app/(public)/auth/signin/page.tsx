@@ -76,7 +76,7 @@ export default function Page({ params, searchParams }: {
 
 
     return (
-        <div className={`h-[calc(100%-60px)] w-full relative table bg-[var(--tertiary-color)]`}>
+        <div className={`h-auto md:h-[calc(100%-60px)] w-full relative table bg-[var(--tertiary-color)]`}>
 
             <div className={`${style.modal} relative h-full table-cell md:align-middle`}>
 
