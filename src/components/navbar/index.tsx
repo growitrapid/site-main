@@ -5,7 +5,8 @@ import Image from 'next/image';
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 
-import Logo from '@/assets/Badge Education Badge Logo.svg';
+import DarkLogo from '@/assets/image/logo_dark.svg';
+import LightLogo from '@/assets/image/logo_light.svg';
 import Me from '@/assets/me.png';
 import style from './style.module.scss'
 
@@ -14,7 +15,7 @@ import {
 } from "react-icons/fa";
 import { BsMoonStarsFill, BsSlashSquare } from "react-icons/bs";
 import { BiSun } from "react-icons/bi";
-import { setCookie } from '@/utils/cookie';
+import { getCookie, setCookie } from '@/utils/cookie';
 import config from '@/utils/config';
 import { VscGraph } from 'react-icons/vsc';
 
@@ -103,14 +104,12 @@ const menuItems = [
     }[];
 })[];
 
-type Props = {}
-
-export default function Header({ }: Props) {
+export default function Header({ theme }: { theme: "light" | "dark" }) {
     // const globalContext = React.useContext(GlobalContext);
     const { data: session, status } = useSession();
     const [isMenuOpened, setIsMenuOpened] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [isDark, setIsDark] = useState(true);
+    const [isDark, setIsDark] = useState(theme === "dark" ? true : false);
     const [searchText, setSearchText] = useState("");
 
     useEffect(() => {
@@ -155,7 +154,13 @@ export default function Header({ }: Props) {
 
             <Link className={style.logo} href="/" style={{ color: "var(--primary-color)" }}>
                 <div>
-                    {/* <Image src={Logo} alt="Logo" height={25} /> */}
+                    <Image src={isDark ? DarkLogo : LightLogo} alt="Logo" height={25} />
+                    {/* <DarkLogo
+                        style={{
+                            height: "25px",
+                            width: "auto",
+                        }}
+                    /> */}
                 </div>
             </Link>
 

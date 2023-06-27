@@ -3,73 +3,124 @@
 @tailwind utilities;
 
 :root {
-    --dark-bg-color: #0d1117;
-    --light-bg-color: #ffffff;
+    --dark-bg-color: rgb(13, 17, 23);
+    --light-bg-color: rgb(255, 255, 255);
     --bg-color: var(--dark-bg-color);
+    --dark-bg-color-rgb: 13, 17, 23;
+    --light-bg-color-rgb: 255, 255, 255;
+    --bg-color-rgb: var(--dark-bg-color-rgb);
 
-    --dark-text-color: #fff;
-    --light-text-color: #000;
+    --dark-text-color: rgb(255, 255, 255);
+    --light-text-color: rgb(0, 0, 0);
     --text-color: var(--dark-text-color);
+    --dark-text-color-rgb: 255, 255, 255;
+    --light-text-color-rgb: 0, 0, 0;
+    --text-color-rgb: var(--dark-text-color-rgb);
 
-    --dark-primary-color: #b9bbbe;
-    --light-primary-color: #4d4e4e;
+    --dark-primary-color: rgb(185, 187, 190);
+    --light-primary-color: rgb(77, 78, 78);
     --primary-color: var(--dark-primary-color);
+    --dark-primary-color-rgb: 185, 187, 190;
+    --light-primary-color-rgb: 77, 78, 78;
+    --primary-color-rgb: var(--dark-primary-color-rgb);
 
-    --dark-secondary-color: #121212;
-    --light-secondary-color: #ffffff;
+    --dark-secondary-color: rgb(18, 18, 18);
+    --light-secondary-color: rgb(255, 255, 255);
     --secondary-color: var(--dark-secondary-color);
+    --dark-secondary-color-rgb: 18, 18, 18;
+    --light-secondary-color-rgb: 255, 255, 255;
+    --secondary-color-rgb: var(--dark-secondary-color-rgb);
 
-    --dark-tertiary-color: #161b22;
-    --light-tertiary-color: #f6f8fa;
+    --dark-tertiary-color: rgb(22, 27, 34);
+    --light-tertiary-color: rgb(246, 248, 250);
     --tertiary-color: var(--dark-tertiary-color);
+    --dark-tertiary-color-rgb: 22, 27, 34;
+    --light-tertiary-color-rgb: 246, 248, 250;
+    --tertiary-color-rgb: var(--dark-tertiary-color-rgb);
 
-    --dark-quaternary-color: #161b22;
-    --light-quaternary-color: #2f2f2f;
+    --dark-quaternary-color: rgb(22, 27, 34);
+    --light-quaternary-color: rgb(47, 47, 47);
     --quaternary-color: var(--dark-quaternary-color);
+    --dark-quaternary-color-rgb: 22, 27, 34;
+    --light-quaternary-color-rgb: 47, 47, 47;
+    --quaternary-color-rgb: var(--dark-quaternary-color-rgb);
 
-    --dark-hover-color: #ffffff21;
-    --light-hover-color: #00000021;
+    --dark-hover-color: rgba(255, 255, 255, 0.129);
+    --light-hover-color: rgba(0, 0, 0, 0.129);
     --hover-color: var(--dark-hover-color);
+    --dark-hover-color-rgb: 255, 255, 255;
+    --light-hover-color-rgb: 0, 0, 0;
+    --hover-color-rgb: var(--dark-hover-color-rgb);
 
-    --dark-border-primary-color: #30363d;
-    --light-border-primary-color: #d8dee4;
+    --dark-border-primary-color: rgb(48, 54, 61);
+    --light-border-primary-color: rgb(216, 222, 228);
     --border-primary-color: var(--dark-border-primary-color);
+    --dark-border-primary-color-rgb: 48, 54, 61;
+    --light-border-primary-color-rgb: 216, 222, 228;
+    --border-primary-color-rgb: var(--dark-border-primary-color-rgb);
 
-    --dark-border-secondary-color: #ffffff;
-    --light-border-secondary-color: #000000;
+    --dark-border-secondary-color: rgb(255, 255, 255);
+    --light-border-secondary-color: rgb(0, 0, 0);
     --border-secondary-color: var(--dark-border-secondary-color);
+    --dark-border-secondary-color-rgb: 255, 255, 255;
+    --light-border-secondary-color-rgb: 0, 0, 0;
+    --border-secondary-color-rgb: var(--dark-border-secondary-color-rgb);
 
-    --dark-link-primary-color: #58a6ff;
-    --light-link-primary-color: #58a6ff;
+    --dark-link-primary-color: rgb(88, 166, 255);
+    --light-link-primary-color: rgb(88, 166, 255);
     --link-primary-color: var(--dark-link-primary-color);
+    --dark-link-primary-color-rgb: 88, 166, 255;
+    --light-link-primary-color-rgb: 88, 166, 255;
+    --link-primary-color-rgb: var(--dark-link-primary-color-rgb);
 
-    --dark-link-secondary-color: #d0d3d6;
-    --light-link-secondary-color: #2d2d2e;
+    --dark-link-secondary-color: rgb(208, 211, 214);
+    --light-link-secondary-color: rgb(45, 45, 46);
     --link-secondary-color: var(--dark-link-secondary-color);
+    --dark-link-secondary-color-rgb: 208, 211, 214;
+    --light-link-secondary-color-rgb: 45, 45, 46;
+    --link-secondary-color-rgb: var(--dark-link-secondary-color-rgb);
 
-    --dark-selection--bg-color: #58a6ff;
-    --light-selection--bg-color: #58a6ff;
+    --dark-selection--bg-color: rgb(88, 166, 255);
+    --light-selection--bg-color: rgb(88, 166, 255);
     --selection--bg-color: var(--dark-selection--bg-color);
+    --dark-selection--bg-color-rgb: 88, 166, 255;
+    --light-selection--bg-color-rgb: 88, 166, 255;
+    --selection--bg-color-rgb: var(--dark-selection--bg-color-rgb);
 
-    --dark-selection--text-color: #fff;
-    --light-selection--text-color: #fff;
+    --dark-selection--text-color: rgb(255, 255, 255);
+    --light-selection--text-color: rgb(255, 255, 255);
     --selection--text-color: var(--dark-selection--text-color);
+    --dark-selection--text-color-rgb: 255, 255, 255;
+    --light-selection--text-color-rgb: 255, 255, 255;
+    --selection--text-color-rgb: var(--dark-selection--text-color-rgb);
 
-    --dark-success-color: #28a745;
-    --light-success-color: #28a745;
+    --dark-success-color: rgb(40, 167, 69);
+    --light-success-color: rgb(40, 167, 69);
     --success-color: var(--dark-success-color);
+    --dark-success-color-rgb: 40, 167, 69;
+    --light-success-color-rgb: 40, 167, 69;
+    --success-color-rgb: var(--dark-success-color-rgb);
 
-    --dark-warning-color: #ffc107;
-    --light-warning-color: #ffc107;
+    --dark-warning-color: rgb(255, 193, 7);
+    --light-warning-color: rgb(255, 193, 7);
     --warning-color: var(--dark-warning-color);
+    --dark-warning-color-rgb: 255, 193, 7;
+    --light-warning-color-rgb: 255, 193, 7;
+    --warning-color-rgb: var(--dark-warning-color-rgb);
 
-    --dark-danger-color: #dc3545;
-    --light-danger-color: #dc3545;
+    --dark-danger-color: rgb(220, 53, 69);
+    --light-danger-color: rgb(220, 53, 69);
     --danger-color: var(--dark-danger-color);
+    --dark-danger-color-rgb: 220, 53, 69;
+    --light-danger-color-rgb: 220, 53, 69;
+    --danger-color-rgb: var(--dark-danger-color-rgb);
 
-    --dark-info-color: #17a2b8;
-    --light-info-color: #17a2b8;
+    --dark-info-color: rgb(23, 162, 184);
+    --light-info-color: rgb(23, 162, 184);
     --info-color: var(--dark-info-color);
+    --dark-info-color-rgb: 23, 162, 184;
+    --light-info-color-rgb: 23, 162, 184;
+    --info-color-rgb: var(--dark-info-color-rgb);
 }
 
 *,
@@ -122,6 +173,24 @@ body {
         --warning-color: var(--light-warning-color);
         --danger-color: var(--light-danger-color);
         --info-color: var(--light-info-color);
+
+        --bg-color-rgb: var(--light-bg-color-rgb);
+        --text-color-rgb: var(--light-text-color-rgb);
+        --primary-color-rgb: var(--light-primary-color-rgb);
+        --secondary-color-rgb: var(--light-secondary-color-rgb);
+        --tertiary-color-rgb: var(--light-tertiary-color-rgb);
+        --quaternary-color-rgb: var(--light-quaternary-color-rgb);
+        --hover-color-rgb: var(--light-hover-color-rgb);
+        --border-primary-color-rgb: var(--light-border-primary-color-rgb);
+        --border-secondary-color-rgb: var(--light-border-secondary-color-rgb);
+        --link-primary-color-rgb: var(--light-link-primary-color-rgb);
+        --link-secondary-color-rgb: var(--light-link-secondary-color-rgb);
+        --selection--bg-color-rgb: var(--light-selection-color-rgb);
+        --selection--text-color-rgb: var(--light-selection-color-rgb);
+        --success-color-rgb: var(--light-success-color-rgb);
+        --warning-color-rgb: var(--light-warning-color-rgb);
+        --danger-color-rgb: var(--light-danger-color-rgb);
+        --info-color-rgb: var(--light-info-color-rgb);
     }
 }
 

@@ -1,0 +1,18 @@
+
+.buttons a {
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+    &::after {
+        display: none;
+    }
+
+    &:hover {
+        background-color: var(--hover-color);
+    }
+}
+
+.bg__image {
+    // clip-path: circle(90% at 90% 50%);
+    clip-path: circle(100.0% at 100% 25%);
+    // clip shadow inner
+}

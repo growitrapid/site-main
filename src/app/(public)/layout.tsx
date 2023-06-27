@@ -37,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${inter.variable} ${barlow.variable} ${theme?.value === "light" ? "" : "dark"}`}>
-        <NavBar />
+        <NavBar theme={theme?.value === "light" ? "light" : "dark"} />
         <TopProgressBar />
         {children}
 

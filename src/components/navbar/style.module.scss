@@ -68,7 +68,8 @@
 
     .logo {
         &::after {
-            background-image: linear-gradient(to right, #be59f6, #4182fe, #00bcee);
+            // background-image: linear-gradient(to right, #be59f6, #4182fe, #00bcee);
+            display: none;
         }
 
         &>div {
