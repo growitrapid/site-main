@@ -3,7 +3,8 @@ export default [
     {
         title: 'Web Development',
         description: 'Professional website design and development tailored to your brand\'s unique needs.',
-        image: 'https://1.cms.s81c.com/sites/default/files/2023-05-07/pi-1906698.xl_.jpg',
+        // image: 'https://1.cms.s81c.com/sites/default/files/2023-05-07/pi-1906698.xl_.jpg',
+        image: 'https://www.analyticsinsight.net/wp-content/uploads/2020/11/Artificial-Intelligence-5.jpg',
         items: [
             {
                 title: 'Custom Website Development',
@@ -21,12 +22,20 @@ export default [
                 title: 'CMS Integration',
                 description: 'Easily manage and update your website\'s content with user-friendly content management systems.',
             },
+            {
+                title: 'API Integration',
+                description: 'Leverage the power of APIs to enhance your website\'s functionality and connectivity.',
+            },
+            {
+                title: 'Hosting Services',
+                description: 'Secure and reliable hosting solutions for your website to ensure optimal performance and uptime.',
+            },
         ],
     },
     {
         title: 'SEO Optimisation',
         description: 'Improve your website\'s visibility in search engines and attract organic traffic.',
-        image: '',
+        image: 'https://media.licdn.com/dms/image/D4D12AQGl0dL12HSlGw/article-cover_image-shrink_720_1280/0/1656075186723?e=2147483647&v=beta&t=-gk0wyvYT97GJ42aCFEdvJqhmRigsxnPURvXQNqeBL8',
         items: [
             {
                 title: 'Keyword Research and Analysis',
@@ -44,89 +53,101 @@ export default [
                 title: 'SEO Audits and Reporting',
                 description: 'Gain valuable insights into your website\'s SEO performance and track progress over time.',
             },
+            {
+                title: 'Link Building',
+                description: 'Acquire high-quality and relevant backlinks from other websites.',
+            },
         ]
     },
     {
         title: 'Logo designing',
         description: 'Create a memorable brand identity with a professionally designed logo.',
-        image: '',
+        image: 'https://applet3d.com/wp-content/uploads/2022/07/3d_example.jpg',
         items: [
             {
-                title: 'Custom Logo Design',
-                description: 'Craft a unique and visually striking logo that represents your brand\'s values.',
+                title: 'Business Card (Print Ready)',
+                description: 'Professional and visually appealing business card design that showcases your company\'s branding and contact information.',
             },
             {
-                title: 'Brand Identity Packages',
-                description: 'Develop a cohesive brand identity with complementary visual elements and guidelines.',
+                title: 'Letter Head (Print Ready)',
+                description: 'Customized letterhead template that enhances your business correspondence, featuring your company logo and contact details for a cohesive and professional look.',
             },
             {
-                title: 'Logo Refresh and Redesign',
-                description: 'Give your existing logo a modern and fresh look while preserving brand recognition.',
+                title: 'Brand Identity Design',
+                description: 'Designing complementary elements such as color palettes, typography, visual styles, and brand guidelines to ensure consistency across various platforms.',
             },
             {
                 title: 'Vector Logo Creation',
                 description: 'Receive a versatile vector format logo suitable for various print and digital applications.',
+            },
+            {
+                title: 'Custom Logo Design',
+                description: 'Craft a unique and visually striking logo that represents your brand\'s values.',
             },
         ]
     },
     {
         title: 'Linkedin Profile Optimisation',
         description: 'Maximize your professional presence on LinkedIn for networking and business opportunities.',
-        image: '',
+        image: 'https://www.plannthat.com/wp-content/uploads/2020/07/photo-1522125670776-3c7abb882bc2.jpg',
         items: [
             {
                 title: 'Profile Optimization',
                 description: 'Optimize your LinkedIn profile to attract attention from potential clients and employers.',
             },
             {
+                title: 'LinkedIn Best Practices',
+                description: 'Connect 1:1 with Bishal, Founder and Managing Director of GrowitRapid (100k+ followers on LinkedIn).',
+            },
+            {
                 title: 'Strategic Content Creation',
                 description: 'Develop compelling LinkedIn content that showcases your expertise and builds credibility.',
             },
             {
-                title: 'Connection Building',
-                description: 'Expand your network and connect with industry professionals to foster new opportunities.',
+                title: 'Profile Review and Analysis',
+                description: 'Review and analyze the user\'s existing profile to identify areas for improvement.',
             },
             {
-                title: 'Lead Generation',
-                description: 'Utilize LinkedIn\'s tools and strategies to generate leads and grow your business network.',
+                title: 'Keyword Optimization',
+                description: 'Strategically incorporating relevant keywords into the profile to improve its visibility in LinkedIn search results.',
             },
         ]
     },
     {
         title: 'Content Creation',
         description: 'Engage your audience with high-quality content that drives traffic, conversions, and brand loyalty.',
-        image: '',
+        image: 'https://p0.pxfuel.com/preview/463/1014/539/author-background-career-classic.jpg',
         items: [
             {
                 title: 'Blog Writing',
-                description: 'Inform, entertain, and educate your audience with engaging blog posts tailored to your niche.',
+                description: 'Professional writers craft well-researched and informative blog posts tailored to the client\'s industry and target audience.',
             },
             {
-                title: 'Copywriting',
-                description: 'Craft persuasive and impactful copy that captures attention and drives desired actions.',
+                title: 'Website Copywriting',
+                description: 'Content creators develop compelling website copy that effectively communicates the client\'s brand, products, and services.',
             },
             {
-                title: 'Content Strategy',
-                description: 'Develop a comprehensive content plan aligned with your brand\'s objectives and target audience.',
+                title: 'Content Strategy Development',
+                description: 'Experts collaborate with clients to define content goals, target audience, and messaging strategies.',
             },
             {
-                title: 'Social Media Content',
-                description: 'Create compelling and shareable content to fuel engagement on social media platforms.',
+                title: 'Social Media Content Creation',
+                description: 'Experts design and create engaging social media posts, including captivating captions, graphics, images, and videos.',
             },
         ]
     },
     {
         title: 'Influencer Marketing',
         description: 'Harness the power of influencers to expand your brand\'s reach and drive authentic engagement.',
-        image: '',
+        image: 'https://c.pxhere.com/images/45/4f/a2773d2017237529ef32297bb125-1455421.jpg!d',
         items: [
             {
-                title: 'Influencer Identification',
-                description: 'Find the right influencers who align with your brand and target audience.',
+                title: 'Influencer Identification and Selection',
+                description: 'Experts conduct research and analysis to identify relevant influencers in your target market.',
             },
             {
-                title: 'Campaign Strategy',
-                description: 'Develop effective influencer marketing campaigns that deliver impactful results.',
+                title: 'Campaign Strategy and Planning',
+                description: 'Experts work with brands to develop an influencer marketing strategy tailored to their goals and target audience.',
             },
             {
                 title: 'Influencer Outreach and Collaboration',
@@ -141,7 +162,7 @@ export default [
     {
         title: 'Product marketing',
         description: 'Launch and promote your products effectively to drive sales and captivate your target market.',
-        image: '',
+        image: 'https://windsorcareercollege.ca/wp-content/uploads/2018/04/header_bg_14.jpg',
         items: [
             {
                 title: 'Market Research and Analysis',
@@ -164,15 +185,19 @@ export default [
     {
         title: 'Social Media Management',
         description: 'Enhance your brand\'s social media presence with engaging content and effective community management.',
-        image: '',
+        image: 'https://c0.wallpaperflare.com/preview/348/702/471/social-media-social-keyboard-icon.jpg',
         items: [
             {
                 title: 'Social Media Strategy Development',
-                description: 'Create a comprehensive social media plan aligned with your brand\'s goals and target audience.',
+                description: 'Experts work with companies to develop a comprehensive social media strategy aligned with their overall business goals.',
             },
             {
                 title: 'Content Creation and Scheduling',
-                description: 'Develop captivating social media content and schedule it for optimal reach and engagement.',
+                description: 'Professionals create engaging and relevant content for the company\'s social media channels, including posts, images, videos, and infographics.',
+            },
+            {
+                title: 'Social Media Advertising',
+                description: 'Professionals develop and execute paid advertising campaigns on social media platforms to reach a wider audience, increase brand awareness, and drive conversions.',
             },
             {
                 title: 'Community Engagement',
@@ -187,7 +212,7 @@ export default [
     {
         title: 'Brand Promotion',
         description: 'Amplify your brand\'s visibility and reputation through strategic promotion and targeted marketing initiatives.',
-        image: '',
+        image: 'https://st4.depositphotos.com/8745284/20963/i/600/depositphotos_209637352-stock-photo-hand-launches-paper-plane-other.jpg',
         items: [
             {
                 title: 'Brand Messaging and Positioning',

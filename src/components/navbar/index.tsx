@@ -18,56 +18,77 @@ import { BiSun } from "react-icons/bi";
 import { getCookie, setCookie } from '@/utils/cookie';
 import config from '@/utils/config';
 import { VscGraph } from 'react-icons/vsc';
+import { BroadcastChannel } from '@/utils/web';
 
 const menuItems = [
     {
         name: "About Us",
-        link: "/about",
+        link: "#",
         icon: null
     },
     {
         name: "Blog",
-        link: "data.blogUrl",
+        link: "#",
         icon: null
     },
     {
         name: "Courses",
-        link: "data.blogUrl",
+        link: "#",
         icon: null,
         items: [
-            {
-                name: "AI",
-                link: "/courses/ai",
-                icon: null
-            },
-            {
-                name: "Data Science",
-                link: "/courses/data-science",
-                icon: null
-            }
         ],
     },
     {
         name: "Services",
-        link: "data.blogUrl",
+        link: "#",
         icon: null,
         items: [
             {
-                name: "AI",
-                link: "/services/ai",
+                name: "Web Development",
+                link: "#",
                 icon: null
             },
             {
-                name: "Data Science",
-                link: "/services/data-science",
+                name: "SEO Optimisation",
+                link: "#",
                 icon: null
-            }
+            },
+            {
+                name: "Logo designing",
+                link: "#",
+                icon: null
+            },
+            {
+                name: "Linkedin Profile Optimisation",
+                link: "#",
+                icon: null
+            },
+            {
+                name: "Content Creation",
+                link: "#",
+                icon: null
+            },
+            {
+                name: "Influencer Marketing",
+                link: "#",
+                icon: null
+            },
+            {
+                name: "Product marketing",
+                link: "#",
+                icon: null
+            },
+            {
+                name: "Social Media Management",
+                link: "#",
+                icon: null
+            },
+            {
+                name: "Brand Promotion",
+                link: "#",
+                icon: null
+            },
         ]
-    },
-    {
-        name: "Developers",
-        link: "data.blogUrl",
-        icon: null
     },
     // {
     //     name: "Researches",
@@ -85,7 +106,7 @@ const menuItems = [
     // },
     {
         name: "Terms & Policy",
-        link: "/terms-policies",
+        link: "#",
         icon: null
     }
 ] as ({
@@ -111,6 +132,21 @@ export default function Header({ theme }: { theme: "light" | "dark" }) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isDark, setIsDark] = useState(theme === "dark" ? true : false);
     const [searchText, setSearchText] = useState("");
+
+    const themeBroadcast = useRef(new BroadcastChannel("theme", { should_receive_own_messages: true }));
+
+    useEffect(() => {
+        isDark ? document.body.classList.add("dark") : document.body.classList.remove("dark");
+
+        setCookie("theme", isDark ? "dark" : "light", 15);
+        themeBroadcast.current.postMessage('theme_toggle', { theme: isDark ? "dark" : "light" });
+    }, [isDark]);
+
+    themeBroadcast.current.onReceiveMessage((event, data) => {
+        if (event === "theme_toggle") {
+            setIsDark(data.theme === "dark" ? true : false);
+        }
+    })
 
     useEffect(() => {
         function func() {
@@ -152,7 +188,7 @@ export default function Header({ theme }: { theme: "light" | "dark" }) {
                 <div className={`${style.bottomicon} ${isMenuOpened && style.active}`}></div>
             </div>
 
-            <Link className={style.logo} href="/" style={{ color: "var(--primary-color)" }}>
+            <Link className={`${style.logo}`} href="/" style={{ color: "var(--primary-color)" }}>
                 <div>
                     <Image src={isDark ? DarkLogo : LightLogo} alt="Logo" height={25} />
                     {/* <DarkLogo
@@ -191,11 +227,7 @@ export default function Header({ theme }: { theme: "light" | "dark" }) {
             <div className={style.dropdown} data-open={isDropdownOpen} onClick={e => e.stopPropagation()}>
                 <span>
                     <div className={style.chip} style={{ justifyContent: "space-evenly" }}>
-                        <button onClick={e => {
-                            document.body.classList.toggle("dark");
-                            setCookie("theme", document.body.classList.contains("dark") ? "dark" : "light", 15);
-                            setIsDark(document.body.classList.contains("dark"));
-                        }} className={style.avatar} style={{ fontSize: "1.1em", height: 20 }}>
+                        <button onClick={e => setIsDark(!isDark)} className={style.avatar} style={{ fontSize: "1.1em", height: 20 }}>
                             {isDark ?
                                 <BiSun fill='currentColor' />
                                 :

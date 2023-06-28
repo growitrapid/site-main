@@ -219,4 +219,10 @@ a {
             width: 100%;
         }
     }
+
+    &.no-after {
+        &::after {
+            display: none;
+        }
+    }
 }

@@ -1,16 +1,33 @@
-import React from 'react'
+'use client';
+
+import React, { useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { FaEnvelope, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTelegram, FaTwitter } from 'react-icons/fa'
 
+import DarkLogo from '@/assets/image/logo_dark.svg';
+import LightLogo from '@/assets/image/logo_light.svg';
 import style from "./style.module.scss"
+import { BroadcastChannel } from '@/utils/web';
 
 type Props = {
-    isResources?: boolean
+    isResources?: boolean;
+    theme?: "light" | "dark";
 }
 
 export default function Footer({
-    isResources = false
+    isResources = false,
+    theme = "dark"
 }: Props) {
+    const [isDark, setIsDark] = useState(theme === "dark" ? true : false);
+    const themeBroadcast = useRef(new BroadcastChannel("theme", { should_receive_own_messages: true }));
+
+    themeBroadcast.current.onReceiveMessage((event, data) => {
+        if (event === "theme_toggle") {
+            setIsDark(data.theme === "dark" ? true : false);
+        }
+    })
+
     return (
         <footer className={`relative w-full bg-[var(--tertiary-color)] border-t-2 border-[var(--border-primary-color)]`}>
             <div className={`relative w-full`}>
@@ -71,10 +88,11 @@ export default function Footer({
                 <div className={`relative w-full max-w-6xl mx-auto h-[2px] bg-[var(--border-primary-color)]`}></div>
 
                 <section id={`footer`} className={`relative py-4 px-2`}>
-                    <div className={`relative w-full max-w-5xl mx-auto flex flex-col md:flex-row gap-3 justify-between items-center`}>
+                    <div className={`relative w-full max-w-5xl mx-auto flex flex-col md:px-5 md:flex-row gap-3 justify-between items-center`}>
 
                         <div className={`relative flex flex-row items-center gap-2`}>
-                            <h1 className={`text-xl font-bold`}>Grow It Rapid</h1>
+                            {/* <h1 className={`text-xl font-bold`}>Grow It Rapid</h1> */}
+                            <Image src={isDark ? DarkLogo : LightLogo} alt="Logo" height={25} className={`drop-shadow-md`} />
                             <p className={`text-sm text-[var(--primary-color)]`}>© {(new Date()).getFullYear()}, LTD.</p>
                         </div>
 
