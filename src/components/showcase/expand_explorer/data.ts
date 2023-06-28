@@ -98,6 +98,7 @@ export default [
             {
                 title: 'LinkedIn Best Practices',
                 description: 'Connect 1:1 with Bishal, Founder and Managing Director of GrowitRapid (100k+ followers on LinkedIn).',
+                href: 'https://forms.gle/BJPks7mW7HvcfL4y8'
             },
             {
                 title: 'Strategic Content Creation',

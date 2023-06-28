@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import style from './style.module.scss'
 import Link from 'next/link';
 import data from './data';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaAngleDown } from 'react-icons/fa';
 
 export default function ExpandExplorer({ }: {}) {
     const [openedIndex, setOpenedIndex] = useState(-1);
@@ -20,6 +20,10 @@ export default function ExpandExplorer({ }: {}) {
                     flex flex-col items-center sm:items-start gap-4
                 `}>
                     <h1 className={`text-3xl sm:text-xl font-bold`}>Our Services</h1>
+
+                    <p className={`text-sm`}>
+                        Tap on the cards to expand and learn more about our services.
+                    </p>
 
                     <Link href={`#`} className={`flex justify-between items-center w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)]`}>
                         <span>Learn More</span>
@@ -51,13 +55,20 @@ export default function ExpandExplorer({ }: {}) {
 
                                 <div className={`
                                     relative min-h-[170px] max-h-[250px] 
-                                    flex flex-col justify-between items-start gap-2 px-4 py-7
+                                    flex flex-col justify-between items-stretch gap-2 px-4 py-7
                                     z-10
                                 `}>
 
-                                    <h2
-                                        className={`text-lg font-bold`}
-                                    >{item.title}</h2>
+                                    <div className={`flex flex-row justify-between gap-2`}>
+                                        <h2 className={`text-lg font-bold`}>{item.title}</h2>
+                                        {item.items?.length && item.items?.length > 0 && (
+                                            <span className={`text-xl`}>
+                                                <FaAngleDown
+                                                    className={`inline-block`}
+                                                />
+                                            </span>
+                                        )}
+                                    </div>
 
                                     <p
                                         className={`text-sm`}
@@ -81,7 +92,7 @@ export default function ExpandExplorer({ }: {}) {
                                                     flex flex-col justify-between items-start gap-2 p-3
                                                     z-10
                                                 `}>
-                                                        <h3 className={`text-base text-[var(--link-primary-color)]`}><Link href={"#"}>{item.title}</Link></h3>
+                                                        <h3 className={`text-base text-[var(--link-primary-color)]`}><Link href={item.href ?? "#"}>{item.title}</Link></h3>
                                                         <p className={`text-sm`}>{item.description}</p>
                                                     </div>
                                                 </div>

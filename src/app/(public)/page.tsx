@@ -29,9 +29,9 @@ export default function page({ }: Props) {
                             sm:w -[25%]
                             md:w-[70%]
                         `}
-                        // style={{
-                        //     backgroundImage: `url(${BG.src})`,
-                        // }}
+                    // style={{
+                    //     backgroundImage: `url(${BG.src})`,
+                    // }}
                     >
                         <Image
                             src={BG}
@@ -75,7 +75,7 @@ export default function page({ }: Props) {
                                     [font-family:var(--font-barlow)]
                                     text-[calc(1.25rem+0*((100vw-20rem)/62))]
                                     font-normal
-                                `}>Supercharge Your Business & Profile Growth with GrowItRapid Maximizing Potential through Comprehensive Freelance Solution</p>
+                                `}>Supercharge Your Business & Profile Growth - Maximizing Potential through Comprehensive Freelance Solution</p>
 
                                 <div className={`${style.buttons} flex flex-col gap-4 mt-8`}>
 
@@ -108,15 +108,26 @@ export default function page({ }: Props) {
             <main>
 
                 {/* Under Construction Lebel */}
-                <section className={`relative max-w-7xl mx-auto py-5 px-4`}>
+                <section className={`
+                    flex items-center justify-center
+                `}>
                     <div className={`
-                        px-6 py-4 bg-[var(--tertiary-color)]
+                        relative max-w-5xl mx-auto my-5 inline-flex flex-row items-start justify-center gap-4
+                        bg-[var(--tertiary-color)]
+                        px-6 py-4 w-auto
                         rounded-md border-[1px] border-[var(--border-primary-color)]
-                        text-[var(--text-color)] font-[var(--font-barlow)]
                     `}>
-                        <h2 className={`text-2xl font-semibold`}>This site is currently under construction</h2>
+                        <div>
+                            <p className={`text-4xl font-semibold`}>📌</p>
+                        </div>
 
-                        <p className={`mt-2`}>We are working on something awesome. Stay tuned!</p>
+                        <div className={`
+                        text-[var(--text-color)] font-[var(--font-barlow)]
+                        `}>
+                            <h2 className={`text-2xl font-semibold`}>This site is currently under construction.</h2>
+
+                            <p className={`mt-2`}>We are working on more functionalities. Stay tuned!</p>
+                        </div>
                     </div>
                 </section>
 
