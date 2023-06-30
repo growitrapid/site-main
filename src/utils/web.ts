@@ -68,6 +68,12 @@ export class BroadcastChannel {
     should_receive_own_messages: boolean = false;
 
     constructor(channelName: BroadcastEvent["channel"], options?: { should_receive_own_messages: boolean }) {
+        if (typeof window === "undefined") {
+            this.channel_name = channelName;
+            this.this_tab_id = "";
+            return;
+        };
+
         this.channel_name = `web.broadcast.${channelName}`;
 
         const this_tab_id = window.customBroadcastChannels?.tab_id || randomString(16);

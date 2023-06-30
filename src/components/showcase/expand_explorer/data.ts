@@ -200,14 +200,14 @@ export default [
                 title: 'Social Media Advertising',
                 description: 'Professionals develop and execute paid advertising campaigns on social media platforms to reach a wider audience, increase brand awareness, and drive conversions.',
             },
-            {
-                title: 'Community Engagement',
-                description: 'Foster meaningful connections with your audience through active engagement and dialogue.',
-            },
-            {
-                title: 'Social Media Analytics and Insights',
-                description: 'Gain valuable data and insights to measure the effectiveness of your social media efforts.',
-            },
+            // {
+            //     title: 'Community Engagement',
+            //     description: 'Foster meaningful connections with your audience through active engagement and dialogue.',
+            // },
+            // {
+            //     title: 'Social Media Analytics and Insights',
+            //     description: 'Gain valuable data and insights to measure the effectiveness of your social media efforts.',
+            // },
         ]
     },
     {

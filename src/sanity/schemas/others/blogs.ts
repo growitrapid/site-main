@@ -40,6 +40,14 @@ export default {
             validation: (Rule: any) => Rule.required()
         },
         {
+            name: 'is_published',
+            title: 'Is Published',
+            type: 'boolean',
+            description: "Is the blog published?",
+            group: 'meta',
+            validation: (Rule: any) => Rule.required()
+        },
+        {
             name: 'author',
             title: 'Author',
             type: 'reference',

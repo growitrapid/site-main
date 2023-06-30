@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 
-import DarkLogo from '@/assets/image/logo_dark.svg';
-import LightLogo from '@/assets/image/logo_light.svg';
+import DarkLogo from '@/assets/logo/logo_dark.svg';
+import LightLogo from '@/assets/logo/logo_light.svg';
 import Me from '@/assets/me.png';
 import style from './style.module.scss'
 
@@ -23,7 +23,7 @@ import { BroadcastChannel } from '@/utils/web';
 const menuItems = [
     {
         name: "About Us",
-        link: "#",
+        link: "/about",
         icon: null
     },
     {
@@ -191,12 +191,6 @@ export default function Header({ theme }: { theme: "light" | "dark" }) {
             <Link className={`${style.logo}`} href="/" style={{ color: "var(--primary-color)" }}>
                 <div>
                     <Image src={isDark ? DarkLogo : LightLogo} alt="Logo" height={25} />
-                    {/* <DarkLogo
-                        style={{
-                            height: "25px",
-                            width: "auto",
-                        }}
-                    /> */}
                 </div>
             </Link>
 
@@ -214,6 +208,21 @@ export default function Header({ theme }: { theme: "light" | "dark" }) {
             </div>
 
             <div className={style.avatar} onClick={e => e.stopPropagation()}>
+                <button
+                    onClick={e => setIsDark(!isDark)}
+                    className={style.avatar}
+                    style={{
+                        fontSize: "1.1em",
+                        padding: '0.4em',
+                    }}
+                >
+                    {isDark ?
+                        <BiSun fill='currentColor' />
+                        :
+                        <BsMoonStarsFill fill='currentColor' />
+                    }
+                </button>
+
                 <button onClick={e => setIsDropdownOpen(!isDropdownOpen)}>
                     <img
                         src={session?.user?.image || Me.src}
@@ -225,30 +234,19 @@ export default function Header({ theme }: { theme: "light" | "dark" }) {
             </div>
 
             <div className={style.dropdown} data-open={isDropdownOpen} onClick={e => e.stopPropagation()}>
-                <span>
-                    <div className={style.chip} style={{ justifyContent: "space-evenly" }}>
-                        <button onClick={e => setIsDark(!isDark)} className={style.avatar} style={{ fontSize: "1.1em", height: 20 }}>
-                            {isDark ?
-                                <BiSun fill='currentColor' />
-                                :
-                                <BsMoonStarsFill fill='currentColor' />
-                            }
-                        </button>
+                {((session?.user.role || 0) >= 1) &&
+                    <span>
+                        <div className={style.chip} style={{ justifyContent: "space-evenly" }}>
+                            <Link href="/admin/studio" target='_blank' title='Studio'>
+                                <FaSlidersH fill='currentColor' />
+                            </Link>
 
-                        {((session?.user.role || 0) >= 1) &&
-                            <>
-                                <Link href="/admin/studio" target='_blank' title='Studio'>
-                                    <FaSlidersH fill='currentColor' />
-                                </Link>
-
-                                <Link href="/admin/dashboard" target='_blank' title='Dashboard'>
-                                    <VscGraph fill='currentColor' />
-                                </Link>
-                            </>
-                        }
-                    </div>
-
-                </span>
+                            <Link href="/admin/dashboard" target='_blank' title='Dashboard'>
+                                <VscGraph fill='currentColor' />
+                            </Link>
+                        </div>
+                    </span>
+                }
 
                 <span><Link href="/about">
                     <div className={style.chip}>

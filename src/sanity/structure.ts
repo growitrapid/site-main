@@ -9,6 +9,15 @@ export default (S: StructureBuilder) =>
         .showIcons(true)
         .items([
             S.listItem()
+                .title("ABOUT")
+                .child(
+                    S.defaultDocument({
+                        schemaType: "about",
+                        documentId: "about",
+                    })
+                ),
+
+            S.listItem()
                 .title("Employee")
                 // .icon(() => Project())
                 .child(
@@ -45,5 +54,17 @@ export default (S: StructureBuilder) =>
                         .title("TESTIMONIALS")
                         .schemaType("testimonials")
                         .filter('_type == "testimonials"')
+                ),
+
+            S.listItem()
+                .title("TERMS & POLICIES")
+                .child(
+                    S.documentTypeList("terms-policies")
+                        .title("TERMS & POLICIES")
+                        .child((documentId) =>
+                            S.document()
+                                .documentId(documentId)
+                                .schemaType("terms-policies")
+                        )
                 ),
         ]);

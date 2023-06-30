@@ -3,10 +3,10 @@
 import React, { useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaEnvelope, FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaTelegram, FaTwitter } from 'react-icons/fa'
+import { FaEnvelope, FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn, FaTelegramPlane, FaTwitter } from 'react-icons/fa'
 
-import DarkLogo from '@/assets/image/logo_dark.svg';
-import LightLogo from '@/assets/image/logo_light.svg';
+import DarkLogo from '@/assets/logo/logo_dark.svg';
+import LightLogo from '@/assets/logo/logo_light.svg';
 import style from "./style.module.scss"
 import { BroadcastChannel } from '@/utils/web';
 
@@ -37,7 +37,7 @@ export default function Footer({
 
                         <div className={`relative flex-auto flex flex-col gap-1 mb-5 md:mb-0`}>
                             <h1 className={`text-lg font-bold mb-3`}>Discover</h1>
-                            <ul className={`w-full grid grid-cols-2 sm:grid-cols-1 gap-2`}>
+                            <ul className={`w-full grid grid-cols-2 sm:grid-cols-1 gap-2 text-[var(--primary-color)]`}>
                                 <li><Link href="#">Products</Link></li>
                                 <li><Link href="#">Trials</Link></li>
                                 <li><Link href="#">Services</Link></li>
@@ -49,7 +49,7 @@ export default function Footer({
 
                         {/* <div className={`relative flex-auto flex flex-col gap-1 mb-5 md:mb-0`}>
                             <h1 className={`text-lg font-bold mb-3`}>Learn about</h1>
-                            <ul className={`w-full grid grid-cols-2 sm:grid-cols-1 gap-2`}>
+                            <ul className={`w-full grid grid-cols-2 sm:grid-cols-1 gap-2 text-[var(--primary-color)]`}>
                                 <li><Link href="#">What is IaaS ,PaaS & SaaS?</Link></li>
                                 <li><Link href="#">What is Cloud Computing?</Link></li>
                                 <li><Link href="#">What is Virtual Machine?</Link></li>
@@ -62,7 +62,7 @@ export default function Footer({
 
                         <div className={`relative flex-auto flex flex-col gap-1 mb-5 md:mb-0`}>
                             <h1 className={`text-lg font-bold mb-3`}>Connect with us</h1>
-                            <ul className={`w-full grid grid-cols-2 sm:grid-cols-1 gap-2`}>
+                            <ul className={`w-full grid grid-cols-2 sm:grid-cols-1 gap-2 text-[var(--primary-color)]`}>
                                 <li><Link href="#">Support</Link></li>
                                 <li><Link href="#">Find a Business Partner</Link></li>
                                 <li><Link href="#">Developers</Link></li>
@@ -72,7 +72,7 @@ export default function Footer({
 
                         <div className={`relative flex-auto flex flex-col gap-1 mb-5 md:mb-0`}>
                             <h1 className={`text-lg font-bold mb-3`}>About Grow It Rapid</h1>
-                            <ul className={`w-full grid grid-cols-2 sm:grid-cols-1 gap-2`}>
+                            <ul className={`w-full grid grid-cols-2 sm:grid-cols-1 gap-2 text-[var(--primary-color)]`}>
                                 <li><Link href="#">Careers</Link></li>
                                 <li><Link href="#">Latest news</Link></li>
                                 <li><Link href="#">Investor relations</Link></li>
@@ -85,13 +85,13 @@ export default function Footer({
 
                 </section>
 
-                <div className={`relative w-full max-w-6xl mx-auto h-[2px] bg-[var(--border-primary-color)]`}></div>
+                {/* <div className={`relative w-full max-w-6xl mx-auto h-[2px] bg-[var(--border-primary-color)]`}></div> */}
 
-                <section id={`footer`} className={`relative py-4 px-2`}>
+                {/* <section id={`footer`} className={`relative py-4 px-2`}>
                     <div className={`relative w-full max-w-5xl mx-auto flex flex-col md:px-5 md:flex-row gap-3 justify-between items-center`}>
 
                         <div className={`relative flex flex-row items-center gap-2`}>
-                            {/* <h1 className={`text-xl font-bold`}>Grow It Rapid</h1> */}
+                            {/* <h1 className={`text-xl font-bold`}>Grow It Rapid</h1> *
                             <Image src={isDark ? DarkLogo : LightLogo} alt="Logo" height={25} className={`drop-shadow-md`} />
                             <p className={`text-sm text-[var(--primary-color)]`}>© {(new Date()).getFullYear()}, LTD.</p>
                         </div>
@@ -104,6 +104,36 @@ export default function Footer({
                             <Link href="#"><FaTwitter /></Link>
                             <Link href="#"><FaGithub /></Link>
                             <Link href="#"><FaEnvelope /></Link>
+                        </div>
+
+                    </div>
+                </section> */}
+
+                <section id={`footer`} className={`relative py-4 pb-10 px-2`}>
+                    <div className={`relative w-full max-w-5xl mx-auto flex flex-col md:px-5 gap-10 justify-between items-center`}>
+
+                        <div className={`${style.socialLinks} relative flex flex-row items-center gap-6 text-3xl`}>
+                            <Link href="#"><FaFacebookF /></Link>
+                            <Link href="#"><FaLinkedinIn /></Link>
+                            <Link href="#"><FaInstagram /></Link>
+                            <Link href="#"><FaTelegramPlane /></Link>
+                            <Link href="#"><FaTwitter /></Link>
+                            <Link href="#"><FaGithub /></Link>
+                            <Link href="#"><FaEnvelope /></Link>
+                        </div>
+
+                        <div className={`relative flex flex-col items-center gap-3`}>
+                            {/* <h1 className={`text-xl font-bold`}>Grow It Rapid</h1> */}
+                            <Image src={isDark ? DarkLogo : LightLogo} alt="Logo" height={30} className={`drop-shadow-md`} />
+                            <p className={`text-sm text-[var(--primary-color)]`}>Copyright © {(new Date()).getFullYear()} Grow It Rapid, LTD.</p>
+
+                            <div className={`${style.bottom_navigation} w-full flex flex-wrap align-top items-center justify-center gap-5 text-sm text-[var(--primary-color)]`}>
+                                <Link href="#">About Us</Link>
+                                <Link href="#">Terms & Conditions</Link>
+                                <Link href="#">Privacy Policies</Link>
+                                <Link href="#">Legal Stuffs</Link>
+                                <Link href="#">Partners</Link>
+                            </div>
                         </div>
 
                     </div>
