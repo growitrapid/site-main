@@ -23,7 +23,7 @@ import { BroadcastChannel } from '@/utils/web';
 const menuItems = [
     {
         name: "About Us",
-        link: "/about",
+        link: config.links.about,
         icon: null
     },
     {
@@ -106,7 +106,7 @@ const menuItems = [
     // },
     {
         name: "Terms & Policy",
-        link: "#",
+        link: config.links.terms_policy,
         icon: null
     }
 ] as ({
@@ -198,14 +198,14 @@ export default function Header({ theme }: { theme: "light" | "dark" }) {
                 {menuItems.map((item, index) => <Render2 item={item} key={index} />)}
             </div>
 
-            <div className={style.searchBar}>
+            {/* <div className={style.searchBar}>
                 <div className={style.bar}>
                     <SearchBar
                         value={searchText}
                         onChange={(e: any) => setSearchText(e)}
                     />
                 </div>
-            </div>
+            </div> */}
 
             <div className={style.avatar} onClick={e => e.stopPropagation()}>
                 <button
@@ -324,7 +324,7 @@ export default function Header({ theme }: { theme: "light" | "dark" }) {
             </div>
 
             <div className={style.menuBar} data-open={isMenuOpened} onClick={e => e.stopPropagation()}>
-                <div className={style.searchBar} style={{
+                {/* <div className={style.searchBar} style={{
                     display: "grid",
                     minHeight: 40,
                 }}>
@@ -336,7 +336,7 @@ export default function Header({ theme }: { theme: "light" | "dark" }) {
                             onChange={(e: any) => setSearchText(e)}
                         />
                     </div>
-                </div>
+                </div> */}
 
                 <div className='partition'></div>
 

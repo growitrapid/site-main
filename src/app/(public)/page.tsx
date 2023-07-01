@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import { Metadata } from 'next'
 
 import BG from '@/assets/image/bg.webp'
 import Link from 'next/link'
@@ -7,6 +8,13 @@ import { FaArrowRight } from 'react-icons/fa'
 import ExpandExplorer from '@/components/showcase/expand_explorer'
 
 import style from './page.module.scss'
+import Stars from '@/components/stars'
+import config from '@/utils/config'
+
+export const metadata: Metadata = {
+    title: config.name,
+    description: config.description,
+};
 
 type Props = {}
 
@@ -16,6 +24,11 @@ export default function page({ }: Props) {
 
             <header>
                 <div className={`relative flex flex-row px-4 bg-[var(--tertiary-color)]`}>
+
+
+                    <div className={`absolute top-0 left-0 h-full w-full`}>
+                        <Stars />
+                    </div>
 
                     <div className={`
                             ${style.bg__image}
@@ -97,14 +110,14 @@ export default function page({ }: Props) {
 
                                 <div className={`${style.buttons} flex flex-col gap-4 mt-8`}>
 
-                                    <Link href={`https://chat.whatsapp.com/BfuAVwUx568FrUpsVodHQJ`} className={`flex justify-between items-center w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)]`}>
+                                    <Link href={`https://chat.whatsapp.com/BfuAVwUx568FrUpsVodHQJ`} className={`flex justify-between items-center w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)]`} target='_blank'>
                                         <span>Hire Desired Freelancer</span>
                                         <FaArrowRight
                                             className={`inline-block ml-2`}
                                         />
                                     </Link>
 
-                                    <Link href={`https://forms.gle/WVgBRnS2yW9ggfr3A`} className={`flex justify-between items-center w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)]`}>
+                                    <Link href={`https://forms.gle/WVgBRnS2yW9ggfr3A`} className={`flex justify-between items-center w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)]`} target='_blank'>
                                         <span>Freelance Work: Apply Now!</span>
                                         <FaArrowRight
                                             className={`inline-block ml-2`}

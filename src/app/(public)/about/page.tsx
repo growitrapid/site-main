@@ -2,8 +2,9 @@ import client from '@/utils/sanity-client';
 import { groq } from 'next-sanity';
 import React, { cache } from 'react'
 import { Metadata } from 'next';
-import Image from 'next/image'
-import BG from '@/assets/image/bg.webp'
+import Stars from '@/components/stars';
+
+import style from './style.module.scss'
 
 const clientFetch = cache(client.fetch.bind(client));
 
@@ -22,13 +23,13 @@ export default async function page({ }: {}) {
 
             <header className={`relative w-full pb-[11%] bg-[var(--tertiary-color)] `}>
 
-                <div
-                    className={`absolute right-0 top-0 h-full w-full md:w-[50%] bg-cover bg-bottom`}
+                <div className={`${style.bg__image} absolute right-0 top-0 h-full w-full md:w-[50%] bg-cover bg-bottom`}
                     style={{
                         // backgroundImage: `url(${BG.src})`,
                         backgroundImage: `url(https://c1.wallpaperflare.com/preview/311/34/429/colleague-unsplash-team-group-work.jpg)`,
                     }}
                 />
+
 
                 <div className={`absolute h-full w-[52%] bottom-auto right-auto hidden md:block`}>
                     <svg
@@ -38,10 +39,14 @@ export default async function page({ }: {}) {
                     >
                         <path className={`fill-[var(--tertiary-color)]`} d="M829.645582,-3.55271368e-14 C818.959194,11.9356039 808.954818,24.8206121 799.721248,38.7211139 C723.226254,157.53566 739.861725,301.270975 797.809751,426.687474 C804.958442,442.184984 814.61534,462.120894 818.944183,473.423703 C844.673456,540.503061 856.345675,600.855141 881.916718,667.40505 C761.006678,679.138421 646.665221,685.004119 538.890625,685.004119 L0,685.004119 L0,685.004119 L0,0.00411925189 Z"></path>
                     </svg>
+
+                    <div className={`absolute top-0 left-0 h-full w-full`}>
+                        <Stars />
+                    </div>
                 </div>
 
 
-                <div className={`relative px-6 py-24 md:max-w-5xl mx-auto`}>
+                <div className={`relative z-20 px-6 py-24 md:max-w-5xl mx-auto`}>
                     <h1 className={`md:max-w-[45%] text-5xl text-center md:text-left leading-tight font-semibold text-[var(--dark-text-color)] md:text-current`}>{data.title}</h1>
                 </div>
 
@@ -74,49 +79,20 @@ export default async function page({ }: {}) {
 
             <main className={`relative w-full`}>
 
-                <section id='introduction'>
-                    <div className={`w-full max-w-5xl mx-auto`}>
-                        <div className={`flex flex-col md:flex-row items-stretch justify-center md:justify-between px-6 py-12 md:py-16 gap-8`}>
+                <Section
+                    id='introduction'
+                    title='It&apos;s Our Story'
+                    data={data.introduction}
+                    image={`https://static-cse.canva.com/blob/976300/Sustainability.c382e031.png`}
+                />
 
-                            <div className={`basis-1/2 flex flex-col justify-center items-center gap-6`}>
-                                <h2 className={`text-4xl font-semibold mb-3`}>It&apos;s Our Story</h2>
-
-                                <p className={`text-lg`}>{data.introduction}</p>
-                            </div>
-
-                            <div className={`basis-1/2`}>
-                                <img
-                                    src={`https://static-cse.canva.com/blob/976300/Sustainability.c382e031.png`}
-                                    alt={`Sustainability`}
-                                    className={`w-full h-auto rounded-xl`}
-                                />
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
-
-                <section id='vision'>
-                    <div className={`w-full max-w-5xl mx-auto`}>
-                        <div className={`flex flex-col md:flex-row items-stretch justify-center md:justify-between px-6 py-12 md:py-16 gap-8`}>
-
-                            <div className={`basis-1/2`}>
-                                <img
-                                    src={`https://static-cse.canva.com/blob/976300/Sustainability.c382e031.png`}
-                                    alt={`Sustainability`}
-                                    className={`w-full h-auto rounded-xl`}
-                                />
-                            </div>
-
-                            <div className={`basis-1/2 flex flex-col justify-center items-center gap-6`}>
-                                <h2 className={`text-4xl font-semibold mb-3`}>Our Visions</h2>
-
-                                <p className={`text-lg`}>{data.our_vision}</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
+                <Section
+                    id='visions'
+                    title='Our Visions'
+                    data={data.our_vision}
+                    image={`https://static-cse.canva.com/blob/976300/Sustainability.c382e031.png`}
+                    isReverse={true}
+                />
 
                 <div className={`w-full relative`}>
                     <div className={`w-full max-w-7xl mx-auto`}>
@@ -125,40 +101,26 @@ export default async function page({ }: {}) {
                             <section id='missions' className={`basis-1/2 flex flex-col justify-center items-center gap-6`}>
                                 <h2 className={`text-4xl font-semibold mb-3`}>Our Missions</h2>
 
-                                <p className={`text-lg text-justify`}>{data.our_mission}</p>
+                                <p className={`text-center md:text-lg md:text-justify`}>{data.our_mission}</p>
                             </section>
 
                             <section id='values' className={`basis-1/2 flex flex-col justify-center items-center gap-6`}>
                                 <h2 className={`text-4xl font-semibold mb-3`}>Our Values</h2>
 
-                                <p className={`text-lg text-justify`}>{data.our_values}</p>
+                                <p className={`text-center md:text-lg md:text-justify`}>{data.our_values}</p>
                             </section>
 
                         </div>
                     </div>
                 </div>
 
-                <section id='our-team'>
-                    <div className={`w-full max-w-6xl mx-auto`}>
-                        <div className={`flex flex-col md:flex-row items-stretch justify-center md:justify-between px-6 py-12 md:py-16 gap-8`}>
-
-                            <div className={`basis-1/2 flex flex-col justify-center items-center gap-6`}>
-                                <h2 className={`text-4xl font-semibold mb-3`}>Our Team</h2>
-
-                                <p className={`text-lg`}>{data.our_team}</p>
-                            </div>
-
-                            <div className={`basis-1/2`}>
-                                <img
-                                    src={`https://static-cse.canva.com/blob/976300/Sustainability.c382e031.png`}
-                                    alt={`Sustainability`}
-                                    className={`w-full h-auto rounded-xl`}
-                                />
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
+                <Section
+                    id='teams'
+                    title='Our Team'
+                    data={data.our_team}
+                    image={`https://static-cse.canva.com/blob/976300/Sustainability.c382e031.png`}
+                    isReverse={false}
+                />
 
                 <section id='members' className='px-3'>
                     <div className={`relative w-full max-w-6xl mx-auto py-4 overflow-hidden
@@ -171,30 +133,43 @@ export default async function page({ }: {}) {
                         <div className={`absolute w-full h-full top-0 left-0
                             bg- [var(--tertiary-color)] opacity -50
                         `} style={{
-                            backgroundImage: `linear-gradient(to right, var(--tertiary-color), rgba(var(--tertiary-color-rgb), 0.5))`
-                        }}></div>
+                                backgroundImage: `linear-gradient(to right, var(--tertiary-color), rgba(var(--tertiary-color-rgb), 0.5))`
+                            }}></div>
 
                         <div className={`relative z-10`}>
                             <div className={`basis-1/2 flex flex-col justify-start items-start gap-3 px-10 max-w-xl`}>
                                 <h2 className={`text-2xl font-semibold`}>Our Members</h2>
                                 <p className={`text-lg`}>{data.our_members}</p>
+
+                                <div className={`flex flex-row items-stretch justify-start gap-2`}>
+                                    {data.members_list.map((member: any, index: number) => (
+                                        <div className={`w-10 h-auto`} key={index}>
+                                            <img
+                                                src={member.image}
+                                                alt={member.name}
+                                                className={`w-full h-auto rounded-full aspect-square`}
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
 
-                            <div className={`flex flex-row items-stretch justify-start overflow-auto gap-4 px-10 mt-12`}>
-
+                            {/* <div className={`flex flex-row items-stretch justify-start overflow-auto gap-4 px-10 mt-8`}>
                                 {data.members_list.map((member: any, index: number) => (
-                                    <div className={`w-[200px] rounded bg-[var(--bg-color)] p-4`} key={index}>
+                                    <div className={`w-[200px] rounded bg-[var(--bg-color)] p-2`} key={index}>
                                         <img
                                             src={member.image}
                                             alt={member.name}
                                             className={`w-full h-auto rounded aspect-square mb-3`}
                                         />
 
-                                        <h3 className={`text-lg font-semibold`}>{member.name}</h3>
-                                        <p className={`text-sm text-[var(--primary-color)]`}>{member.designation}</p>
+                                        <div className={`px-2 flex flex-col gap-2`}>
+                                            <h3 className={`text-center text-lg font-semibold`}>{member.name}</h3>
+                                            <p className={`text-sm text-[var(--primary-color)]`}>{member.designation}</p>
+                                        </div>
                                     </div>
                                 ))}
-                            </div>
+                            </div> */}
 
                         </div>
 
@@ -208,13 +183,13 @@ export default async function page({ }: {}) {
                             <section id='missions' className={`basis-1/2 flex flex-col justify-center items-center gap-6`}>
                                 <h2 className={`text-4xl font-semibold mb-3`}>Get Involved</h2>
 
-                                <p className={`text-lg text-justify`}>{data.get_involved}</p>
+                                <p className={`text-center md:text-lg md:text-justify`}>{data.get_involved}</p>
                             </section>
 
                             <section id='values' className={`basis-1/2 flex flex-col justify-center items-center gap-6`}>
                                 <h2 className={`text-4xl font-semibold mb-3`}>Conclusion</h2>
 
-                                <p className={`text-lg text-justify`}>{data.conclusion}</p>
+                                <p className={`text-center md:text-lg md:text-justify`}>{data.conclusion}</p>
                             </section>
 
                         </div>
@@ -224,6 +199,38 @@ export default async function page({ }: {}) {
             </main>
 
         </div >
+    )
+}
+
+function Section({ id, isReverse, data, title, image }: { id: string, isReverse?: boolean, data: string, title: string, image: string }) {
+    return (
+        <section id={id}>
+            <div className={`w-full max-w-5xl mx-auto px-6 py-8 md:py-16 `}>
+                <div className={`relative flex flex-col ${isReverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-stretch justify-center md:justify-between gap-8 overflow-hidden`}>
+
+                    <div className={`relative z-10 px-4 py-10 md:px-0 md:py-0
+                        basis-1/2 flex flex-col justify-center items-center gap-6
+                        bg-[rgba(var(--dark-bg-color-rgb),0.4)] rounded-xl text-[var(--dark-text-color)]
+                        md:rounded-none md:bg-transparent md:text-current
+                    `}>
+                        <h2 className={`text-4xl font-semibold mb-3`}>{title}</h2>
+
+                        <p className={`text-center md:text-left md:text-lg`}>{data}</p>
+                    </div>
+
+                    <div className={`absolute h-full w-full top-0 left-0 z-0
+                        md:relative basis-1/2
+                    `}>
+                        <img
+                            src={image}
+                            alt={title}
+                            className={`w-full h-full md:h-auto rounded-xl object-cover object-center`}
+                        />
+                    </div>
+
+                </div>
+            </div>
+        </section>
     )
 }
 

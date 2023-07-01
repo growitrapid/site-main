@@ -9,6 +9,7 @@ import DarkLogo from '@/assets/logo/logo_dark.svg';
 import LightLogo from '@/assets/logo/logo_light.svg';
 import style from "./style.module.scss"
 import { BroadcastChannel } from '@/utils/web';
+import config from '@/utils/config';
 
 type Props = {
     isResources?: boolean;
@@ -128,9 +129,9 @@ export default function Footer({
                             <p className={`text-sm text-[var(--primary-color)]`}>Copyright © {(new Date()).getFullYear()} Grow It Rapid, LTD.</p>
 
                             <div className={`${style.bottom_navigation} w-full flex flex-wrap align-top items-center justify-center gap-5 text-sm text-[var(--primary-color)]`}>
-                                <Link href="#">About Us</Link>
-                                <Link href="#">Terms & Conditions</Link>
-                                <Link href="#">Privacy Policies</Link>
+                                <Link href={config.links.about}>About Us</Link>
+                                <Link href={config.links.terms_policy}>Terms & Conditions</Link>
+                                <Link href={config.links.terms_policy}>Privacy Policies</Link>
                                 <Link href="#">Legal Stuffs</Link>
                                 <Link href="#">Partners</Link>
                             </div>

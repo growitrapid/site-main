@@ -51,6 +51,8 @@ export default {
     links: {
         // Navigation links
         signin: '/auth/signin',
+        about: '/about',
+        terms_policy: '/terms-policy',
 
         // Social media links
         socials: {
