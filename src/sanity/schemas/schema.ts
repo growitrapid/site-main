@@ -8,6 +8,7 @@ import testimonials from './others/testimonials'
 import about from "./others/about";
 import termPolicies from "./others/term-policies";
 import termsPolicy from "./others/terms-policy";
+import courses from "./others/courses";
 
 export const schemaTypes: SchemaTypeDefinition[] = ([
     employee,
@@ -16,5 +17,6 @@ export const schemaTypes: SchemaTypeDefinition[] = ([
     testimonials,
     about,
     termPolicies,
-    termsPolicy
+    termsPolicy,
+    courses
 ]);

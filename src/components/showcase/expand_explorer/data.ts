@@ -60,33 +60,6 @@ export default [
         ]
     },
     {
-        title: 'Logo designing',
-        description: 'Create a memorable brand identity with a professionally designed logo.',
-        image: 'https://applet3d.com/wp-content/uploads/2022/07/3d_example.jpg',
-        items: [
-            {
-                title: 'Business Card (Print Ready)',
-                description: 'Professional and visually appealing business card design that showcases your company\'s branding and contact information.',
-            },
-            {
-                title: 'Letter Head (Print Ready)',
-                description: 'Customized letterhead template that enhances your business correspondence, featuring your company logo and contact details for a cohesive and professional look.',
-            },
-            {
-                title: 'Brand Identity Design',
-                description: 'Designing complementary elements such as color palettes, typography, visual styles, and brand guidelines to ensure consistency across various platforms.',
-            },
-            {
-                title: 'Vector Logo Creation',
-                description: 'Receive a versatile vector format logo suitable for various print and digital applications.',
-            },
-            {
-                title: 'Custom Logo Design',
-                description: 'Craft a unique and visually striking logo that represents your brand\'s values.',
-            },
-        ]
-    },
-    {
         title: 'Linkedin Profile Optimisation',
         description: 'Maximize your professional presence on LinkedIn for networking and business opportunities.',
         image: 'https://www.plannthat.com/wp-content/uploads/2020/07/photo-1522125670776-3c7abb882bc2.jpg',
@@ -115,6 +88,57 @@ export default [
         ]
     },
     {
+        title: 'Influencer Marketing',
+        description: 'Harness the power of influencers to expand your brand\'s reach and drive authentic engagement.',
+        image: 'https://c.pxhere.com/images/45/4f/a2773d2017237529ef32297bb125-1455421.jpg!d',
+        items: [
+            {
+                title: 'Influencer Identification and Selection',
+                description: 'Experts conduct research and analysis to identify relevant influencers in your target market.',
+            },
+            {
+                title: 'Campaign Strategy and Planning',
+                description: 'Experts work with brands to develop an influencer marketing strategy tailored to their goals and target audience.',
+            },
+            {
+                title: 'Influencer Outreach and Collaboration',
+                description: 'Establish partnerships with influencers to amplify your brand\'s message and increase brand awareness.',
+            },
+            {
+                title: 'Performance Tracking and Reporting',
+                description: 'Measure the success of your influencer campaigns with comprehensive performance analysis.',
+            },
+        ]
+    },
+    
+    {
+        title: 'Logo designing',
+        description: 'Create a memorable brand identity with a professionally designed logo.',
+        image: 'https://applet3d.com/wp-content/uploads/2022/07/3d_example.jpg',
+        items: [
+            {
+                title: 'Business Card (Print Ready)',
+                description: 'Professional and visually appealing business card design that showcases your company\'s branding and contact information.',
+            },
+            {
+                title: 'Letter Head (Print Ready)',
+                description: 'Customized letterhead template that enhances your business correspondence, featuring your company logo and contact details for a cohesive and professional look.',
+            },
+            {
+                title: 'Brand Identity Design',
+                description: 'Designing complementary elements such as color palettes, typography, visual styles, and brand guidelines to ensure consistency across various platforms.',
+            },
+            {
+                title: 'Vector Logo Creation',
+                description: 'Receive a versatile vector format logo suitable for various print and digital applications.',
+            },
+            {
+                title: 'Custom Logo Design',
+                description: 'Craft a unique and visually striking logo that represents your brand\'s values.',
+            },
+        ]
+    },
+    {
         title: 'Content Creation',
         description: 'Engage your audience with high-quality content that drives traffic, conversions, and brand loyalty.',
         image: 'https://p0.pxfuel.com/preview/463/1014/539/author-background-career-classic.jpg',
@@ -138,31 +162,8 @@ export default [
         ]
     },
     {
-        title: 'Influencer Marketing',
-        description: 'Harness the power of influencers to expand your brand\'s reach and drive authentic engagement.',
-        image: 'https://c.pxhere.com/images/45/4f/a2773d2017237529ef32297bb125-1455421.jpg!d',
-        items: [
-            {
-                title: 'Influencer Identification and Selection',
-                description: 'Experts conduct research and analysis to identify relevant influencers in your target market.',
-            },
-            {
-                title: 'Campaign Strategy and Planning',
-                description: 'Experts work with brands to develop an influencer marketing strategy tailored to their goals and target audience.',
-            },
-            {
-                title: 'Influencer Outreach and Collaboration',
-                description: 'Establish partnerships with influencers to amplify your brand\'s message and increase brand awareness.',
-            },
-            {
-                title: 'Performance Tracking and Reporting',
-                description: 'Measure the success of your influencer campaigns with comprehensive performance analysis.',
-            },
-        ]
-    },
-    {
-        title: 'Product marketing',
-        description: 'Launch and promote your products effectively to drive sales and captivate your target market.',
+        title: 'Product marketing & Brand Promotion',
+        description: 'Strategic promotion and effective product launches for amplified visibility and sales growth.',
         image: 'https://windsorcareercollege.ca/wp-content/uploads/2018/04/header_bg_14.jpg',
         items: [
             {
@@ -208,29 +209,6 @@ export default [
             //     title: 'Social Media Analytics and Insights',
             //     description: 'Gain valuable data and insights to measure the effectiveness of your social media efforts.',
             // },
-        ]
-    },
-    {
-        title: 'Brand Promotion',
-        description: 'Amplify your brand\'s visibility and reputation through strategic promotion and targeted marketing initiatives.',
-        image: 'https://st4.depositphotos.com/8745284/20963/i/600/depositphotos_209637352-stock-photo-hand-launches-paper-plane-other.jpg',
-        items: [
-            {
-                title: 'Brand Messaging and Positioning',
-                description: 'Develop a compelling brand narrative and establish a strong market position.',
-            },
-            {
-                title: 'Integrated Marketing Campaigns',
-                description: 'Implement multi-channel campaigns to reach and engage your target audience effectively.',
-            },
-            {
-                title: 'Public Relations and Media Outreach',
-                description: 'Generate media coverage and build positive relationships with the press and industry influencers.',
-            },
-            {
-                title: 'Brand Partnerships and Collaborations',
-                description: 'Forge strategic partnerships to expand your brand\'s reach and tap into new markets.',
-            },
         ]
     },
 ];

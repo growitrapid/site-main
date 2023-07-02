@@ -13,7 +13,7 @@ export default function ExpandExplorer({ }: {}) {
         <div className={`relative w-full`}>
             <div className={`relative flex flex-col sm:flex-row items-stretch justify-normal py-24 px-5 gap-8`}>
 
-                <div className={`
+                {/* <div className={`
                     relative flex-grow flex-shrink sm:max-w-[250px] sm:min-w-[200px] w-full
                     py-4 sm:py-0 text-center sm:text-left
                     text-xl sm:text-base
@@ -31,9 +31,29 @@ export default function ExpandExplorer({ }: {}) {
                             className={`inline-block ml-2`}
                         />
                     </Link>
-                </div>
+                </div> */}
 
                 <div className={`relative flex-grow flex-shrink flex flex-row flex-wrap items-stretch gap-8`}>
+
+                    <div className={`${style.card}`}>
+                        <div className={`
+                            relative
+                            py-4 sm:py-0 text-center sm:text-left
+                            text-xl sm:text-base
+                            flex flex-col items-center sm:items-start gap-4
+                        `}>
+                            <h2 className={`text-3xl font-bold`}>Our Services</h2>
+                            <p className={`text-sm`}>
+                                Tap on the cards to expand and learn more about our services.
+                            </p>
+                            <Link href={`#`} className={`flex justify-between items-center w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)]`}>
+                                <span>Learn More</span>
+                                <FaArrowRight
+                                    className={`inline-block ml-2`}
+                                />
+                            </Link>
+                        </div>
+                    </div>
 
                     {data.map((item, index) => (
                         <div key={index} className={`${style.card} relative ${openedIndex === index ? style.opened : ""}`}>

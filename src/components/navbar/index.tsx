@@ -29,13 +29,25 @@ const menuItems = [
     {
         name: "Blog",
         link: "#",
-        icon: null
+        icon: null,
+        items: [
+            {
+                name: "Coming Soon...",
+                link: "#",
+                icon: null
+            },
+        ]
     },
     {
         name: "Courses",
         link: "#",
         icon: null,
         items: [
+            {
+                name: "Coming Soon...",
+                link: "#",
+                icon: null
+            },
         ],
     },
     {

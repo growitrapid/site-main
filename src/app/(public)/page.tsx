@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { Metadata } from 'next'
+import { Metadata } from 'next';
 
 import BG from '@/assets/image/bg.webp'
 import Link from 'next/link'
@@ -9,26 +9,13 @@ import ExpandExplorer from '@/components/showcase/expand_explorer'
 
 import style from './page.module.scss'
 import Stars from '@/components/stars'
-import config from '@/utils/config'
 
-export const metadata: Metadata = {
-    title: config.name,
-    description: config.description,
-};
-
-type Props = {}
-
-export default function page({ }: Props) {
+export default function page({ }: {}) {
     return (
         <div>
 
             <header>
                 <div className={`relative flex flex-row px-4 bg-[var(--tertiary-color)]`}>
-
-
-                    <div className={`absolute top-0 left-0 h-full w-full`}>
-                        <Stars />
-                    </div>
 
                     <div className={`
                             ${style.bg__image}
@@ -46,10 +33,24 @@ export default function page({ }: Props) {
                             src={BG}
                             alt="Picture of the author"
                             className={`
-                                absolute h-full top-0 right-0
+                                absolute h-full w-full top-0 right-0
                                 object-cover object-center
                             `}
                         />
+                    </div>
+
+                    <div className={`absolute h-full w-[52%] bottom-auto right-auto hidden md:block`}>
+                        <svg
+                            className={`absolute w-auto h-full right-0 translate-x-[0%]`}
+                            viewBox="0 0 984 686"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path className={`fill-[var(--tertiary-color)]`} d="M829.645582,-3.55271368e-14 C818.959194,11.9356039 808.954818,24.8206121 799.721248,38.7211139 C723.226254,157.53566 739.861725,301.270975 797.809751,426.687474 C804.958442,442.184984 814.61534,462.120894 818.944183,473.423703 C844.673456,540.503061 856.345675,600.855141 881.916718,667.40505 C761.006678,679.138421 646.665221,685.004119 538.890625,685.004119 L0,685.004119 L0,685.004119 L0,0.00411925189 Z"></path>
+                        </svg>
+
+                        <div className={`absolute top-0 left-0 h-full w-[80%]`}>
+                            <Stars />
+                        </div>
                     </div>
 
                     <div className={`absolute z-10 w-full h-auto -bottom-2 left-0`}>
@@ -89,7 +90,7 @@ export default function page({ }: Props) {
                         <div className={`basis-[100%] xl:basis-[100%] self-center`}>
                             <h1 className={`
                                 md:max-w-[530px]
-                                [font-family:var(--font-barlow)]
+                                [font-family:var(--font-roboto)]
                                 text-[calc(2.25rem+.375*((100vw-42rem)/24))]
                                 xl:text- [calc(3rem+.75*((100vw-82rem)/17))]
                                 leading-tight font-bold text-[var(--dark-text-color)] md:text-current
@@ -138,30 +139,6 @@ export default function page({ }: Props) {
 
             <main>
 
-                {/* Under Construction Lebel */}
-                <section className={`
-                    flex items-center justify-center
-                `}>
-                    <div className={`w-full
-                        relative max-w-5xl mx-auto my-5 flex flex-row items-start justify-start gap-4
-                        bg-[var(--tertiary-color)]
-                        px-6 py-4
-                        rounded-md border-[1px] border-[var(--border-primary-color)]
-                    `}>
-                        {/* <div>
-                            <p className={`text-4xl font-semibold`}>📌</p>
-                        </div> */}
-
-                        <div className={`
-                        text-[var(--text-color)] font-[var(--font-barlow)]
-                        `}>
-                            <h2 className={`text-2xl font-semibold`}>This site is currently under construction.</h2>
-
-                            <p className={`mt-2`}>We are working on more functionalities. Stay tuned!</p>
-                        </div>
-                    </div>
-                </section>
-
                 <section className={`relative max-w-7xl mx-auto`}>
                     <ExpandExplorer />
                 </section>
@@ -171,3 +148,8 @@ export default function page({ }: Props) {
         </div>
     )
 }
+
+export const metadata: Metadata = {
+    title: 'Grow It Rapid',
+    description: 'Empower Your Brand\'s Digital Growth with GrowItRapid',
+} as Metadata;

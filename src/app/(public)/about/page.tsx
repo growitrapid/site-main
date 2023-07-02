@@ -3,8 +3,14 @@ import { groq } from 'next-sanity';
 import React, { cache } from 'react'
 import { Metadata } from 'next';
 import Stars from '@/components/stars';
+import Link from 'next/link';
+import Image, { ImageProps } from 'next/image';
 
 import style from './style.module.scss'
+
+import TeamBG from '@/assets/image/teamwork.jpg'
+import GrowPlantsBG from '@/assets/image/grow_plants.jpg'
+import BeatleBG from '@/assets/image/beatle.jpg'
 
 const clientFetch = cache(client.fetch.bind(client));
 
@@ -30,7 +36,6 @@ export default async function page({ }: {}) {
                     }}
                 />
 
-
                 <div className={`absolute h-full w-[52%] bottom-auto right-auto hidden md:block`}>
                     <svg
                         className={`absolute w-auto h-full right-0 translate-x-[25%]`}
@@ -44,7 +49,6 @@ export default async function page({ }: {}) {
                         <Stars />
                     </div>
                 </div>
-
 
                 <div className={`relative z-20 px-6 py-24 md:max-w-5xl mx-auto`}>
                     <h1 className={`md:max-w-[45%] text-5xl text-center md:text-left leading-tight font-semibold text-[var(--dark-text-color)] md:text-current`}>{data.title}</h1>
@@ -60,7 +64,7 @@ export default async function page({ }: {}) {
                         viewBox="0 0 1440 158"
                     >
                         <defs></defs>
-                        <path className={`fill-[var(--bg-color)]`} fill-rule="evenodd" d="M1440-27h2v185H0V8c88-20.667 267.333 3 538 71s571.333 45.333 902-68v-38z"></path>
+                        <path className={`fill-[var(--bg-color)]`} fillRule="evenodd" d="M1440-27h2v185H0V8c88-20.667 267.333 3 538 71s571.333 45.333 902-68v-38z"></path>
                     </svg>
 
                     <svg
@@ -72,7 +76,7 @@ export default async function page({ }: {}) {
                         viewBox="0 0 375 50"
                     >
                         <defs></defs>
-                        <path className={`fill-[var(--bg-color)]`} fill-rule="evenodd" d="M376 .414V50H0V5.48C141.126 31.757 266.126 30.182 375 .756l1-.342z"></path>
+                        <path className={`fill-[var(--bg-color)]`} fillRule="evenodd" d="M376 .414V50H0V5.48C141.126 31.757 266.126 30.182 375 .756l1-.342z"></path>
                     </svg>
                 </div>
             </header>
@@ -83,14 +87,14 @@ export default async function page({ }: {}) {
                     id='introduction'
                     title='It&apos;s Our Story'
                     data={data.introduction}
-                    image={`https://static-cse.canva.com/blob/976300/Sustainability.c382e031.png`}
+                    image={GrowPlantsBG}
                 />
 
                 <Section
                     id='visions'
                     title='Our Visions'
                     data={data.our_vision}
-                    image={`https://static-cse.canva.com/blob/976300/Sustainability.c382e031.png`}
+                    image={BeatleBG}
                     isReverse={true}
                 />
 
@@ -118,7 +122,7 @@ export default async function page({ }: {}) {
                     id='teams'
                     title='Our Team'
                     data={data.our_team}
-                    image={`https://static-cse.canva.com/blob/976300/Sustainability.c382e031.png`}
+                    image={TeamBG}
                     isReverse={false}
                 />
 
@@ -143,13 +147,15 @@ export default async function page({ }: {}) {
 
                                 <div className={`flex flex-row items-stretch justify-start gap-2`}>
                                     {data.members_list.map((member: any, index: number) => (
-                                        <div className={`w-10 h-auto`} key={index}>
-                                            <img
-                                                src={member.image}
-                                                alt={member.name}
-                                                className={`w-full h-auto rounded-full aspect-square`}
-                                            />
-                                        </div>
+                                        <Link className='no-after' href={member.link} key={index}>
+                                            <div className={`w-10 h-auto`}>
+                                                <img
+                                                    src={member.image}
+                                                    alt={member.name}
+                                                    className={`w-full h-auto rounded-full aspect-square`}
+                                                />
+                                            </div>
+                                        </Link>
                                     ))}
                                 </div>
                             </div>
@@ -202,11 +208,11 @@ export default async function page({ }: {}) {
     )
 }
 
-function Section({ id, isReverse, data, title, image }: { id: string, isReverse?: boolean, data: string, title: string, image: string }) {
+function Section({ id, isReverse, data, title, image }: { id: string, isReverse?: boolean, data: string, title: string, image: ImageProps["src"] }) {
     return (
         <section id={id}>
             <div className={`w-full max-w-5xl mx-auto px-6 py-8 md:py-16 `}>
-                <div className={`relative flex flex-col ${isReverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-stretch justify-center md:justify-between gap-8 overflow-hidden`}>
+                <div className={`relative flex flex-col ${isReverse ? 'md:flex-row-reverse' : 'md:flex-row'} items-center justify-center md:justify-between gap-8 overflow-hidden`}>
 
                     <div className={`relative z-10 px-4 py-10 md:px-0 md:py-0
                         basis-1/2 flex flex-col justify-center items-center gap-6
@@ -221,10 +227,11 @@ function Section({ id, isReverse, data, title, image }: { id: string, isReverse?
                     <div className={`absolute h-full w-full top-0 left-0 z-0
                         md:relative basis-1/2
                     `}>
-                        <img
+                        <Image
                             src={image}
                             alt={title}
-                            className={`w-full h-full md:h-auto rounded-xl object-cover object-center`}
+                            className={`w-full h-full rounded-xl object-cover object-center`}
+                            width={500}
                         />
                     </div>
 

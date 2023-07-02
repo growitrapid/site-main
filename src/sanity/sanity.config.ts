@@ -21,10 +21,10 @@ const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID as string;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET as string;
 
 export default defineConfig({
-    name: 'CODECATALYYST',
+    name: 'GrowItRapid',
     projectId: projectId,
     dataset: dataset,
-    title: 'CODECATALYYST',
+    title: 'GrowItRapid',
     basePath: '/admin/studio',
     studio: {
         components: {

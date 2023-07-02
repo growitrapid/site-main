@@ -76,8 +76,8 @@ u+.emailify .gs{background:#000;mix-blend-mode:screen;display:inline-block;paddi
 <!--[if mso | IE]>
 <table role="none" border="0" cellpadding="0" cellspacing="0"><tr><td class="c-outlook -outlook -outlook" style="vertical-align:middle;width:536px;">
 <![endif]--><div class="xc536 ogf c" style="font-size:0;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:100%;">
-<table border="0" cellpadding="0" cellspacing="0" role="none" style="border:none;vertical-align:middle;" width="100%"><tbody><tr><td align="left" class="x  al-c m" style="font-size:0;padding-bottom:8px;word-break:break-word;"><div style="text-align:left;"><p style="Margin:0;text-align:left;mso-line-height-alt:114%"><span style="font-size:28px;font-family:Inter,Arial,sans-serif;font-weight:700;color:#000000;line-height:114%;">Sign in to POLARIS</span></p></div>
-</td></tr><tr><td align="left" class="x  al-c m" style="font-size:0;padding-bottom:8px;word-break:break-word;"><div style="text-align:left;"><p style="Margin:0;text-align:left;mso-line-height-alt:150%"><span style="font-size:16px;font-family:Inter,Arial,sans-serif;font-weight:500;color:#777777;line-height:150%;">Welcome to Polaris - the premier destination for AI enthusiasts and innovators. Our community is dedicated to advancing the field of artificial intelligence and making it accessible to everyone.</span></p></div>
+<table border="0" cellpadding="0" cellspacing="0" role="none" style="border:none;vertical-align:middle;" width="100%"><tbody><tr><td align="left" class="x  al-c m" style="font-size:0;padding-bottom:8px;word-break:break-word;"><div style="text-align:left;"><p style="Margin:0;text-align:left;mso-line-height-alt:114%"><span style="font-size:28px;font-family:Inter,Arial,sans-serif;font-weight:700;color:#000000;line-height:114%;">Sign in to Grow It Rapid</span></p></div>
+</td></tr><tr><td align="left" class="x  al-c m" style="font-size:0;padding-bottom:8px;word-break:break-word;"><div style="text-align:left;"><p style="Margin:0;text-align:left;mso-line-height-alt:150%"><span style="font-size:16px;font-family:Inter,Arial,sans-serif;font-weight:500;color:#777777;line-height:150%;">Welcome to Grow It Rapid.com, the ultimate destination for cutting-edge 360-degree marketing solutions. Our innovative approach combines technology-driven strategies with unparalleled expertise to help businesses thrive in the ever-changing digital landscape.</span></p></div>
 </td></tr><tr><td align="center" class="d  m" style="font-size:0;padding:0;padding-bottom:8px;word-break:break-word;"><p style="border-top:solid 1px #cccccc;font-size:1px;margin:0px auto;width:100%;"></p>
 <!--[if mso | IE]>
 <table align="center" border="0" cellpadding="0" cellspacing="0" style="border-top:solid 1px #cccccc;font-size:1px;margin:0px auto;width:536px;" role="none" width="536px"><tr><td style="height:0;line-height:0;"> &nbsp;
@@ -108,7 +108,7 @@ u+.emailify .gs{background:#000;mix-blend-mode:screen;display:inline-block;paddi
 <table border="0" cellpadding="0" cellspacing="0" role="none"><tr><td style="vertical-align:middle;width:31px;">
 <![endif]--><div class="pc5-6338 ogf m c" style="font-size:0;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:5.6338%;">
 <table border="0" cellpadding="0" cellspacing="0" role="none" style="border:none;vertical-align:middle;" width="100%"><tbody><tr><td align="left" class="i" style="font-size:0;padding:0;word-break:break-word;">
-<table border="0" cellpadding="0" cellspacing="0" role="none" style="border-collapse:collapse;border-spacing:0;"><tbody><tr><td style="width:31px;"> <img alt src="https://e.hypermatic.com/93a522f6b729b594283ce038dbe8b836.png" style="border:0;border-radius:5px 5px 5px 5px;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" title width="31" height="auto">
+<table border="0" cellpadding="0" cellspacing="0" role="none" style="border-collapse:collapse;border-spacing:0;"><tbody><tr><td style="width:31px;"> <img alt src="https://www.growitrapid.com/_next/static/media/logo_dark.160d8e6c.svg" style="border:0;border-radius:5px 5px 5px 5px;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" title width="31" height="auto">
 </td></tr></tbody></table>
 </td></tr></tbody></table></div>
 <!--[if mso | IE]>
@@ -120,7 +120,7 @@ u+.emailify .gs{background:#000;mix-blend-mode:screen;display:inline-block;paddi
 <!--[if mso | IE]>
 </td><td style="vertical-align:middle;width:154px;">
 <![endif]--><div class="pc27-2887 ogf m c" style="font-size:0;text-align:left;direction:ltr;display:inline-block;vertical-align:middle;width:27.2887%;">
-<table border="0" cellpadding="0" cellspacing="0" role="none" style="border:none;vertical-align:middle;" width="100%"><tbody><tr><td align="left" class="x" style="font-size:0;word-break:break-word;"><div style="text-align:left;"><p style="Margin:0;text-align:left;mso-line-height-alt:123%"><span style="font-size:13px;font-family:Inter,Arial,sans-serif;font-weight:700;color:#3e3e3e;line-height:123%;">POLARIS AI © ${new Date().getFullYear()}, Inc.</span></p></div>
+<table border="0" cellpadding="0" cellspacing="0" role="none" style="border:none;vertical-align:middle;" width="100%"><tbody><tr><td align="left" class="x" style="font-size:0;word-break:break-word;"><div style="text-align:left;"><p style="Margin:0;text-align:left;mso-line-height-alt:123%"><span style="font-size:13px;font-family:Inter,Arial,sans-serif;font-weight:700;color:#3e3e3e;line-height:123%;"> © ${new Date().getFullYear()}, LTD.</span></p></div>
 </td></tr></tbody></table></div>
 <!--[if mso | IE]>
 </td><td style="vertical-align:top;width:15px;">
@@ -136,21 +136,21 @@ u+.emailify .gs{background:#000;mix-blend-mode:screen;display:inline-block;paddi
 <table align="right" border="0" cellpadding="0" cellspacing="0" role="none"><tr><td>
 <![endif]-->
 <table align="right" border="0" cellpadding="0" cellspacing="0" role="none" style="float:none;display:inline-table;"><tbody><tr class="e  m"><td style="padding:0 16px 0 0;vertical-align:middle;">
-<table border="0" cellpadding="0" cellspacing="0" role="none" style="width:20px;"><tbody><tr><td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://github.com/AI-POLARIS" target="_blank"> <img alt="Github" title height="20" src="https://e.hypermatic.com/16c9d893ed0a1685a42a68a79acea685.png" style="display:block;" width="20"></a>
+<table border="0" cellpadding="0" cellspacing="0" role="none" style="width:20px;"><tbody><tr><td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://www.growitrapid.com" target="_blank"> <img alt="Github" title height="20" src="https://e.hypermatic.com/16c9d893ed0a1685a42a68a79acea685.png" style="display:block;" width="20"></a>
 </td></tr></tbody></table>
 </td></tr></tbody></table>
 <!--[if mso | IE]>
 </td><td>
 <![endif]-->
 <table align="right" border="0" cellpadding="0" cellspacing="0" role="none" style="float:none;display:inline-table;"><tbody><tr class="e  m"><td style="padding:0 16px 0 0;vertical-align:middle;">
-<table border="0" cellpadding="0" cellspacing="0" role="none" style="width:20px;"><tbody><tr><td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://discord.gg/wjneJAH485" target="_blank"> <img alt="Discord" title height="20" src="https://e.hypermatic.com/9fe85aca31ba43842efcbb07480863dc.png" style="display:block;" width="20"></a>
+<table border="0" cellpadding="0" cellspacing="0" role="none" style="width:20px;"><tbody><tr><td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="https://www.growitrapid.com" target="_blank"> <img alt="Discord" title height="20" src="https://e.hypermatic.com/9fe85aca31ba43842efcbb07480863dc.png" style="display:block;" width="20"></a>
 </td></tr></tbody></table>
 </td></tr></tbody></table>
 <!--[if mso | IE]>
 </td><td>
 <![endif]-->
 <table align="right" border="0" cellpadding="0" cellspacing="0" role="none" style="float:none;display:inline-table;"><tbody><tr class="e  "><td style="padding:0;padding-right:0;vertical-align:middle;">
-<table border="0" cellpadding="0" cellspacing="0" role="none" style="width:20px;"><tbody><tr><td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="polaris.ai.official@gmail.com" target="_blank"> <img alt="Email" title height="20" src="https://e.hypermatic.com/c7387676fdd18a7fdcd6dcff8d1c90b4.png" style="display:block;" width="20"></a>
+<table border="0" cellpadding="0" cellspacing="0" role="none" style="width:20px;"><tbody><tr><td style="font-size:0;height:20px;vertical-align:middle;width:20px;"> <a href="growitrapid@gmail.com" target="_blank"> <img alt="Email" title height="20" src="https://e.hypermatic.com/c7387676fdd18a7fdcd6dcff8d1c90b4.png" style="display:block;" width="20"></a>
 </td></tr></tbody></table>
 </td></tr></tbody></table>
 <!--[if mso | IE]>

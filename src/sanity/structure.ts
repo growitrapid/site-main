@@ -47,6 +47,16 @@ export default (S: StructureBuilder) =>
                 ),
 
             S.listItem()
+                .title("COURSES")
+                .icon(() => Blog())
+                .child(
+                    S.documentList()
+                        .title("COURSES")
+                        .schemaType("courses")
+                        .filter('_type == "courses"')
+                ),
+
+            S.listItem()
                 .title("TESTIMONIALS")
                 .icon(() => Testimonials())
                 .child(
