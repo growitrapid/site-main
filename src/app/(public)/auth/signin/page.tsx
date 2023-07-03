@@ -106,7 +106,7 @@ export default function Page({ params, searchParams }: {
 
                     <div className={`${style.modal__content__inner} flex flex-col items-stretch gap-2`}>
                         <div className={`${style.modal__content__header__title} text-2xl font-[var(--font-barlow)] mb-4`}>
-                            Log in to CodeCatalyyst
+                            Log in to Grow It Rapid
                         </div>
 
                         <div className={``}>
