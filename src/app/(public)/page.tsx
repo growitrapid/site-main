@@ -139,6 +139,30 @@ export default function page({ }: {}) {
 
             <main>
 
+                {/* Under Construction Lebel */}
+                <section className={`
+                    flex items-center justify-center
+                `}>
+                    <div className={`w-full
+                        relative max-w-5xl mx-auto my-5 flex flex-row items-start justify-start gap-4
+                        bg-[var(--tertiary-color)]
+                        px-6 py-4
+                        rounded-md border-1 border-rose-500
+                    `}>
+                        {/* <div>
+                            <p className={`text-4xl font-semibold`}>📌</p>
+                        </div> */}
+
+                        <div className={`
+                        text-[var(--text-color)] font-[var(--font-barlow)]
+                        `}>
+                            <h2 className={`text-2xl font-semibold`}>This site is currently under construction.</h2>
+
+                            <p className={`mt-2`}>We are working on more functionalities. Stay tuned!</p>
+                        </div>
+                    </div>
+                </section>
+
                 <section className={`relative max-w-7xl mx-auto`}>
                     <ExpandExplorer />
                 </section>
