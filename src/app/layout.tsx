@@ -1,5 +1,4 @@
 import ContextProvider from "@/context"
-import { Analytics } from '@vercel/analytics/react';
 import './globals.scss'
 
 export default function RootLayout({
@@ -10,7 +9,6 @@ export default function RootLayout({
     return (
         <ContextProvider>
             {children}
-            <Analytics />
         </ContextProvider>
     )
 }

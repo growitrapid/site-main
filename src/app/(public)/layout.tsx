@@ -5,10 +5,15 @@ import "nprogress/nprogress.css";
 import dynamic from "next/dynamic";
 import Link from 'next/link';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
+import Script from 'next/script';
+
+import CoverImage from "@/assets/logo/logo_banner2.jpeg"
 
 import config from '@/utils/config';
 import NavBar from '@/components/navbar'
 import Footer from '@/components/footer';
+import Analytics from '@/components/analytics';
+import CookieBanner from '@/components/analytics/cookiebanner';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -45,7 +50,10 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <Analytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string} />
+
       <body className={`${inter.className} ${inter.variable} ${barlow.variable} ${roboto.variable} ${theme?.value === "light" ? "" : "dark"}`}>
+
         <NavBar theme={theme?.value === "light" ? "light" : "dark"} />
         <TopProgressBar />
 
@@ -67,6 +75,7 @@ export default function RootLayout({
 
         {children}
 
+        <CookieBanner />
         <Footer theme={theme?.value === "light" ? "light" : "dark"} />
       </body>
     </html>
@@ -153,7 +162,7 @@ export const metadata: Metadata = {
     title: config.name,
     description: config.description,
     siteName: config.name,
-    images: [],
+    images: [CoverImage.src],
     emails: config.emails,
     countryName: "India",
   },

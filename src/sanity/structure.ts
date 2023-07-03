@@ -57,6 +57,16 @@ export default (S: StructureBuilder) =>
                 ),
 
             S.listItem()
+                .title("SERVICES")
+                .icon(() => Blog())
+                .child(
+                    S.documentList()
+                        .title("SERVICES")
+                        .schemaType("services")
+                        .filter('_type == "services"')
+                ),
+
+            S.listItem()
                 .title("TESTIMONIALS")
                 .icon(() => Testimonials())
                 .child(

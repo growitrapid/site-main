@@ -9,6 +9,7 @@ import about from "./others/about";
 import termPolicies from "./others/term-policies";
 import termsPolicy from "./others/terms-policy";
 import courses from "./others/courses";
+import services from "./others/services";
 
 export const schemaTypes: SchemaTypeDefinition[] = ([
     employee,
@@ -18,5 +19,6 @@ export const schemaTypes: SchemaTypeDefinition[] = ([
     about,
     termPolicies,
     termsPolicy,
-    courses
+    courses,
+    services
 ]);

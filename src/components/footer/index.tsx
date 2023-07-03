@@ -113,7 +113,7 @@ export default function Footer({
                 <section id={`footer`} className={`relative py-4 pb-10 px-2`}>
                     <div className={`relative w-full max-w-5xl mx-auto flex flex-col md:px-5 gap-10 justify-between items-center`}>
 
-                        <div className={`${style.socialLinks} relative flex flex-row items-center gap-6 text-3xl`}>
+                        <div className={`${style.socialLinks} relative flex flex-row justify-center items-center gap-6 text-3xl`}>
                             <Link href="#"><FaFacebookF /></Link>
                             <Link href="#"><FaLinkedinIn /></Link>
                             <Link href="#"><FaInstagram /></Link>

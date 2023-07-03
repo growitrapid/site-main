@@ -9,9 +9,13 @@
     &::before {
         content: "";
         display: block;
-        width: 100%;
+        flex-grow: 1;
         height: 2px;
         background-color: var(--border-primary-color);
+
+        @media screen and (max-width: 430px) {
+            display: none;
+        }
     }
 
     svg {

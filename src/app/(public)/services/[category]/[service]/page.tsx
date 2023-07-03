@@ -1,28 +1,42 @@
+import Stars from '@/components/stars'
 import React from 'react'
+import { FaArrowRight } from 'react-icons/fa'
 import Image from 'next/image'
 import { Metadata } from 'next';
-
-import BG from '@/assets/image/bg.webp'
 import Link from 'next/link'
-import { FaArrowRight } from 'react-icons/fa'
-import ExpandExplorer from '@/components/showcase/expand_explorer'
+import BG from '@/assets/image/bg.webp'
 
-import style from './page.module.scss'
-import Stars from '@/components/stars'
+import style from './style.module.scss'
 
-export default function page({ }: {}) {
+import data from '@/components/showcase/expand_explorer/data';
+
+export default function page({ params }: {
+    params: {
+        category: string
+        service: string
+    }
+}) {
+    const { category, service } = params
+
+    const serviceData = data.filter((item, index) => {
+        const items = item.items;
+
+        const itemData = items.filter((item, index) => {
+            return item.href === `/${category}/${service}`;
+        });
+
+        if (itemData.length > 0) {
+            // set item data in service data
+            // @ts-ignore
+            item.item = itemData[0];
+            return true;
+        }
+
+        return null;
+    })[0];
+
     return (
         <div>
-
-            {/* @ts-ignore */}
-            <marquee
-                behavior="smooth"
-                direction="ltr"
-                className={`bg-[var(--tertiary-color)] text-[var(--text-color)] text-center border-b border-[var(--border-primary-color)] -m-[7px]`}
-            >
-                Site under construction. Current features & Enhancements in progress!
-                {/* @ts-ignore */}
-            </marquee>
 
             <header>
                 <div className={`relative flex flex-row px-4 bg-[var(--tertiary-color)]`}>
@@ -38,15 +52,16 @@ export default function page({ }: {}) {
                             sm:w -[25%]
                             md:w-[70%]
                         `}
+                        style={{ backgroundImage: `url(${serviceData.image})` }}
                     >
-                        <Image
+                        {/* <Image
                             src={BG}
                             alt="Picture of the author"
                             className={`
                                 absolute h-full w-full top-0 right-0
                                 object-cover object-center
                             `}
-                        />
+                        /> */}
                     </div>
 
                     <div className={`absolute h-full w-[52%] bottom-auto right-auto hidden md:block`}>
@@ -105,9 +120,18 @@ export default function page({ }: {}) {
                                 xl:text- [calc(3rem+.75*((100vw-82rem)/17))]
                                 leading-tight font-bold text-[var(--dark-text-color)] md:text-current
                             `}>
-                                Empower Your Brand&apos;s <br />Digital Growth with GrowItRapid
+                                {/* @ts-ignore */}
+                                {serviceData?.item?.title}
                                 {/* Helping millions grow better */}
                             </h1>
+
+                            <h2 className={`
+                                md:max-w-[530px]
+                                [font-family:var(--font-barlow)]
+                                text-2xl font-normal text-[var(--dark-text-color)] md:text-current
+                            `}>
+                                ~ {serviceData?.title}
+                            </h2>
                         </div>
 
                         <div className={`self-end w-full flex justify-center md:justify-start`}>
@@ -117,19 +141,15 @@ export default function page({ }: {}) {
                                     [font-family:var(--font-barlow)]
                                     text-[calc(1.25rem+0*((100vw-20rem)/62))]
                                     font-normal text-[var(--dark-text-color)] md:text-current
-                                `}>Supercharge Your Business & Profile Growth - Maximizing Potential through Comprehensive Freelance Solution</p>
+                                `}>
+                                    {/* @ts-ignore */}
+                                    {serviceData?.item?.description}
+                                </p>
 
                                 <div className={`${style.buttons} flex flex-col gap-4 mt-8`}>
 
-                                    <Link href={`#services`} className={`flex justify-between items-center w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)]`}>
-                                        <span>Hire Desired Freelancer</span>
-                                        <FaArrowRight
-                                            className={`inline-block ml-2`}
-                                        />
-                                    </Link>
-
-                                    <Link href={`https://forms.gle/WVgBRnS2yW9ggfr3A`} className={`flex justify-between items-center w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)]`} target='_blank'>
-                                        <span>Freelance Work: Apply Now!</span>
+                                    <Link href={`#`} className={`flex justify-between items-center w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)]`}>
+                                        <span>Enroll Now</span>
                                         <FaArrowRight
                                             className={`inline-block ml-2`}
                                         />
@@ -147,19 +167,6 @@ export default function page({ }: {}) {
                 </div>
             </header>
 
-            <main>
-
-                <section id='services' className={`relative max-w-7xl mx-auto`}>
-                    <ExpandExplorer />
-                </section>
-
-            </main>
-
         </div>
     )
 }
-
-export const metadata: Metadata = {
-    title: 'Grow It Rapid',
-    description: 'Empower Your Brand\'s Digital Growth with GrowItRapid',
-} as Metadata;
