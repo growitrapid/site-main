@@ -1,18 +1,12 @@
 'use client';
 
 import React from 'react'
-import { Metadata } from 'next';
 
 import style from './page.module.scss';
 import { FaArrowRight } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { signIn, useSession } from 'next-auth/react';
 import Link from 'next/link';
-
-export const metadata: Metadata = {
-    title: 'Sign In',
-    description: 'Sign in to your account',
-};
 
 export default function Page({ params, searchParams }: {
     params: {
