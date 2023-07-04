@@ -1,4 +1,3 @@
-
 .buttons a {
     transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 
@@ -29,6 +28,34 @@
             height: 100%;
             z-index: 2;
             background-color: rgba(var(--dark-bg-color-rgb), 0.6);
+        }
+    }
+}
+
+.marquee {
+    display: flex;
+    align-items: center;
+    background-color: var(--tertiary-color);
+    color: var(--text-color);
+    overflow: hidden;
+
+    p {
+        white-space: nowrap;
+        animation: marquee 10s infinite linear;
+
+        &:after {
+            content: "Site is under construction. Current features & Enhancements in progress!";
+            padding: 0 100vw;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0)
+            }
+
+            100% {
+                transform: translateX(-50%)
+            }
         }
     }
 }

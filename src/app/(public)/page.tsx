@@ -14,15 +14,11 @@ export default function page({ }: {}) {
     return (
         <div>
 
-            {/* @ts-ignore */}
-            <marquee
-                behavior="smooth"
-                direction="ltr"
-                className={`bg-[var(--tertiary-color)] text-[var(--text-color)] text-center border-b border-[var(--border-primary-color)] -m-[7px]`}
-            >
-                Site under construction. Current features & Enhancements in progress!
-                {/* @ts-ignore */}
-            </marquee>
+            <div className={style.marquee}>
+                <p>
+                    Site is under construction. Current features & Enhancements in progress!
+                </p>
+            </div>
 
             <header>
                 <div className={`relative flex flex-row px-4 bg-[var(--tertiary-color)]`}>

@@ -1,0 +1,76 @@
+@use "sass:math";
+
+.mainLoader {
+    position: relative;
+    // display: grid;
+    // place-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 1em;
+    overflow: hidden;
+
+    .centerer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        .loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            min-width: 220px;
+
+            .logo {
+                flex-shrink: 0;
+                display: flex;
+                flex-direction: row;
+                align-items: flex-end;
+                vertical-align: top;
+
+                h2 {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 1.9em;
+                    font-weight: 700;
+                    line-height: 1;
+                    color: var(--primary-color);
+                    background: linear-gradient(to right, #be59f6, #4182fe, #00bcee);
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                }
+            }
+
+            .progressBar {
+                position: relative;
+                width: 100%;
+                height: 2px;
+                border-radius: 2px;
+                background: var(--tertiary-color);
+                overflow: hidden;
+
+                &::before {
+                    content: "";
+                    display: block;
+                    width: 50%;
+                    height: 100%;
+                    position: absolute;
+                    // background: linear-gradient(to right, #be59f6, #4182fe, #00bcee);
+                    background-color: #2096fd;
+                    left: -20%;
+                    animation: animate 1.5s infinite ease-in-out;
+
+                    @keyframes animate {
+                        50% {
+                            left: 80%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -5,7 +5,6 @@ import "nprogress/nprogress.css";
 import dynamic from "next/dynamic";
 import Link from 'next/link';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
-import Script from 'next/script';
 
 import CoverImage from "@/assets/logo/logo_banner2.jpeg"
 
@@ -14,6 +13,7 @@ import NavBar from '@/components/navbar'
 import Footer from '@/components/footer';
 import Analytics from '@/components/analytics';
 import CookieBanner from '@/components/analytics/cookiebanner';
+import GlobalLoader from '@/components/loader/globalLoader';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -57,12 +57,12 @@ export default function RootLayout({
         <NavBar theme={theme?.value === "light" ? "light" : "dark"} />
         <TopProgressBar />
 
-        <div className={`fixed w-full h-full top-0 left-0 z-50 pointer-events-none`}>
+        <div className={`fixed w-full h-full top-0 left-0 z-[999999999] pointer-events-none`}>
           <Link
             href="https://forms.gle/dQacmvHv5DQKGRMt9"
             target='_blank'
             className={`
-              no-after
+              no-after z-10
               absolute top-[calc(50%-64px)] right-0 px-2 md:px-4 py-1 md:py-2 pointer-events-auto
               outline-none
               bg-[var(--tertiary-color)]
@@ -71,6 +71,8 @@ export default function RootLayout({
               rotate-[-90deg] origin-bottom-right
             `}
           >Site Feedback</Link>
+
+          <GlobalLoader />
         </div>
 
         {children}
