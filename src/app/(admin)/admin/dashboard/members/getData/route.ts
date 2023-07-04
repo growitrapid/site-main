@@ -12,6 +12,15 @@ async function handler(request: Request) {
             newUserData: null,
         };
 
+        if (request.method === "POST" && (session?.user?.role || 0) < 2) {
+            return NextResponse.json({
+                status: 'error',
+                message: 'You are not authorized to perform this action.',
+            }, {
+                status: 500,
+            })
+        }
+
         const Collections = DBCollections();
 
         const users = await Collections.users.get();

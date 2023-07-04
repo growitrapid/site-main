@@ -86,30 +86,6 @@ export default function Footer({
 
                 </section>
 
-                {/* <div className={`relative w-full max-w-6xl mx-auto h-[2px] bg-[var(--border-primary-color)]`}></div> */}
-
-                {/* <section id={`footer`} className={`relative py-4 px-2`}>
-                    <div className={`relative w-full max-w-5xl mx-auto flex flex-col md:px-5 md:flex-row gap-3 justify-between items-center`}>
-
-                        <div className={`relative flex flex-row items-center gap-2`}>
-                            {/* <h1 className={`text-xl font-bold`}>Grow It Rapid</h1> *
-                            <Image src={isDark ? DarkLogo : LightLogo} alt="Logo" height={25} className={`drop-shadow-md`} />
-                            <p className={`text-sm text-[var(--primary-color)]`}>© {(new Date()).getFullYear()}, LTD.</p>
-                        </div>
-
-                        <div className={`${style.socialLinks} relative flex flex-row items-center gap-2 text-2xl`}>
-                            <Link href="#"><FaFacebook /></Link>
-                            <Link href="#"><FaLinkedin /></Link>
-                            <Link href="#"><FaInstagram /></Link>
-                            <Link href="#"><FaTelegram /></Link>
-                            <Link href="#"><FaTwitter /></Link>
-                            <Link href="#"><FaGithub /></Link>
-                            <Link href="#"><FaEnvelope /></Link>
-                        </div>
-
-                    </div>
-                </section> */}
-
                 <section id={`footer`} className={`relative py-4 pb-10 px-2`}>
                     <div className={`relative w-full max-w-5xl mx-auto flex flex-col md:px-5 gap-10 justify-between items-center`}>
 
