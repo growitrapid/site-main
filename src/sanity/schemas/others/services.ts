@@ -7,6 +7,13 @@ const services: SchemaTypeDefinition = {
     type: "document",
     fields: [
         {
+            name: "order",
+            title: "Order",
+            type: "number",
+            validation: (Rule) => Rule.required().min(1),
+            initialValue: 1,
+        },
+        {
             name: "title",
             title: "Title",
             type: "string",
@@ -27,7 +34,7 @@ const services: SchemaTypeDefinition = {
             title: "Description",
             placeholder: "Describe the service. Will be shown at the card.",
             type: "text",
-            validation: (Rule) => Rule.required().min(50).max(150),
+            validation: (Rule) => Rule.required().min(50).max(200),
         },
         {
             name: "image",
@@ -75,7 +82,7 @@ const services: SchemaTypeDefinition = {
                             title: "Description",
                             placeholder: "Describe the service. Will be shown at the card.",
                             type: "text",
-                            validation: (Rule) => Rule.required().min(50).max(150),
+                            validation: (Rule) => Rule.required().min(50).max(200),
                         },
                         richtexteditor,
                     ],

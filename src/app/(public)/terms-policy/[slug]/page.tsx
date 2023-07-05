@@ -5,8 +5,7 @@ import { groq } from 'next-sanity';
 import React, { cache } from 'react'
 
 import style from './style.module.scss';
-import MdStyle from './md.module.scss'
-import Textpreview from './textpreview';
+import Textpreview from '@/components/text_preview/textpreview';
 
 const clientFetch = cache(client.fetch.bind(client));
 
@@ -96,7 +95,7 @@ export default async function page({
                     <div className={`max-w-5xl mx-auto`}>
                         <h3 className={``}>Updated At: {updateDate}</h3>
 
-                        <div className={MdStyle.md}>
+                        <div className={``}>
                             <Textpreview
                                 value={data?.content}
                             />

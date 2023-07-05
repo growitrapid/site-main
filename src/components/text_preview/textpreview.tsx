@@ -6,6 +6,8 @@ import { PortableText } from '@portabletext/react'
 import urlBuilder from '@sanity/image-url'
 import { getImageDimensions } from '@sanity/asset-utils'
 import { FaLink } from 'react-icons/fa'
+
+import style from './md.module.scss'
 // import Refractor from 'react-refractor'
 
 // Import languages
@@ -61,7 +63,7 @@ const imageComponent = ({ value, isInline }: any) => {
 
 const tableComponent = ({ value }: any) => {
     return (
-        <div style={{
+        <div className='table' style={{
             overflowX: 'auto',
             overflowY: 'hidden',
             maxWidth: '100%',
@@ -150,7 +152,7 @@ type Props = {
 
 export default function Textpreview(props: Props) {
     return (
-        <div>
+        <div className={style.md}>
             <PortableText
                 value={props.value}
                 components={components}

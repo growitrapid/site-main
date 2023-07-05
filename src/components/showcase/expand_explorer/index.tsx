@@ -5,8 +5,23 @@ import style from './style.module.scss'
 import Link from 'next/link';
 import data from './data';
 import { FaArrowRight, FaAngleDown } from 'react-icons/fa';
+import Image from 'next/image';
 
-export default function ExpandExplorer({ }: {}) {
+export default function ExpandExplorer({ data }: {
+    data: {
+        _id: string;
+        _updatedAt: string;
+        title: string;
+        description: string;
+        image?: string;
+        slug: string;
+        items?: {
+            item_title: string;
+            description: string;
+            item_slug: string;
+        }[];
+    }[];
+}) {
     const [openedIndex, setOpenedIndex] = useState(-1);
 
     return (
@@ -39,9 +54,9 @@ export default function ExpandExplorer({ }: {}) {
                         <div key={index} className={`${style.card} relative ${openedIndex === index ? style.opened : ""}`}>
                             <div className={`${style.card__inner__holder}`}>
                                 <div className={`${style.card__inner}`}
-                                    style={{
-                                        backgroundImage: `url(${item.image})`,
-                                    }}
+                                    // style={{
+                                    //     backgroundImage: `url(${item.image})`,
+                                    // }}
                                     onClick={() => {
                                         if (openedIndex === index) {
                                             setOpenedIndex(-1);
@@ -50,15 +65,23 @@ export default function ExpandExplorer({ }: {}) {
                                         }
                                     }}
                                 >
+                                    <Image
+                                        src={item.image || ""}
+                                        alt={item.title}
+                                        width={500}
+                                        height={500}
+                                        className={`absolute inset-0 w-full h-full object-cover object-center z-0`}
+                                    />
+
                                     {item.image && (
                                         <div className={`${style.card__overlay}`}></div>
                                     )}
 
                                     <div className={`
-                                    relative min-h-[170px] max-h-[250px] 
-                                    flex flex-col justify-between items-stretch gap-2 px-4 py-7
-                                    z-10
-                                `}>
+                                        relative min-h-[170px] max-h-[250px] 
+                                        flex flex-col justify-between items-stretch gap-2 px-4 py-7
+                                        z-10
+                                    `}>
 
                                         <div className={`flex flex-row justify-between gap-2`}>
                                             <h2 className={`text-lg font-bold`}>{item.title}</h2>
@@ -83,7 +106,7 @@ export default function ExpandExplorer({ }: {}) {
                                 <div className={`${style.card__expand}`}>
                                     <div className={`${style.card__expand__inner} px-4 py-7`}>
 
-                                        {item.items?.map((item, index) => {
+                                        {item.items?.map((item2, index) => {
                                             // if (index > 2) return (null);
 
                                             return (
@@ -94,8 +117,8 @@ export default function ExpandExplorer({ }: {}) {
                                                     flex flex-col justify-between items-start gap-2 p-3
                                                     z-10
                                                 `}>
-                                                        <h3 className={`text-base text-[var(--link-primary-color)]`}><Link href={item.href ? `/services${item.href}` : "#"}>{item.title}</Link></h3>
-                                                        <p className={`text-sm`}>{item.description}</p>
+                                                        <h3 className={`text-base text-[var(--link-primary-color)]`}><Link href={`/services/${item.slug}/${item2.item_slug}`}>{item2.item_title}</Link></h3>
+                                                        <p className={`text-sm`}>{item2.description}</p>
                                                     </div>
                                                 </div>
                                             )

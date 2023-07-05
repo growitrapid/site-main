@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { cache } from 'react'
 import Image from 'next/image'
 import { Metadata } from 'next';
 
@@ -9,8 +9,27 @@ import ExpandExplorer from '@/components/showcase/expand_explorer'
 
 import style from './page.module.scss'
 import Stars from '@/components/stars'
+import client from '@/utils/sanity-client';
+import { groq } from 'next-sanity';
 
-export default function page({ }: {}) {
+const clientFetch = cache(client.fetch.bind(client));
+
+export default async function page({ }: {}) {
+
+    const data = (await clientFetch(groq`*[ _type == "services" ] | order(order asc) {
+        _id,
+        _updatedAt,
+        title,
+        description,
+        "slug": slug.current,
+        "image": image.asset->url,
+        items[] {
+            item_title,
+            description,
+            "item_slug": item_slug.current,
+        }
+    }`));
+
     return (
         <div>
 
@@ -35,8 +54,18 @@ export default function page({ }: {}) {
                             md:w-[70%]
                         `}
                     >
-                        <Image
+                        {/* <Image
                             src={BG}
+                            alt="Picture of the author"
+                            className={`
+                                absolute h-full w-full top-0 right-0
+                                object-cover object-center
+                            `}
+                        /> */}
+                        <img
+                            src={`https://img.freepik.com/premium-photo/businessman-hand-drawing-light-arrow-graph-icon-finance-success-business-background-diagram-growth-financial-chart-development-growing-economic-goal-achievement-symbol-marketing-strategy_79161-2290.jpg?w=826`}
+                            // src='https://img.freepik.com/premium-photo/businessman-hand-plan-growth-business-graph-financial-chart-improvement-blue-background-with-success-investment-diagram-marketing-strategy-increase-arrow-stock-profit-data-analysis-market_79161-2458.jpg'
+                            // src='https://img.freepik.com/free-photo/business-concept-with-graphic-holography_23-2149160934.jpg?t=st=1688578488~exp=1688579088~hmac=a432dc8548cc0c030004f5785b0f3d166ef5591368e65b6869954dcc734bbcd5'
                             alt="Picture of the author"
                             className={`
                                 absolute h-full w-full top-0 right-0
@@ -101,8 +130,8 @@ export default function page({ }: {}) {
                                 xl:text- [calc(3rem+.75*((100vw-82rem)/17))]
                                 leading-tight font-bold text-[var(--dark-text-color)] md:text-current
                             `}>
-                                Empower Your Brand&apos;s <br />Digital Growth with GrowItRapid
-                                {/* Helping millions grow better */}
+                                {/* Empower Your Brand&apos;s <br />Digital Growth with GrowItRapid */}
+                                We&apos;re are an Innovative Business solution agency
                             </h1>
                         </div>
 
@@ -118,7 +147,7 @@ export default function page({ }: {}) {
                                 <div className={`${style.buttons} flex flex-col gap-4 mt-8`}>
 
                                     <Link href={`#services`} className={`flex justify-between items-center w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)]`}>
-                                        <span>Hire Desired Freelancer</span>
+                                        <span>Request a Quote Now</span>
                                         <FaArrowRight
                                             className={`inline-block ml-2`}
                                         />
@@ -146,7 +175,7 @@ export default function page({ }: {}) {
             <main>
 
                 <section id='services' className={`relative max-w-7xl mx-auto`}>
-                    <ExpandExplorer />
+                    <ExpandExplorer data={data} />
                 </section>
 
             </main>
