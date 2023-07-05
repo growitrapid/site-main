@@ -131,7 +131,7 @@ export default async function page({ }: {}) {
                                 leading-tight font-bold text-[var(--dark-text-color)] md:text-current
                             `}>
                                 {/* Empower Your Brand&apos;s <br />Digital Growth with GrowItRapid */}
-                                We&apos;re are an Innovative Business solution agency
+                                We&apos;re an Innovative Business solution agency
                             </h1>
                         </div>
 
