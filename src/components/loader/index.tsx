@@ -27,6 +27,13 @@ export default function MainLoader({ }: Props) {
 
                     <div className={style.progressBar}>
                     </div>
+
+                    <noscript>
+                        <div className={style.noScript}>
+                            <h2>Enable JavaScript</h2>
+                            <p>JavaScript is required to run this website.</p>
+                        </div>
+                    </noscript>
                 </div>
             </div>
         </div>

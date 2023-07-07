@@ -26,7 +26,7 @@ export default function ExpandExplorer({ data }: {
 
     return (
         <div className={`relative w-full`}>
-            <div className={`relative flex flex-col sm:flex-row items-stretch justify-normal py-24 px-5 gap-8`}>
+            <div className={`relative flex flex-col sm:flex-row items-stretch justify-normal py-10 md:py-24 px-5 gap-8`}>
 
                 <div className={`relative flex-grow flex-shrink flex flex-row flex-wrap items-stretch gap-8`}>
 

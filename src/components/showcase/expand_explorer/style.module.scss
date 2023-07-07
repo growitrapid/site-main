@@ -140,7 +140,8 @@
         }
     }
 
-    &.opened {
+    &.opened,
+    &:focus-within {
         .card__inner__holder {
             .card__inner {
                 transform: scale(1) !important;

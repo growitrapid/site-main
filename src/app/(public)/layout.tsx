@@ -9,11 +9,11 @@ import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
 import CoverImage from "@/assets/logo/logo_banner2.jpeg"
 
 import config from '@/utils/config';
-import NavBar from '@/components/navbar'
 import Footer from '@/components/footer';
 import Analytics from '@/components/analytics';
 import CookieBanner from '@/components/analytics/cookiebanner';
 import GlobalLoader from '@/components/loader/globalLoader';
+import Navbar from '@/components/navbar';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -54,7 +54,7 @@ export default function RootLayout({
 
       <body className={`${inter.className} ${inter.variable} ${barlow.variable} ${roboto.variable} ${theme?.value === "light" ? "" : "dark"}`}>
 
-        <NavBar theme={theme?.value === "light" ? "light" : "dark"} />
+        <Navbar />
         <TopProgressBar />
 
         <div className={`fixed w-full h-full top-0 left-0 z-[999999999] pointer-events-none`}>

@@ -86,7 +86,7 @@ export class BroadcastChannel {
 
         this.should_receive_own_messages = options?.should_receive_own_messages || false;
 
-        console.log("New BroadcastChannel", this.channel_name, this.this_tab_id);
+        // console.log("New BroadcastChannel", this.channel_name, this.this_tab_id);
     }
 
     postMessage(event: BroadcastEvent["event"], data: BroadcastEvent["data"]) {
