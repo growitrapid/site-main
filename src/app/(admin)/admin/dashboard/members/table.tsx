@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { forwardRef } from 'react';
 import MaterialTable, { Column } from 'material-table';
 import { ThemeProvider, createTheme } from '@mui/material';
@@ -26,6 +26,7 @@ import { Icons } from 'material-table';
 import './table.scss';
 import { UserData } from '@/utils/firebase-client';
 import MyAvatar from '../../../../../assets/me.png'
+import { BroadcastChannel } from '@/utils/web';
 
 const tableIcons: Icons = {
     Add: forwardRef(function Icon(props, ref) { return <AddBox {...props} ref={ref} /> }),
@@ -51,7 +52,11 @@ const columns: Column<UserData>[] = [
     {
         title: "Avatar",
         field: "image",
-        render: rowData => <img src={rowData.image || MyAvatar.src} style={{ width: 40, borderRadius: "50%" }} />,
+        render: rowData => <img
+            src={rowData.image || MyAvatar.src}
+            style={{ width: 40, borderRadius: "50%" }}
+            referrerPolicy='no-referrer'
+        />,
         width: 50,
         sorting: false,
         searchable: false,
@@ -61,6 +66,11 @@ const columns: Column<UserData>[] = [
     {
         title: "Name",
         field: "name",
+        grouping: false,
+    },
+    {
+        title: "ID",
+        field: "id",
         grouping: false,
     },
     {
@@ -92,9 +102,18 @@ const columns: Column<UserData>[] = [
 ];
 
 export default function Table({ theme }: { theme: string }) {
+    const [isDark, setIsDark] = useState(theme === "dark" ? true : false);
+    const themeBroadcast = useRef(new BroadcastChannel("theme", { should_receive_own_messages: true }));
+
+    themeBroadcast.current.onReceiveMessage((event, data) => {
+        if (event === "theme_toggle") {
+            setIsDark(data.theme === "dark" ? true : false);
+        }
+    })
+
     const defaultMaterialTheme = createTheme({
         palette: {
-            mode: theme === 'light' ? 'light' : 'dark',
+            mode: !isDark ? 'light' : 'dark',
         },
     });
     const [isLoading, setIsLoading] = useState(true);

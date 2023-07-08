@@ -7,6 +7,7 @@ import { FaPen, FaRegArrowAltCircleRight, FaUsers } from 'react-icons/fa';
 import { VscDashboard, VscGraph } from 'react-icons/vsc';
 import Link from 'next/link';
 import config from '@/utils/config';
+import NavBar from '@/components/navbar/structure';
 
 const menuItems: {
     title: string,
@@ -39,8 +40,10 @@ const menuItems: {
 
 export default function Structure({
     children,
+    theme,
 }: {
     children: React.ReactNode,
+    theme: "light" | "dark",
 }) {
     const pathname = usePathname();
     const [isSideBaropened, setIsSideBaropened] = useState(false);
@@ -65,55 +68,36 @@ export default function Structure({
     return (
         <div className={`${style.admin_layout} relative`}>
 
-            <aside className={`${style.admin_aside} ${isSideBaropened && style.active}`} onClick={e => e.stopPropagation()}>
-
-                <div className={style.aside__header}>
-                    <div className={style.aside__header__logo}>
-                        <img
-                            src={`/favicon.ico`}
-                            alt="logo"
-                            referrerPolicy="no-referrer"
-                        />
-                    </div>
-                    <div className={style.aside__header__title}>
-                        <h1>{config.title as string || ""}</h1>
-                    </div>
-                </div>
-
-                <div className={style.aside__inner}>
-                    {menuItems.map((item, index) => {
-                        if (item.link) {
-                            return (
-                                <Link href={item.link} key={`${item.title}-${index}`}>
-                                    <div className={style.button} data-select={pathname === item.link} title={item.title}>
-                                        <span className='flex-shrink-0 flex-grow-0'>{item.icon}</span>
-                                        <div className='flex flex-col justify-start items-start'>
-                                            <span>{item.title}</span>
-                                            {item.subtitle && <span className='text-sm opacity-80'>{item.subtitle}</span>}
-                                        </div>
-                                    </div>
-                                </Link>
-                            )
-                        } else {
-                            return (
-                                <button className={style.button} onClick={item.onClick} title={item.title} key={`${item.title}-${index}`}>
-                                    <span className='flex-shrink-0 flex-grow-0'>{item.icon}</span>
-                                    <div className='flex flex-col justify-start items-start'>
-                                        <span>{item.title}</span>
-                                        {item.subtitle && <span className='text-sm opacity-80'>{item.subtitle}</span>}
-                                    </div>
-                                </button>
-                            )
-                        }
-                    })}
-                </div>
-
-                <div className={style.aside__footer}>
-                    <button onClick={e => setIsSideBaropened(!isSideBaropened)} type="button">
-                        <FaRegArrowAltCircleRight />
-                    </button>
-                </div>
-            </aside>
+            {/* Nav Bar */}
+            <NavBar
+                theme={theme}
+                navItems={[
+                    {
+                        title: 'Home',
+                        icon: null,
+                        link: '/admin/dashboard',
+                        items: null
+                    },
+                    {
+                        title: 'Blogs',
+                        icon: null,
+                        link: '/admin/dashboard/blogs',
+                        items: null
+                    },
+                    {
+                        title: 'Members',
+                        icon: null,
+                        link: '/admin/dashboard/members',
+                        items: null
+                    },
+                    {
+                        title: 'Studio',
+                        icon: null,
+                        link: '/admin/dashboard/studio',
+                        items: null
+                    }
+                ]}
+            />
 
             <main className={style.admin_main}>
                 <div className={style.content}>

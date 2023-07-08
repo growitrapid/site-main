@@ -134,7 +134,7 @@ export default function Structure({
                             return (<Link className={style.link_item} href={item.link} key={index}>
                                 {item.title}
 
-                                <FaUpRightFromSquare className={`ml-2 text-xs inline-block align-baseline`} />
+                                {/* <FaUpRightFromSquare className={`ml-2 text-xs inline-block align-baseline`} /> */}
                             </Link>)
                         }
 
@@ -164,28 +164,50 @@ export default function Structure({
                         }
                     </button>
 
-                    <button onClick={e => setIsDropdownOpen(!isDropdownOpen)}>
-                        <img
-                            src={session?.user?.image || Me.src}
-                            alt="Avatar"
-                            referrerPolicy="no-referrer"
-                        />
-                        {/* <FaCaretDown /> */}
-                    </button>
+                    {status === "authenticated" ?
+                        <button onClick={e => setIsDropdownOpen(!isDropdownOpen)}>
+                            <img
+                                src={session?.user?.image || Me.src}
+                                alt="Avatar"
+                                referrerPolicy="no-referrer"
+                            />
+                            {/* <FaCaretDown /> */}
+                        </button>
+                        :
+                        <Link href={config.links.signin} className='no-after'>
+                            <div
+                                style={{ justifyContent: "center" }}
+                                className={`
+                                    w-auto h-7 rounded-full
+                                    flex gap-2 items-center justify-center
+                                    px-1 border-[1px] border-solid border-[var(--border-primary-color)]
+                                    hover:bg-[var(--hover-color)] transition-colors duration-300 ease-in-out
+                                `}
+                            >
+                                <div className={`fill-[var(--text-color)]`} style={{ fontSize: "1em" }}>
+                                    <svg className={`fill-[var(--text-color)]`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="1em" width="1em"><path d="M352 96h64c17.7 0 32 14.3 32 32V384c0 17.7-14.3 32-32 32H352c-17.7 0-32 14.3-32 32s14.3 32 32 32h64c53 0 96-43 96-96V128c0-53-43-96-96-96H352c-17.7 0-32 14.3-32 32s14.3 32 32 32zm-7.5 177.4c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5 22v72H32c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32H160v72c0 9.6 5.7 18.2 14.5 22s19 2 26-4.6l144-136z" /></svg>
+                                </div>
+                                <div className={`text-sm`} style={{ width: "auto" }}>
+                                    <span>SIGN IN</span>
+                                </div>
+                            </div>
+                        </Link>
+                    }
                 </div>
 
                 <div className={style.dropdown} data-open={isDropdownOpen} onClick={e => e.stopPropagation()}>
                     {((session?.user.role || 0) >= 1) &&
                         <span>
-                            <div className={style.chip} style={{ justifyContent: "space-evenly" }}>
-                                <Link href="/admin/studio" target='_blank' title='Studio'>
-                                    <FaSlidersH fill='currentColor' />
-                                </Link>
-
-                                <Link href="/admin/dashboard" target='_blank' title='Dashboard'>
-                                    <VscGraph fill='currentColor' />
-                                </Link>
-                            </div>
+                            <Link href="/admin/dashboard" target='_blank' title='Dashboard'>
+                                <div className={style.chip}>
+                                    <div className={style.avatar} style={{ fontSize: "1.1em" }}>
+                                        <VscGraph fill='currentColor' />
+                                    </div>
+                                    <div className={style.name} style={{ width: "auto" }}>
+                                        <span>Dashboard</span>
+                                    </div>
+                                </div>
+                            </Link>
                         </span>
                     }
 

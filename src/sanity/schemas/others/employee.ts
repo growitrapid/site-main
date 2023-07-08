@@ -13,6 +13,13 @@ export default {
             validation: (Rule) => Rule.required(),
         },
         {
+            name: 'id',
+            title: 'Author ID',
+            type: 'string',
+            description: "The ID of the author. Can be found at Dashboard > Members > ID.",
+            validation: (Rule: any) => Rule.required()
+        },
+        {
             name: "email",
             title: "Email",
             type: "string",

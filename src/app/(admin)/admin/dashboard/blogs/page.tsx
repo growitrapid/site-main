@@ -3,14 +3,10 @@ import React from 'react'
 
 type Props = {}
 
-export default function page({ }: Props) {
+export default async function page({ }: Props) {
     return (
-        <div>
-            <Editor
-                id='blogs'
-                initialContent="<p>Hello from CKEditor 5!</p>"
-                shouldSaveLocally={true}
-            />
+        <div className={`w-full h-full grid place-items-center`}>
+            <h1 className={`text-4xl font-bold`}>Coming Soon...</h1>
         </div>
     )
 }

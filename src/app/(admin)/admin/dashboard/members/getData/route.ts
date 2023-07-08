@@ -34,7 +34,7 @@ async function handler(request: Request) {
             const newUser = await userRef.get();
             return NextResponse.json({
                 status: 'success',
-                user: newUser.data(),
+                user: { ...newUser.data(), createdAt: newUser.createTime?.toDate() },
             }, {
                 status: 200,
             });
@@ -47,7 +47,7 @@ async function handler(request: Request) {
             const updatedUser = await userRef.get();
             return NextResponse.json({
                 status: 'success',
-                user: updatedUser.data(),
+                user: { ...updatedUser.data(), createdAt: updatedUser.createTime?.toDate() },
             }, {
                 status: 200,
             });
@@ -76,9 +76,9 @@ async function handler(request: Request) {
 
         return NextResponse.json({
             status: 'success',
-            users: users.docs.map((doc) => doc.data()),
-            sessions: sessions.docs.map((doc) => doc.data()),
-            accounts: accounts.docs.map((doc) => doc.data()),
+            users: users.docs.map((doc) => ({ ...doc.data(), createdAt: doc.createTime.toDate() })),
+            sessions: sessions.docs.map((doc) => ({ ...doc.data(), createdAt: doc.createTime.toDate() })),
+            accounts: accounts.docs.map((doc) => ({ ...doc.data(), createdAt: doc.createTime.toDate() })),
         }, {
             status: 200,
         });

@@ -25,7 +25,7 @@ export default defineConfig({
     projectId: projectId,
     dataset: dataset,
     title: 'GrowItRapid',
-    basePath: '/admin/studio',
+    basePath: '/admin/dashboard/studio',
     studio: {
         components: {
             // logo: Logo,
