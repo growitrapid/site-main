@@ -44,6 +44,14 @@ export function randomString(size: number) {
     return Array.from(bytes).reduce(r, "")
 }
 
+/** Web compatible method to slugify a string */
+export function slugify(str: string) {
+    return str
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)+/g, "")
+}
+
 /**
  * Inspired by [Broadcast Channel API](https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API)
  * Only not using it directly, because Safari does not support it.

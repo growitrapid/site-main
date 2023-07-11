@@ -1,0 +1,25 @@
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.ck.ck-editor {
+    min-height: 100%;
+
+    .ck.ck-editor__main {
+        max-width: 56rem;
+        margin: 0 auto;
+        min-height: 100%;
+        border-bottom: 1px solid var(--border-primary-color);
+
+        .ck.ck-editor__editable {
+            min-height: 100%;
+        }
+    }
+}
+
+.ck-content {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 0 0.6em;
+}

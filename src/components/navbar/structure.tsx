@@ -1,6 +1,6 @@
 'use client';
 
-import React, { isValidElement, useEffect, useRef, useState } from 'react'
+import React, { isValidElement, useContext, useEffect, useRef, useState } from 'react'
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -18,6 +18,7 @@ import config from '@/utils/config';
 import { VscGraph } from 'react-icons/vsc';
 import { BiSun } from 'react-icons/bi';
 import { BsMoonStarsFill } from 'react-icons/bs';
+import { GlobalContext } from '@/context/global_context';
 
 export type NavItem = {
     title: string,
@@ -48,15 +49,31 @@ export type NavItem = {
     ),
 }
 
+export type NavButtons = {
+    title: string,
+    link?: string,
+    icon?: React.ReactNode | null,
+    onClick?: () => void,
+    underDropdown?: boolean,
+    iconOnly?: boolean,
+};
+
 export default function Structure({
     theme,
     navItems,
+    navButtons,
 }: {
     theme: "light" | "dark",
     navItems: NavItem[],
+    navButtons?: NavButtons[],
 }) {
     const { data: session, status } = useSession();
     const [isDark, setIsDark] = useState(theme === "dark" ? true : false);
+    const context = useContext(GlobalContext);
+
+    navItems = [...navItems, ...(context.navbar.extraLinks || [])];
+    navButtons = [...(navButtons || []), ...(context.navbar.extraButtons || [])];
+
     const [isMenuOpened, setIsMenuOpened] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [menuItemIndex, setMenuItemIndex] = useState(-1);
@@ -149,6 +166,52 @@ export default function Structure({
                 </div>
 
                 <div className={style.avatar} onClick={e => e.stopPropagation()}>
+                    {navButtons?.map((button, index) => {
+                        if (button.underDropdown) return null;
+
+                        if (button.onClick) {
+                            return <button
+                                key={index}
+                                onClick={button.onClick}
+                                className={style.avatar}
+                                style={{
+                                    fontSize: "1.1em",
+                                    padding: '0.4em',
+                                }}
+                            >
+                                <div className={`fill-[var(--text-color)]`} style={{ fontSize: "1em" }}>
+                                    {button.icon}
+                                </div>
+                                {button.iconOnly ? null :
+                                    <div className={`text-sm`} style={{ width: "auto" }}>
+                                        <span>SIGN IN</span>
+                                    </div>
+                                }
+                            </button>
+                        }
+
+                        return <Link href={button.link || ""} className='no-after' key={index}>
+                            <div
+                                style={{ justifyContent: "center" }}
+                                className={`
+                                    w-auto h-7 rounded-full
+                                    flex gap-2 items-center justify-center
+                                    px-2 border-[1px] border-solid border-[var(--border-primary-color)]
+                                    hover:bg-[var(--hover-color)] transition-colors duration-300 ease-in-out
+                                `}
+                            >
+                                <div className={`fill-[var(--text-color)]`} style={{ fontSize: "1em" }}>
+                                    {button.icon}
+                                </div>
+                                {button.iconOnly ? null :
+                                    <div className={`text-sm`} style={{ width: "auto" }}>
+                                        <span>SIGN IN</span>
+                                    </div>
+                                }
+                            </div>
+                        </Link>
+                    })}
+
                     <button
                         onClick={e => setIsDark(!isDark)}
                         className={style.avatar}
@@ -180,7 +243,7 @@ export default function Structure({
                                 className={`
                                     w-auto h-7 rounded-full
                                     flex gap-2 items-center justify-center
-                                    px-1 border-[1px] border-solid border-[var(--border-primary-color)]
+                                    px-2 border-[1px] border-solid border-[var(--border-primary-color)]
                                     hover:bg-[var(--hover-color)] transition-colors duration-300 ease-in-out
                                 `}
                             >

@@ -8,6 +8,7 @@ import { VscDashboard, VscGraph } from 'react-icons/vsc';
 import Link from 'next/link';
 import config from '@/utils/config';
 import NavBar from '@/components/navbar/structure';
+import { Session } from 'next-auth';
 
 const menuItems: {
     title: string,
@@ -41,9 +42,11 @@ const menuItems: {
 export default function Structure({
     children,
     theme,
+    session,
 }: {
     children: React.ReactNode,
     theme: "light" | "dark",
+    session: Session | null,
 }) {
     const pathname = usePathname();
     const [isSideBaropened, setIsSideBaropened] = useState(false);
@@ -84,18 +87,20 @@ export default function Structure({
                         link: '/admin/dashboard/blogs',
                         items: null
                     },
-                    {
-                        title: 'Members',
-                        icon: null,
-                        link: '/admin/dashboard/members',
-                        items: null
-                    },
-                    {
-                        title: 'Studio',
-                        icon: null,
-                        link: '/admin/dashboard/studio',
-                        items: null
-                    }
+                    ...((session?.user.role === 3) ? [
+                        {
+                            title: 'Members',
+                            icon: null,
+                            link: '/admin/dashboard/members',
+                            items: null
+                        },
+                        {
+                            title: 'Studio',
+                            icon: null,
+                            link: '/admin/dashboard/studio',
+                            items: null
+                        }
+                    ] : []),
                 ]}
             />
 

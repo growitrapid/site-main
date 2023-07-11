@@ -87,7 +87,8 @@ const columns: Column<UserData>[] = [
     {
         title: "Role",
         field: "role",
-        lookup: { 0: "User", 1: "Editor", 2: "Admin", 3: "Operator" }
+        lookup: { 0: "User", 1: "Editor", 2: "Admin", 3: "Operator" },
+        defaultSort: "asc",
     },
     {
         title: "Status",

@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    reactStrictMode: true,
     experimental: {
         serverActions: true
     },
@@ -13,6 +14,9 @@ const nextConfig = {
             'cdn.fakercloud.com',
             'cdn.sanity.io'
         ]
+    },
+    compiler: {
+        styledComponents: true,
     }
 }
 

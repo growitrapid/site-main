@@ -34,7 +34,12 @@ async function handler(request: Request) {
             const newUser = await userRef.get();
             return NextResponse.json({
                 status: 'success',
-                user: { ...newUser.data(), createdAt: newUser.createTime?.toDate() },
+                user: {
+                    ...newUser.data(),
+                    role: newUser.data()?.role || 0,
+                    status: newUser.data()?.status || 0,
+                    createdAt: newUser.createTime?.toDate()
+                },
             }, {
                 status: 200,
             });
@@ -47,7 +52,12 @@ async function handler(request: Request) {
             const updatedUser = await userRef.get();
             return NextResponse.json({
                 status: 'success',
-                user: { ...updatedUser.data(), createdAt: updatedUser.createTime?.toDate() },
+                user: {
+                    ...updatedUser.data(),
+                    role: updatedUser.data()?.role || 0,
+                    status: updatedUser.data()?.status || 0,
+                    createdAt: updatedUser.createTime?.toDate()
+                },
             }, {
                 status: 200,
             });
@@ -76,7 +86,12 @@ async function handler(request: Request) {
 
         return NextResponse.json({
             status: 'success',
-            users: users.docs.map((doc) => ({ ...doc.data(), createdAt: doc.createTime.toDate() })),
+            users: users.docs.map((doc) => ({
+                ...doc.data(),
+                role: doc.data().role || 0,
+                status: doc.data().status || 0,
+                createdAt: doc.createTime.toDate(),
+            })),
             sessions: sessions.docs.map((doc) => ({ ...doc.data(), createdAt: doc.createTime.toDate() })),
             accounts: accounts.docs.map((doc) => ({ ...doc.data(), createdAt: doc.createTime.toDate() })),
         }, {

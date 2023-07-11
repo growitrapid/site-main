@@ -1,22 +1,34 @@
 'use client';
 
+import { NavButtons, NavItem } from "@/components/navbar/structure";
 import { useSession } from "next-auth/react";
 import React, { createContext, useState } from "react";
 
 type Props = {
     isLoading: boolean;
     isLoaded: boolean;
+    navbar: {
+        extraLinks?: NavItem[];
+        extraButtons?: NavButtons[];
+    };
+    setNavbar: React.Dispatch<React.SetStateAction<{
+        extraLinks?: NavItem[];
+        extraButtons?: NavButtons[];
+    }>>;
 };
 
 export const GlobalContext = createContext<Props>({
     isLoading: true,
-    isLoaded: false
+    isLoaded: false,
+    navbar: {},
+    setNavbar: () => { }
 });
 
 export default function GlobalContextProvider({ children }: { children: React.ReactNode }) {
     const { data: session, status } = useSession();
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
+    const [navbar, setNavbar] = useState({});
 
     React.useEffect(() => {
         if (status === "unauthenticated") {
@@ -31,7 +43,9 @@ export default function GlobalContextProvider({ children }: { children: React.Re
     return (
         <GlobalContext.Provider value={{
             isLoading,
-            isLoaded
+            isLoaded,
+            navbar,
+            setNavbar,
         }}>
             {children}
         </GlobalContext.Provider>

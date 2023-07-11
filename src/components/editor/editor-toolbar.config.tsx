@@ -65,7 +65,7 @@ export default function EditorToolbarConfig(props: any) {
             toolbar: {
                   items: [
                         'heading',
-                        'style',
+                        // 'style',
                         '|',
                         'bold',
                         'italic',

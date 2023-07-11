@@ -1,0 +1,24 @@
+.Component-horizontalScrollContainer-628 {
+    flex-grow: 1;
+
+    & > div {
+        height: 100%;
+    }
+}
+
+.member-table-holder > div {
+    & > div:nth-child(2):not(.MuiToolbar-root) {
+        flex-grow: 1;
+
+        & > div {
+            height: 100%;
+        }
+    }
+    & > div:nth-child(3):not(.MuiToolbar-root) {
+        flex-grow: 1;
+
+        & > div {
+            height: 100%;
+        }
+    }
+}
