@@ -9,6 +9,7 @@ import Image, { ImageProps } from 'next/image';
 import style from './style.module.scss'
 
 import TeamBG from '@/assets/image/teamwork.jpg'
+import TeamBG2 from '@/assets/image/teamwork2.jpg'
 import GrowPlantsBG from '@/assets/image/grow_plants.jpg'
 import BeatleBG from '@/assets/image/beatle.jpg'
 
@@ -32,7 +33,7 @@ export default async function page({ }: {}) {
                 <div className={`${style.bg__image} absolute right-0 top-0 h-full w-full md:w-[50%] bg-cover bg-bottom`}
                     style={{
                         // backgroundImage: `url(${BG.src})`,
-                        backgroundImage: `url(https://c1.wallpaperflare.com/preview/311/34/429/colleague-unsplash-team-group-work.jpg)`,
+                        backgroundImage: `url(${TeamBG2.src})`,
                     }}
                 />
 
@@ -260,5 +261,21 @@ export async function generateMetadata(): Promise<Metadata> {
     return {
         title: data[0].title,
         description: data[0].description,
+        openGraph: {
+            type: 'website',
+            title: data[0].title,
+            description: data[0].description,
+            images: [TeamBG2.src],
+        },
+        twitter: {
+            site: '@site',
+            card: 'summary_large_image',
+            title: data[0].title,
+            description: data[0].description,
+            images: [TeamBG2.src],
+        },
+        appleWebApp: {
+            title: data[0].title,
+        },
     }
 }

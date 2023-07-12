@@ -7,10 +7,28 @@ import config from '@/utils/config';
 import Stars from '@/components/stars';
 
 import style from './[slug]/style.module.scss';
+import TeamWorkBG2 from '@/assets/image/teamwork2.jpg'
 
 export const metadata: Metadata = {
     title: "Terms & Policies",
     description: 'Welcome to the Terms and Policies page of GrowItRapid - your source for information on our policies and procedures. Here, you\'ll find all the legal documents that govern your use of our website and services.',
+    openGraph: {
+        type: 'website',
+        title: "Terms & Policies",
+        description: 'Welcome to the Terms and Policies page of GrowItRapid - your source for information on our policies and procedures. Here, you\'ll find all the legal documents that govern your use of our website and services.',
+        images: [TeamWorkBG2.src],
+    },
+    twitter: {
+        site: '@growitrapid',
+        card: 'summary_large_image',
+        title: "Terms & Policies",
+        description: 'Welcome to the Terms and Policies page of GrowItRapid - your source for information on our policies and procedures. Here, you\'ll find all the legal documents that govern your use of our website and services.',
+        images: [TeamWorkBG2.src],
+    },
+    appleWebApp: {
+        title: "Terms & Policies",
+        capable: true,
+    }
 };
 
 const clientFetch = cache(client.fetch.bind(client));
@@ -34,7 +52,7 @@ export default async function page({ }: {}) {
                 <div className={`${style.bg__image} absolute right-0 top-0 h-full w-full md:w-[50%] bg-cover bg-bottom`}
                     style={{
                         // backgroundImage: `url(${BG.src})`,
-                        backgroundImage: `url(https://c1.wallpaperflare.com/preview/311/34/429/colleague-unsplash-team-group-work.jpg)`,
+                        backgroundImage: `url(${TeamWorkBG2.src})`,
                     }}
                 />
 

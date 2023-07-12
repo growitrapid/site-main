@@ -91,7 +91,7 @@ export default function RootLayout({
 export const metadata: Metadata = {
   title: {
     default: config.name,
-    template: `%s | ${config.name}`,
+    template: `%s • ${config.name}`,
   },
   applicationName: config.name,
   appleWebApp: {
@@ -125,7 +125,7 @@ export const metadata: Metadata = {
     width: 'device-width',
     initialScale: 1,
     maximumScale: 1,
-    userScalable: false,
+    userScalable: true,
   },
   robots: {
     index: true,

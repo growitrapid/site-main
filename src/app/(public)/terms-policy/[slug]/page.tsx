@@ -5,7 +5,9 @@ import { groq } from 'next-sanity';
 import React, { cache } from 'react'
 
 import style from './style.module.scss';
+import TeamWorkBG2 from '@/assets/image/teamwork2.jpg';
 import Textpreview from '@/components/text_preview/textpreview';
+import { Metadata } from 'next';
 
 const clientFetch = cache(client.fetch.bind(client));
 
@@ -37,10 +39,9 @@ export default async function page({
                 <div className={`${style.bg__image} absolute right-0 top-0 h-full w-full md:w-[50%] bg-cover bg-bottom`}
                     style={{
                         // backgroundImage: `url(${BG.src})`,
-                        backgroundImage: `url(https://c1.wallpaperflare.com/preview/311/34/429/colleague-unsplash-team-group-work.jpg)`,
+                        backgroundImage: `url(${TeamWorkBG2.src})`,
                     }}
                 />
-
 
                 <div className={`absolute h-full w-[52%] bottom-auto right-auto hidden md:block`}>
                     <svg
@@ -106,4 +107,45 @@ export default async function page({
 
         </div>
     )
+}
+
+/**
+ * Generating meta data for the page
+ */
+type MetaDataProps = {
+    params: { slug: string };
+};
+
+export async function generateMetadata(props: MetaDataProps): Promise<Metadata> {
+    const slug = props.params.slug;
+
+    const data = (await clientFetch(groq`*[ _type == "terms-policy" && slug.current match "${slug}" ] {
+        title,
+        tagline,
+        "slug": slug.current,
+        content,
+        "last_updated": _updatedAt
+    }`))[0];
+
+    return {
+        title: data.title,
+        description: data.tagline,
+        openGraph: {
+            type: 'article',
+            title: data.title,
+            description: data.tagline,
+            images: [TeamWorkBG2.src]
+        },
+        twitter: {
+            site: '@growitrapid',
+            card: 'summary_large_image',
+            title: data.title,
+            description: data.tagline,
+            images: [TeamWorkBG2.src]
+        },
+        appleWebApp: {
+            title: data.title,
+        }
+    };
+
 }

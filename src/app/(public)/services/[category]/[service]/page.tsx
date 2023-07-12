@@ -1,13 +1,11 @@
 import Stars from '@/components/stars'
 import React, { cache } from 'react'
 import { FaArrowRight } from 'react-icons/fa'
-import Image from 'next/image'
 import { Metadata } from 'next';
 import Link from 'next/link'
 
 import style from './style.module.scss'
 
-import data from '@/components/showcase/expand_explorer/data';
 import client from '@/utils/sanity-client';
 import { groq } from 'next-sanity';
 import Textpreview from '@/components/text_preview/textpreview';
@@ -180,4 +178,55 @@ export default async function page({ params }: {
 
         </div>
     )
+}
+
+/**
+ * Generating meta data for the page
+ */
+type MetaDataProps = {
+    params: {
+        category: string
+        service: string
+    }
+};
+
+export async function generateMetadata(props: MetaDataProps): Promise<Metadata> {
+    const { category, service } = props.params;
+
+    const data = (await clientFetch(groq`*[ _type == "services" && slug.current == "${category}" ] {
+        ...,
+        "slug": slug.current,
+        "image": image.asset->url,
+        items[] {
+            ...,
+            "item_slug": item_slug.current,
+        }
+    }`))[0];
+
+    // @ts-ignore
+    data.item = data.items.filter((item: any, index: any) => {
+        // return item.href === `/${category}/${service}`;
+        return item.item_slug === service;
+    })[0];
+
+    return {
+        title: data.item.item_title,
+        description: data.item.description,
+        openGraph: {
+            type: 'website',
+            title: data.item.item_title,
+            description: data.item.description,
+            images: [data.image],
+        },
+        twitter: {
+            site: '@site',
+            title: data.item.item_title,
+            description: data.item.description,
+            card: 'summary_large_image',
+            images: [data.image],
+        },
+        appleWebApp: {
+            title: data.item.item_title,
+        },
+    }
 }
