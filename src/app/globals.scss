@@ -241,3 +241,14 @@ a {
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
 }
+
+div {
+    &[aria-modal="true"] {
+        z-index: 9999999 !important;
+    }
+
+    &[role="dialog"] {
+        z-index: 9999999 !important;
+    }
+}
+

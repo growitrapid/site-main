@@ -1,0 +1,15 @@
+.bg__image {
+
+    @media screen and (max-width: 768px) {
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background-color: rgba(var(--dark-bg-color-rgb), 0.3);
+        }
+    }
+}

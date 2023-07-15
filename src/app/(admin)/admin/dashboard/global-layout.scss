@@ -1,6 +1,10 @@
 body {
     height: 100%;
     overflow: hidden;
+
+    [aria-modal="true"] {
+        z-index: 9999999 !important;
+    }
 }
 
 .ck.ck-editor {

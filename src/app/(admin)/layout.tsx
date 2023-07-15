@@ -12,12 +12,16 @@ import "nprogress/nprogress.css";
 
 const inter = Inter({
     subsets: ['latin'],
+    display: 'swap',
+    preload: true,
     variable: '--font-inter',
 });
 
 const barlow = Barlow({
     weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
     subsets: ['latin'],
+    display: 'swap',
+    preload: true,
     variable: '--font-barlow',
 });
 

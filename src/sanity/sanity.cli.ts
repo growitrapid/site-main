@@ -6,7 +6,7 @@ loadEnvConfig(__dirname, dev, { info: () => null, error: console.error })
 
 export default defineCliConfig({
     api: {
-        projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-        dataset: process.env.NEXT_PUBLIC_SANITY_DATASET
+        projectId: "d1gimo04",
+        dataset: "production",
     }
 })

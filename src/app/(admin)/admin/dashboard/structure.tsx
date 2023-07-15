@@ -99,6 +99,12 @@ export default function Structure({
                             icon: null,
                             link: '/admin/dashboard/studio',
                             items: null
+                        },
+                        {
+                            title: 'Unlighthouse',
+                            icon: null,
+                            link: '/admin/dashboard/unlighthouse',
+                            items: null
                         }
                     ] : []),
                 ]}

@@ -272,12 +272,17 @@ export default function Table({
                         icon: () => <BiPlus />,
                         tooltip: 'Add Blog',
                         isFreeAction: true,
-                        onClick: (event, rowData) => { },
+                        onClick: (event, rowData) => {
+                            // @ts-ignore
+                            router.push(`./blogs/new`);
+                        },
                     },
                     {
                         icon: () => <BiTrash />,
                         tooltip: 'Delete Blogs',
-                        onClick: (event, rowData) => { },
+                        onClick: (event, rowData) => {
+                            alert('Delete Functionality is not implemented yet');
+                        },
                     },
                     {
                         icon: () => <Edit />,
@@ -285,14 +290,17 @@ export default function Table({
                         isFreeAction: false,
                         onClick: (event, rowData) => {
                             // @ts-ignore
-                            router.push(`./blogs/${rowData.slug}`);
+                            router.push(`./blogs/${rowData._id}`);
                         },
                     },
                     {
                         icon: () => <BiLinkExternal />,
                         tooltip: 'Open Blog',
                         isFreeAction: false,
-                        onClick: (event, rowData) => { },
+                        onClick: (event, rowData) => {
+                            // @ts-ignore
+                            router.push(`/blogs/${rowData.slug}`);
+                        },
                     }
                 ]}
             />

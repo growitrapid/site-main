@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import prismComponents from "prismjs/components";
 // import axios from 'axios';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
@@ -20,6 +20,7 @@ type Props = {
     id: string;
     initialContent: string;
     shouldSaveLocally: boolean;
+    update?: number;
     deleteLocalContent?: () => void;
     onSave?: (content: string) => void;
     onContentChange?: (content: string) => void;
@@ -27,12 +28,14 @@ type Props = {
 
 export default function Editor(props: Props) {
     const id = (props.id || "default") + ".editor";
-    const initialContent = localStorage.getItem(id) || props.initialContent || "";
+    const localData = localStorage.getItem(id);
+    const initialContent = ((localData && localData !== "") ? localData : props.initialContent) || "";
 
     // Get editor config from editor-toolbar.config.ts
     const editorConfig = useRef(EditorToolbarConfig({ ...props, languages: (languages) }));
     const [isEditorReady, setIsEditorReady] = useState(false);
-    const [data, setData] = useState(props.initialContent);
+    const [data, setData] = useState(initialContent);
+    const EditorRef = useRef<CKEditor<CustomEditor>>() as React.MutableRefObject<CKEditor<CustomEditor>>;
 
     // File Upload Adapter
     // const FileUploadAdapter = (editor: any) => {
@@ -48,8 +51,15 @@ export default function Editor(props: Props) {
 
     // editorConfig.current.extraPlugins.push(FileUploadAdapter);
 
+    useEffect(() => {
+        if (isEditorReady) {
+            EditorRef.current.shouldComponentUpdate = () => false;
+        }
+    }, [props.update]);
+
     return (
         <CKEditor
+            ref={EditorRef}
             editor={CustomEditor}
             data={initialContent}
             config={editorConfig.current}
@@ -57,7 +67,6 @@ export default function Editor(props: Props) {
             onReady={() => setIsEditorReady(true)}
             onChange={(event, editor) => {
                 const data = editor.getData();
-                setData(data);
 
                 if (typeof props.onContentChange === "function") {
                     props.onContentChange(data);
