@@ -64,7 +64,7 @@ async function handle(request: Request, { params }: { params: { page: string } }
         return getServerSideSitemap(services.map<ISitemapField>((service: any) => {
             const items = service.items.map((item: any) => ({
                 loc: `${config.base_url}/services/${service.slug}/${item.item_slug}`,
-                lastmod: (new Date(service._updatedAt)).toDateString(),
+                lastmod: (new Date(service._updatedAt)).toISOString(),
                 changefreq: 'daily',
                 priority: 0.7,
                 trailingSlash: true,
@@ -79,7 +79,7 @@ async function handle(request: Request, { params }: { params: { page: string } }
                     title: item.item_title,
                     publicationName: config.name,
                     publicationLanguage: 'en',
-                    date: (new Date(service._updatedAt)).toDateString(),
+                    date: (new Date(service._updatedAt)).toISOString(),
                 }
             }));
 

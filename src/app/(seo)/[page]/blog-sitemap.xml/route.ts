@@ -52,7 +52,7 @@ async function handle(request: Request, { params }: { params: { page: string } }
 
         return getServerSideSitemap(blogs.map<ISitemapField>(blog => ({
             loc: `${config.base_url}/blogs/${blog.slug}`,
-            lastmod: (new Date(blog._updatedAt)).toDateString(),
+            lastmod: (new Date(blog._updatedAt)).toISOString(),
             changefreq: 'daily',
             priority: 0.7,
             trailingSlash: true,
@@ -67,7 +67,7 @@ async function handle(request: Request, { params }: { params: { page: string } }
                 title: blog.title,
                 publicationName: config.name,
                 publicationLanguage: 'en',
-                date: (new Date(blog._updatedAt)).toDateString(),
+                date: (new Date(blog._updatedAt)).toISOString(),
             },
         })));
     } catch (error: any) {
