@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: [
                 '/admin/',
-                '/studio/',
+                '/api/',
             ],
         },
         sitemap: config.sitemaps,

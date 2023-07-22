@@ -8,6 +8,7 @@ import style from './style.module.scss'
 import formatDate from '@/utils/date';
 import Image from 'next/image';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 const clientFetch = cache(client.fetch.bind(client));
 
@@ -40,7 +41,7 @@ export default async function page({
     }`))[0];
 
     if (!data) {
-        return <div>404</div>
+        return notFound();
     }
 
     return (

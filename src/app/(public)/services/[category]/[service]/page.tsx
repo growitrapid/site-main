@@ -10,6 +10,7 @@ import client from '@/utils/sanity-client';
 import { groq } from 'next-sanity';
 import Textpreview from '@/components/text_preview/textpreview';
 import { notFound } from 'next/navigation';
+import Form from './form';
 
 const clientFetch = cache(client.fetch.bind(client));
 
@@ -133,43 +134,11 @@ export default async function page({ params }: {
 
                     {/* Form */}
                     <section className={`col-span-2`}>
-                        <div>
-
-                            <h2 className={`text-2xl font-semibold text-[var(--dark-text-color)]`}>Get the Quote Now</h2>
-
-                            <p className={`text-[var(--dark-text-color)] mt-2 mb-4`}>Fill the form below to enroll for this service.</p>
-
-                            <input
-                                type="text"
-                                placeholder="Name"
-                                className={`w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)]`}
-                            />
-
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                className={`w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)] mt-4`}
-                            />
-
-                            <input
-                                type="phone"
-                                placeholder="Phone Number"
-                                className={`w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)] mt-4`}
-                            />
-
-                            <textarea
-                                placeholder="Message"
-                                className={`w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)] mt-4 min-h-[10rem] max-h-[20rem]`}
-                            />
-
-                            <button className={`flex justify-between items-center w-full outline-none rounded-md px-4 py-2 bg-[var(--tertiary-color)] border-[1px] border-[var(--border-primary-color)] text-[var(--text-color)] font-[var(--font-barlow)] mt-4 cursor-pointer hover:bg-[var(--hover-color)] transition-colors duration-200`}>
-                                <span>Enroll Now</span>
-                                <FaArrowRight
-                                    className={`inline-block ml-2`}
-                                />
-                            </button>
-
-                        </div>
+                        <Form
+                            category={category}
+                            service={service}
+                            serviceData={serviceData}
+                        />
                     </section>
 
                 </div>

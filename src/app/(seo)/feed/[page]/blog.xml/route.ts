@@ -5,10 +5,15 @@ import client from "@/utils/sanity-client";
 import { groq } from "next-sanity";
 import { NextResponse } from "next/server";
 
-export async function GET(req: Request) {
+export async function GET(req: Request, { params }: { params: { page: string } }) {
     try {
+        const page = parseInt(params.page || '0');
+        const limit = 10;
 
-        const posts = (await client.fetch<BlogData>(groq`*[_type == "blogs" && is_published == true] | order(_updatedAt desc) {
+        const start = ((page - 1) * limit);
+        const end = (page * limit) - 1;
+
+        const posts = (await client.fetch<BlogData[]>(groq`*[_type == "blogs" && is_published == true][${start}...${end}] | order(_createdAt desc) {
             _id,
             title,
             description,
@@ -40,7 +45,7 @@ export async function GET(req: Request) {
 }
 
 
-const xml = (posts: any) => `
+const xml = (posts: BlogData[]) => `
 <rss version="2.0"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
 	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
@@ -83,7 +88,7 @@ const xml = (posts: any) => `
                 </strong>
                 </div>
 
-                ${post.custom_content}
+                ${post.content}
             ]]></content:encoded>
             ${post.image ? `<media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="${post.image}"/>` : ''}
             ${post.image ? `<media:content xmlns:media="http://search.yahoo.com/mrss/" medium="image" url="${post.image}"/>` : ''}

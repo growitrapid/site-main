@@ -57,7 +57,8 @@ export default {
     admin_url: "/admin",
     sitemaps: [
         "https://www.growitrapid.com/sitemap.xml",
-        "https://www.growitrapid.com/rss.xml"
+        "https://www.growitrapid.com/0/blog-sitemap.xml",
+        "https://www.growitrapid.com/0/service-sitemap.xml"
     ],
 
     links: {
@@ -66,7 +67,6 @@ export default {
         about: "/about",
         terms_policy: "/terms-policy",
         blogs: '/blogs',
-        rssFeed: '/rss.xml',
         404: '/404',
 
         // Social media links
