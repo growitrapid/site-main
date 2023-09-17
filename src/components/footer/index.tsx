@@ -95,8 +95,7 @@ export default function Footer({
                             <Link href="#"><FaInstagram /></Link>
                             <Link href="#"><FaTelegramPlane /></Link>
                             <Link href="#"><FaTwitter /></Link>
-                            <Link href="#"><FaGithub /></Link>
-                            <Link href="#"><FaEnvelope /></Link>
+                            <Link href="mailto:growitrapid@gmail.com"><FaEnvelope /></Link>
                         </div>
 
                         <div className={`relative flex flex-col items-center gap-3`}>
