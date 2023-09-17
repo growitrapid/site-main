@@ -1,7 +1,6 @@
 import { cert, initializeApp, getApps, AppOptions } from 'firebase-admin/app';
-import { apps, app as firebaseApp } from 'firebase-admin';
 import { Timestamp, initializeFirestore, getFirestore } from 'firebase-admin/firestore';
-import { AdapterAccount, AdapterSession, AdapterUser } from 'next-auth/adapters';
+import { AdapterAccount, AdapterSession } from 'next-auth/adapters';
 
 export type UserData = {
     id: string;
@@ -18,7 +17,20 @@ export type UserData = {
  * Fetch the service account key.
  * @see https://firebase.google.com/docs/admin/setup#initialize-sdk
  */
-export const serviceAccountKey = require("./serviceaccountkey.json");
+// export const serviceAccountKey = require("./serviceaccountkey.json");
+export const serviceAccountKey = {
+    "type": process.env.firebase_sa_type,
+    "project_id": process.env.firebase_sa_project_id,
+    "private_key_id": process.env.firebase_sa_private_key_id,
+    "private_key": process.env.firebase_sa_private_key,
+    "client_email": process.env.firebase_sa_client_email,
+    "client_id": process.env.firebase_sa_client_id,
+    "auth_uri": process.env.firebase_sa_auth_uri,
+    "token_uri": process.env.firebase_sa_token_uri,
+    "auth_provider_x509_cert_url": process.env.firebase_sa_auth_provider_x509_cert_url,
+    "client_x509_cert_url": process.env.firebase_sa_client_x509_cert_url,
+    "universe_domain": process.env.firebase_sa_universe_domain
+} as any;
 
 export function initFirestore(
     options: AppOptions & { name?: string } = {}

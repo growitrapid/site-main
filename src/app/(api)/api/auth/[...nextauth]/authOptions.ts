@@ -5,10 +5,11 @@ import { createTransport } from "nodemailer";
 import { cert } from "firebase-admin/app";
 import { html, text } from "@/utils/email-html";
 import { AuthOptions } from "next-auth";
+import { serviceAccountKey } from "@/utils/firebase-client";
 
 export const FirebaseAuthAdapter = FirestoreAdapter(
     {
-        credential: cert(require("../../../../../utils/serviceaccountkey.json")),
+        credential: cert(serviceAccountKey),
         databaseURL: process.env.FIREBASE_DATABASE_URL,
         projectId: process.env.FIREBASE_PROJECT_ID,
         storageBucket: process.env.FIREBASE_STORAGE_BUCKET,

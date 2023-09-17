@@ -8,6 +8,8 @@
 .VSCodeCounter
 
 **/serviceaccountkey01.json
+**/serviceaccountkey02.json
+**/serviceaccountkey.json
 
 # testing
 /coverage
@@ -30,6 +32,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env*.test
 
 # vercel
 .vercel
