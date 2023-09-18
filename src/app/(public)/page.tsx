@@ -1,6 +1,7 @@
 import React, { cache } from 'react'
 import Image from 'next/image'
 import { Metadata } from 'next';
+import Blog from '@/components/showcase/blogs';
 
 import BG from '@/assets/image/bg.webp'
 import Link from 'next/link'
@@ -178,6 +179,9 @@ export default async function page({ }: {}) {
                     <ExpandExplorer data={data} />
                 </section>
 
+                <section id='blog' className={`relative max-w-7xl mx-auto`}>
+                    <Blog data={data} />
+                </section>
             </main>
 
         </div>
