@@ -8,6 +8,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay, Pagination } from 'swiper/modules';
+import { motion, useInView, useAnimation } from "framer-motion"
+import { SplitText } from './SplitText'
 
 export default function Blog() {
   const [index, setIndex] = useState(0);
@@ -24,19 +26,33 @@ export default function Blog() {
   ];
 
   useEffect(() => {
-    // When the index changes, trigger the fade-in effect by adding a class to the element
-    const titleElement = document.querySelector('.fade-in-title');
-    titleElement.classList.remove('fade-in');
-    setTimeout(() => {
-      titleElement.classList.add('fade-in');
-    }, 1);
+
   }, [index]);
 
   return (
     <div className={style['title-section']}>
       <div className={style['title-text-div']}>
-        {/* Apply the fade-in effect to the <h2> element */}
-        <h2 className={`text-3xl font-bold fade-in-title`}>{array[index]}</h2>
+        <motion.div
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className={`text-3xl font-bold fade-in-title`}
+        >
+          <SplitText
+            initial={{ y: '100%' }}
+            animate="visible"
+            variants={{
+              visible: i => ({
+                y: 0,
+                transition: {
+                  delay: i * 0.1
+                }
+              })
+            }}
+          >
+            {array[index]}
+          </SplitText>
+        </motion.div>
         <p className={`text-sm`}>
           Discover a wealth of knowledge and stay engaged with our blog, where you'll find a treasure trove of insights, expert tips, and thought-provoking articles across diverse subjects. Stay informed and inspired with the latest trends and knowledge by diving into our thought-provoking blog posts.
         </p>
@@ -62,7 +78,7 @@ export default function Blog() {
           pagination={{
             clickable: true,
           }}
-          
+
           navigation={true}
           onActiveIndexChange={(swiper) => {
             setIndex(swiper.activeIndex);
