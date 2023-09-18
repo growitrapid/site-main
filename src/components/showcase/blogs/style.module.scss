@@ -58,3 +58,21 @@
 .slideContainer {
     width: 100%;
 }
+
+@media screen and (max-width: 1120px) {
+  .title-section {
+    flex-direction: column;
+  }
+
+  .blogs {
+    width: 100%;
+  }
+
+  .title-text-div {
+    width: 100%;
+  }
+
+  .learn_more_btn{
+    width: 100%;
+  }
+}
