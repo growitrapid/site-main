@@ -208,5 +208,10 @@ export async function generateMetadata({ params }: MetaDataProps): Promise<Metad
                 title: data.title,
             },
         }
+    } else {
+        return {
+            title: 'Grow It Rapid',
+            description: 'Grow It Rapid',
+        }
     }
 }

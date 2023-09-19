@@ -5,7 +5,8 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import style from './style.module.scss'
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
+import { TRACE_OUTPUT_VERSION } from 'next/dist/shared/lib/constants';
 
 export default function Stories({ data: { } }) {
     return (
@@ -16,17 +17,17 @@ export default function Stories({ data: { } }) {
                 grabCursor={true}
                 centeredSlides={true}
                 slidesPerView={'auto'}
-                initialSlide={1}
+                initialSlide={2}
+                navigation={true}
                 coverflowEffect={{
-                    rotate: 50,
+                    rotate: 0,
                     stretch: 0,
                     depth: 100,
-                    modifier: 1,
+                    modifier: 2,
                     slideShadows: true,
                 }}
-                
                 pagination={true}
-                modules={[EffectCoverflow, Pagination]}
+                modules={[EffectCoverflow, Pagination, Navigation]}
                 className={style.slideContainer}
             >
                 <SwiperSlide className={style.slide}>

@@ -53,12 +53,11 @@ export default function Blog({ data }: {
                 }
               })
             }}
-          >
-            {blogTitles[index]}
-          </SplitText>
+            text={blogTitles[index]}
+          />
         </motion.div>
-        <p className={`text-sm py-4`}>
-          Discover a wealth of knowledge and stay engaged with our blog, where you&apos;ll find a treasure trove of insights, expert tips, and thought-provoking articles across diverse subjects. Stay informed and inspired with the latest trends and knowledge by diving into our thought-provoking blog posts.
+        <p className={`text-sm py-1`}>
+          {data[index]?.description}
         </p>
         <Link href={`/blogs`} className={style['learn_more_btn']}>
           <div>
@@ -73,6 +72,7 @@ export default function Blog({ data }: {
       <div className={style['blogs']}>
         <Swiper
           spaceBetween={30}
+          loop={true}
           centeredSlides={true}
           autoplay={{
             delay: 3000,
@@ -91,7 +91,10 @@ export default function Blog({ data }: {
           onSwiper={(swiper) => {
             // Delay execution for the refs to be defined
             setTimeout(() => {
-              if(swiper.params.navigation !== undefined) {
+              // Override prevEl & nextEl now that refs are defined
+
+              if (swiper.params.navigation !== undefined) {
+                // @ts-ignore
                 swiper.params.navigation.prevEl = navigationPrevRef.current;
                 swiper.params.navigation.nextEl = navigationNextRef.current;
               }

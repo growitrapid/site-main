@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { FaArrowRight } from 'react-icons/fa'
 import ExpandExplorer from '@/components/showcase/expand_explorer'
 import Stories from '@/components/showcase/stories';
+import Testimonials from '@/components/showcase/testimonials';
 
 import style from './page.module.scss'
 import Stars from '@/components/stars'
@@ -32,7 +33,7 @@ export default async function page({ }: {}) {
         }
     }`));
 
-    const blogsData = (await clientFetch(groq`*[ _type == "blogs" ] | order(order asc) {
+    const blogsData = (await clientFetch(groq`*[ _type == "blogs" ] | order(order asc)[0...10] {
         _id,
         _updatedAt,
         title,
@@ -183,8 +184,12 @@ export default async function page({ }: {}) {
                     <Blog data={blogsData} />
                 </section>
 
-                <section id='blog' className={`relative max-w-7xl mx-auto`}>
+                <section id='stories' className={`relative max-w-7xl mx-auto`}>
                     <Stories data={{}} />
+                </section>
+
+                <section id='testimonials' className={`relative max-w-7xl mx-auto`}>
+                    <Testimonials data={{}} />
                 </section>
             </main>
 
