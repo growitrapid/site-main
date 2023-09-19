@@ -36,8 +36,20 @@
 
 .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
     gap: 1em;
+}
+
+@media screen and (max-width: 800px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(30vw, 1fr));
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(50vw, 1fr));
+    }
 }
 
 .card {
@@ -80,22 +92,12 @@
     font-size: .8em;
     font-weight: 400;
     color: var(--dark-primary-color);
-}
-
-@media screen and (max-width: 1120px) {
-    .grid{
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-}
-
-@media screen and (max-width: 850px) {
-    .grid{
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media screen and (max-width: 650px) {
-    .grid{
-        grid-template-columns: 1fr;
-    }
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    max-height: 4.5rem;
 }
