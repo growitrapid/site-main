@@ -101,9 +101,9 @@ export default async function page({ }: Props) {
                                             );
                                         })}
                                     </p>
-                                    <h2 className={style.courseName}>{item.title}</h2>
+                                    <h2 className={style.courseName}>{item.title}, {String(item.slug)}</h2>
                                     <p className={style.desc}>{item.description}</p>
-                                    <Link href={`#services`} className={style['learn_more_btn']}>
+                                    <Link href={`/blogs/${String(item.slug)}`} className={style['learn_more_btn']}>
                                         <div>
                                             <span>Read Now</span>
                                         </div>
