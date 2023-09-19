@@ -8,22 +8,26 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay, Pagination } from 'swiper/modules';
-import { motion, useInView, useAnimation } from "framer-motion"
+import { motion } from "framer-motion"
 import { SplitText } from './SplitText'
+import Image from 'next/image';
 
-export default function Blog() {
+export default function Blog({ data }: {
+  data: {
+    _id: string;
+    _updatedAt: string;
+    title: string;
+    description: string;
+    image?: string;
+    slug: string;
+  }[];
+}) {
   const [index, setIndex] = useState(0);
-  const array = [
-    'Introduction To Our Blogs',
-    'What is Next.js',
-    'SSR VS CSR Differences',
-    'Who Am I',
-    'Does PPT Matters',
-    'Hackathon Announcement',
-    'Introduction To Our Blogs',
-    'What is Next.js',
-    'SSR VS CSR Differences',
-  ];
+  const blogTitles = new Array();
+
+  data.forEach((item, index) => {
+    blogTitles.push(item?.title)
+  })
 
   useEffect(() => {
 
@@ -50,7 +54,7 @@ export default function Blog() {
               })
             }}
           >
-            {array[index]}
+            {blogTitles[index]}
           </SplitText>
         </motion.div>
         <p className={`text-sm`}>
@@ -83,17 +87,27 @@ export default function Blog() {
           onActiveIndexChange={(swiper) => {
             setIndex(swiper.activeIndex);
           }}
-          modules={[Autoplay, Pagination, Navigation]}
+          modules={[Autoplay, Navigation, Pagination]}
         >
-          <SwiperSlide className={style.slide}>Slide 1</SwiperSlide>
-          <SwiperSlide className={style.slide}>Slide 2</SwiperSlide>
-          <SwiperSlide className={style.slide}>Slide 3</SwiperSlide>
-          <SwiperSlide className={style.slide}>Slide 4</SwiperSlide>
-          <SwiperSlide className={style.slide}>Slide 5</SwiperSlide>
-          <SwiperSlide className={style.slide}>Slide 6</SwiperSlide>
-          <SwiperSlide className={style.slide}>Slide 7</SwiperSlide>
-          <SwiperSlide className={style.slide}>Slide 8</SwiperSlide>
-          <SwiperSlide className={style.slide}>Slide 9</SwiperSlide>
+          {
+            data.map((item, index) => {
+              return (
+                <SwiperSlide key={index} className={style.slide}>
+                  <Image
+                    draggable={false}
+                    className={style.thumbnail}
+                    width={1280}
+                    height={720}
+                    alt={item?.title}
+                    src={item.image || ""}
+                    onError={(e) => {
+                      console.error("Error loading image:", e);
+                    }}
+                  />
+                </SwiperSlide>
+              )
+            })
+          }
         </Swiper>
       </div>
     </div>

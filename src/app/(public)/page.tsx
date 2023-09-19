@@ -17,7 +17,7 @@ const clientFetch = cache(client.fetch.bind(client));
 
 export default async function page({ }: {}) {
 
-    const data = (await clientFetch(groq`*[ _type == "services" ] | order(order asc) {
+    const servicesData = (await clientFetch(groq`*[ _type == "services" ] | order(order asc) {
         _id,
         _updatedAt,
         title,
@@ -29,6 +29,15 @@ export default async function page({ }: {}) {
             description,
             "item_slug": item_slug.current,
         }
+    }`));
+
+    const blogsData = (await clientFetch(groq`*[ _type == "blogs" ] | order(order asc) {
+        _id,
+        _updatedAt,
+        title,
+        description,
+        "slug": slug.current,
+        "image": image.asset->url,
     }`));
 
     return (
@@ -176,11 +185,11 @@ export default async function page({ }: {}) {
             <main>
 
                 <section id='services' className={`relative max-w-7xl mx-auto`}>
-                    <ExpandExplorer data={data} />
+                    <ExpandExplorer data={servicesData} />
                 </section>
 
                 <section id='blog' className={`relative max-w-7xl mx-auto`}>
-                    <Blog data={data} />
+                    <Blog data={blogsData} />
                 </section>
             </main>
 
