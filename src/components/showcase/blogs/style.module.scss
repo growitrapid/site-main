@@ -56,6 +56,8 @@
 
 .slideContainer {
   width: 100%;
+  padding-top: 1.6%;
+  padding-bottom: 1.6%;
 }
 
 .thumbnail {
@@ -138,7 +140,7 @@
     left: -2%;
     padding: .5em 0 .5em .3em;
   }
-  
+
   .nextBtn {
     right: -2%;
     /* Adjusted to align with the right edge */

@@ -7,6 +7,7 @@ import BG from '@/assets/image/bg.webp'
 import Link from 'next/link'
 import { FaArrowRight } from 'react-icons/fa'
 import ExpandExplorer from '@/components/showcase/expand_explorer'
+import Stories from '@/components/showcase/stories';
 
 import style from './page.module.scss'
 import Stars from '@/components/stars'
@@ -64,18 +65,8 @@ export default async function page({ }: {}) {
                             md:w-[70%]
                         `}
                     >
-                        {/* <Image
-                            src={BG}
-                            alt="Picture of the author"
-                            className={`
-                                absolute h-full w-full top-0 right-0
-                                object-cover object-center
-                            `}
-                        /> */}
                         <img
                             src={`https://img.freepik.com/premium-photo/businessman-hand-drawing-light-arrow-graph-icon-finance-success-business-background-diagram-growth-financial-chart-development-growing-economic-goal-achievement-symbol-marketing-strategy_79161-2290.jpg?w=826`}
-                            // src='https://img.freepik.com/premium-photo/businessman-hand-plan-growth-business-graph-financial-chart-improvement-blue-background-with-success-investment-diagram-marketing-strategy-increase-arrow-stock-profit-data-analysis-market_79161-2458.jpg'
-                            // src='https://img.freepik.com/free-photo/business-concept-with-graphic-holography_23-2149160934.jpg?t=st=1688578488~exp=1688579088~hmac=a432dc8548cc0c030004f5785b0f3d166ef5591368e65b6869954dcc734bbcd5'
                             alt="Picture of the author"
                             className={`
                                 absolute h-full w-full top-0 right-0
@@ -190,6 +181,10 @@ export default async function page({ }: {}) {
 
                 <section id='blog' className={`relative max-w-7xl mx-auto`}>
                     <Blog data={blogsData} />
+                </section>
+
+                <section id='blog' className={`relative max-w-7xl mx-auto`}>
+                    <Stories data={{}} />
                 </section>
             </main>
 

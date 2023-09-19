@@ -1,0 +1,24 @@
+.title {
+    text-align: center;
+    margin: 2em 0 1.5em 0;
+}
+
+.stories {
+    margin: 2em 0 2em 0;
+}
+
+.slideContainer {
+    width: 100%;
+    height: 70vh;
+    padding-bottom: 3%;
+  }
+
+.slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--tertiary-color);
+    height: 100%;
+    border-radius: 12px;
+    width: 25%;
+}
