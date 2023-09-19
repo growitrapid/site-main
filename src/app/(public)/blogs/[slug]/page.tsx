@@ -176,35 +176,42 @@ export async function generateMetadata({ params }: MetaDataProps): Promise<Metad
         tags
     }`))[0];
 
-    return {
-        title: data.title,
-        description: data.description,
-        authors: [
-            {
-                name: data.author.name,
-                url: data.author.url,
-            }
-        ],
-        assets: [data.image],
-        openGraph: {
-            type: 'article',
+    if (data) {
+        return {
             title: data.title,
             description: data.description,
-            images: [data.image],
-            authors: [data.author.name, data.author.url],
-            url: `https://www.growitrapid.com/blogs/${data.slug}`,
-            tags: data.tags,
-            section: 'Blogs',
-        },
-        twitter: {
-            site: '@site',
-            card: 'summary_large_image',
-            title: data.title,
-            description: data.description,
-            images: [data.image],
-        },
-        appleWebApp: {
-            title: data.title,
-        },
+            authors: [
+                {
+                    name: data.author.name,
+                    url: data.author.url,
+                }
+            ],
+            assets: [data.image],
+            openGraph: {
+                type: 'article',
+                title: data.title,
+                description: data.description,
+                images: [data.image],
+                authors: [data.author.name, data.author.url],
+                url: `https://www.growitrapid.com/blogs/${data.slug}`,
+                tags: data.tags,
+                section: 'Blogs',
+            },
+            twitter: {
+                site: '@site',
+                card: 'summary_large_image',
+                title: data.title,
+                description: data.description,
+                images: [data.image],
+            },
+            appleWebApp: {
+                title: data.title,
+            },
+        }
+    } else {
+        return {
+            title: 'Grow It Rapid',
+            description: 'Grow It Rapid',
+        }
     }
 }

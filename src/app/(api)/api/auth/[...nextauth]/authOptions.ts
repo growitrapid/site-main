@@ -108,7 +108,8 @@ export const nextAuthOptions: AuthOptions = {
                         "arifsardar.private@gmail.com",
                         "bishal.nandi@growitrapid.com",
                         "nandibishal97@yahoo.in",
-                        "nandibishal04@gmail.com"
+                        "nandibishal04@gmail.com",
+                        "qa.sixsigma@gmail.com"
                     ].includes(user?.email)) {
                         // @ts-ignore
                         session.user.role = 3;

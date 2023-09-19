@@ -1,6 +1,7 @@
 import React, { cache } from 'react'
 import Image from 'next/image'
 import { Metadata } from 'next';
+import Blog from '@/components/showcase/blogs';
 
 import BG from '@/assets/image/bg.webp'
 import Link from 'next/link'
@@ -16,7 +17,7 @@ const clientFetch = cache(client.fetch.bind(client));
 
 export default async function page({ }: {}) {
 
-    const data = (await clientFetch(groq`*[ _type == "services" ] | order(order asc) {
+    const servicesData = (await clientFetch(groq`*[ _type == "services" ] | order(order asc) {
         _id,
         _updatedAt,
         title,
@@ -28,6 +29,15 @@ export default async function page({ }: {}) {
             description,
             "item_slug": item_slug.current,
         }
+    }`));
+
+    const blogsData = (await clientFetch(groq`*[ _type == "blogs" ] | order(order asc)[0...10] {
+        _id,
+        _updatedAt,
+        title,
+        description,
+        "slug": slug.current,
+        "image": image.asset->url,
     }`));
 
     return (
@@ -175,9 +185,12 @@ export default async function page({ }: {}) {
             <main>
 
                 <section id='services' className={`relative max-w-7xl mx-auto`}>
-                    <ExpandExplorer data={data} />
+                    <ExpandExplorer data={servicesData} />
                 </section>
 
+                <section id='blog' className={`relative max-w-7xl mx-auto`}>
+                    <Blog data={blogsData} />
+                </section>
             </main>
 
         </div>

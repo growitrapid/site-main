@@ -41,6 +41,7 @@
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.9",
     "firebase-admin": "^11.9.0",
+    "framer-motion": "^10.16.4",
     "html-entities": "^2.3.6",
     "material-table": "^2.0.5",
     "next": "13.4.9",
@@ -61,8 +62,10 @@
     "sanity-plugin-media": "^2.0.5",
     "sass": "^1.63.4",
     "styled-components": "^6.0.3",
+    "swiper": "^10.2.0",
     "tailwindcss": "3.3.2",
     "tinyurl": "^1.1.7",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "typewriter-effect": "^2.20.1"
   }
 }
