@@ -53,7 +53,7 @@ export default async function page({ }: Props) {
                     <div className={`relative z-20 px-6 py-24 md:max-w-5xl mx-auto`}>
                         <h1 className={`md:max-w-[50%] text-5xl text-center md:text-left leading-tight font-semibold text-[var(--dark-text-color)] md:text-current`}>Our Blogs</h1>
 
-                        <p className={`mt-4 text-center md:text-left text-[var(--dark-text-color)] md:text-current max-w-[500px]`}>Discover a wealth of knowledge and stay engaged with our blog, where you'll find a treasure trove of insights, expert tips, and thought-provoking articles across diverse subjects</p>
+                        <p className={`mt-4 text-center md:text-left text-[var(--dark-text-color)] md:text-current max-w-[500px]`}>Discover a wealth of knowledge and stay engaged with our blog, where you&apos;ll find a treasure trove of insights, expert tips, and thought-provoking articles across diverse subjects</p>
                     </div>
 
                     <div className={`absolute w-full -bottom-2 z-30`}>
@@ -89,11 +89,11 @@ export default async function page({ }: Props) {
 
                     {
                         blogsData.map((item: any, index: number) => {
-                            return (
+                            return (<>
                                 <div key={index} className={style.card}>
                                     <Image width={1080} height={720} src={item.image} alt={item.title} />
                                     <p className={style.tags}>
-                                        {item.tags.map((tag: string, tagIndex: number) => {
+                                        {item.tags.slice(0, 4).map((tag: string, tagIndex: number) => {
                                             return (
                                                 <span key={tagIndex} className={style.tag}>
                                                     {tag}
@@ -113,12 +113,12 @@ export default async function page({ }: Props) {
                                         </div>
                                     </Link>
                                 </div>
-                            )
+                            </>)
                         })
                     }
 
                 </div>
-                <Link href={`#services`} className={style['load_more_btn']}>
+                <Link href={`#`} className={style['load_more_btn']}>
                     <div>
                         <span>Load More Blogs !!</span>
                     </div>

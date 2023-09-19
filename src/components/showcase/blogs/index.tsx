@@ -26,8 +26,8 @@ export default function Blog({ data }: {
 }) {
   const [index, setIndex] = useState(0);
   const blogTitles = new Array();
-  const navigationPrevRef = React.useRef(null)
-  const navigationNextRef = React.useRef(null)
+  const navigationPrevRef = React.useRef<HTMLDivElement>(null)
+  const navigationNextRef = React.useRef<HTMLDivElement>(null)
 
   data.forEach((item, index) => {
     blogTitles.push(item?.title)
@@ -40,13 +40,13 @@ export default function Blog({ data }: {
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className={`text-3xl font-bold fade-in-title`}
+          className={`text-xl md:text-3xl font-bold fade-in-title`}
         >
           <SplitText
             initial={{ y: '100%' }}
             animate="visible"
             variants={{
-              visible: i => ({
+              visible: (i: number) => ({
                 y: 0,
                 transition: {
                   delay: i * 0.1
@@ -57,8 +57,8 @@ export default function Blog({ data }: {
             {blogTitles[index]}
           </SplitText>
         </motion.div>
-        <p className={`text-sm`}>
-          Discover a wealth of knowledge and stay engaged with our blog, where you'll find a treasure trove of insights, expert tips, and thought-provoking articles across diverse subjects. Stay informed and inspired with the latest trends and knowledge by diving into our thought-provoking blog posts.
+        <p className={`text-sm py-4`}>
+          Discover a wealth of knowledge and stay engaged with our blog, where you&apos;ll find a treasure trove of insights, expert tips, and thought-provoking articles across diverse subjects. Stay informed and inspired with the latest trends and knowledge by diving into our thought-provoking blog posts.
         </p>
         <Link href={`/blogs`} className={style['learn_more_btn']}>
           <div>
@@ -93,10 +93,18 @@ export default function Blog({ data }: {
             setTimeout(() => {
               // Override prevEl & nextEl now that refs are defined
 
+<<<<<<< HEAD
               if (swiper.params.navigation !== undefined) {
                 swiper.params.navigation.prevEl = navigationPrevRef.current
                 swiper.params.navigation.nextEl = navigationNextRef.current
 
+=======
+              if(swiper.params.navigation !== undefined) {
+                // @ts-ignore
+                swiper.params.navigation.prevEl = navigationPrevRef.current;
+                // @ts-ignore
+                swiper.params.navigation.nextEl = navigationNextRef.current;
+>>>>>>> 1a76007068804f38a5183b1c0ba4c8cd68a20940
               }
               // Re-init navigation
               swiper.navigation.destroy()
