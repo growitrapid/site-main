@@ -1,88 +1,70 @@
 .title {
-    text-align: center;
-    margin: 2em 0 1.5em 0;
+  text-align: center;
+  margin: 2em 0 1.5em 0;
 }
 
 .stories {
-    margin: 2em 0 2em 0;
+  margin: 2em 0 2em 0;
 }
 
 .slideContainer {
-    width: 100%;
-    height: 70vh;
-    padding-bottom: 3%;
-  }
+  width: 100%;
+  height: fit-content;
+  padding-bottom: 3%;
+}
 
 .slide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--tertiary-color);
-    height: 100%;
-    border-radius: 12px;
-    width: 25%;
-}
-
-
-.prevBtn,
-.nextBtn {
-  width: 50px;
-  height: 50px;
-  border: 1px solid var(--border-primary-color);
-  background: var(--bg-color);
-  position: absolute;
-  top: 50%;
-  border-radius: 50%;
-  z-index: 50;
-  transform: translateY(-50%);
-  padding: .8em 0 .8em 1.2em;
-}
-
-.nextBtn {
-  padding: .8em 1em .8em 0em;
-}
-
-.prevBtn:hover,
-.nextBtn:hover {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
   background: var(--tertiary-color);
-  transition: all .5s ease;
-  cursor: pointer;
+  height: 45vh;
+  border-radius: 12px;
+  padding: .5em;
+  width: 25%;
 }
 
-.prevBtn:not(:hover),
-.nextBtn:not(:hover) {
+.profilePic {
+  border-radius: 100%;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  gap: .8em;
+  border-radius: 12px;
+  padding: .5em 1em .5em 1em;
   background: var(--bg-color);
-  transition: all .5s ease;
-  cursor: pointer;
+  border: 1px solid var(--border-primary-color);
+
 }
 
-.prevBtn {
-  left: -4%;
-}
-
-.nextBtn {
-  right: -4%;
-  /* Adjusted to align with the right edge */
-}
-
-
-
-@media screen and (max-width: 600px) {
-
-    .prevBtn,
-    .nextBtn {
-      width: 25px;
-      height: 25px;
-      padding: .5em .3em .5em 0;
-    }
+.testimonial {
+  border-radius: 12px;
+  padding: .5em 1em .5em 1em;
+  background: var(--bg-color);
+  border: 1px solid var(--border-primary-color);
+  margin-top: .5em;
+  font-size: .8em;
+  max-height: 100%;
   
-    .prevBtn {
-      left: -2%;
-      padding: .5em 0 .5em .3em;
-    }
-  
-    .nextBtn {
-      right: -2%;
-      /* Adjusted to align with the right edge */
-    }
-  }
+}
+
+.profileName {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileName h2 {
+  font-weight: 600;
+  font-size: 1em;
+  line-height: 1;
+}
+
+.profileInfo p {
+  font-weight: 300;
+  font-size: .8em;
+}
