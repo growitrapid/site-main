@@ -62,7 +62,7 @@ export default function Blog({ data }: {
         <p className={`text-sm`}>
           Discover a wealth of knowledge and stay engaged with our blog, where you'll find a treasure trove of insights, expert tips, and thought-provoking articles across diverse subjects. Stay informed and inspired with the latest trends and knowledge by diving into our thought-provoking blog posts.
         </p>
-        <Link href={`#services`} className={style['learn_more_btn']}>
+        <Link href={`/blogs`} className={style['learn_more_btn']}>
           <div>
             <span>View More</span>
           </div>
