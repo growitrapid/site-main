@@ -91,22 +91,10 @@ export default function Blog({ data }: {
           onSwiper={(swiper) => {
             // Delay execution for the refs to be defined
             setTimeout(() => {
-              // Override prevEl & nextEl now that refs are defined
-
-<<<<<<< HEAD
-              if (swiper.params.navigation !== undefined) {
-                swiper.params.navigation.prevEl = navigationPrevRef.current
-                swiper.params.navigation.nextEl = navigationNextRef.current
-
-=======
               if(swiper.params.navigation !== undefined) {
-                // @ts-ignore
                 swiper.params.navigation.prevEl = navigationPrevRef.current;
-                // @ts-ignore
                 swiper.params.navigation.nextEl = navigationNextRef.current;
->>>>>>> 1a76007068804f38a5183b1c0ba4c8cd68a20940
               }
-              // Re-init navigation
               swiper.navigation.destroy()
               swiper.navigation.init()
               swiper.navigation.update()

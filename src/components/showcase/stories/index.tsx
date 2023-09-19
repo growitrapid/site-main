@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState, useEffect, useLayoutEffect, useContext, forwardRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
@@ -10,7 +10,7 @@ import { EffectCoverflow, Pagination } from 'swiper/modules';
 export default function Stories({ data: { } }) {
     return (
         <div>
-            <h1 className={`text-3xl font-bold fade-in-title ${style.title}`}>Honest Sucess Stories From <br />Our Students & Clients</h1>
+            <h1 className={`text-3xl font-bold fade-in-title ${style.title}`}>Honest Success Stories From <br />Our Students & Clients</h1>
             <Swiper
                 effect={'coverflow'}
                 grabCursor={true}
@@ -24,6 +24,7 @@ export default function Stories({ data: { } }) {
                     modifier: 1,
                     slideShadows: true,
                 }}
+                
                 pagination={true}
                 modules={[EffectCoverflow, Pagination]}
                 className={style.slideContainer}
