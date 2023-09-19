@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { FaArrowRight } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/pagination';
+import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import 'swiper/css/navigation';
 import { Navigation, Autoplay, Pagination } from 'swiper/modules';
 import { motion } from "framer-motion"
@@ -24,6 +24,8 @@ export default function Blog({ data }: {
 }) {
   const [index, setIndex] = useState(0);
   const blogTitles = new Array();
+  const navigationPrevRef = React.useRef(null)
+  const navigationNextRef = React.useRef(null)
 
   data.forEach((item, index) => {
     blogTitles.push(item?.title)
@@ -83,11 +85,31 @@ export default function Blog({ data }: {
             clickable: true,
           }}
 
-          navigation={true}
+          navigation={{
+            // Both prevEl & nextEl are null at render so this does not work
+            prevEl: navigationPrevRef.current,
+            nextEl: navigationNextRef.current,
+          }}
+          onSwiper={(swiper) => {
+            // Delay execution for the refs to be defined
+            setTimeout(() => {
+              // Override prevEl & nextEl now that refs are defined
+
+              if(swiper.params.navigation !== undefined) {
+                swiper.params.navigation.prevEl = navigationPrevRef.current
+                swiper.params.navigation.nextEl = navigationNextRef.current
+  
+              }
+              // Re-init navigation
+              swiper.navigation.destroy()
+              swiper.navigation.init()
+              swiper.navigation.update()
+            })
+          }}
           onActiveIndexChange={(swiper) => {
             setIndex(swiper.activeIndex);
           }}
-          modules={[Autoplay, Navigation, Pagination]}
+          modules={[Autoplay, Navigation]}
         >
           {
             data.map((item, index) => {
@@ -108,6 +130,12 @@ export default function Blog({ data }: {
               )
             })
           }
+          <div ref={navigationPrevRef}>
+            <AiFillCaretLeft  className={style.prevBtn}/>
+          </div>
+          <div ref={navigationNextRef}>
+          <AiFillCaretRight className={style.nextBtn}/>
+          </div>
         </Swiper>
       </div>
     </div>
