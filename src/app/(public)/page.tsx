@@ -31,7 +31,7 @@ export default async function page({ }: {}) {
         }
     }`));
 
-    const blogsData = (await clientFetch(groq`*[ _type == "blogs" ] | order(order asc) {
+    const blogsData = (await clientFetch(groq`*[ _type == "blogs" ] | order(order asc)[0...10] {
         _id,
         _updatedAt,
         title,

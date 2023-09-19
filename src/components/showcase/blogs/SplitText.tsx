@@ -1,12 +1,14 @@
 import React from 'react'
-import { motion } from 'framer-motion'
+import { ForwardRefComponent, HTMLMotionProps, motion } from 'framer-motion'
 
-export function SplitText({ children, ...rest }) {
-  let words = children.split(' ')
+export function SplitText({ text, ...rest }: HTMLMotionProps<"div"> & {
+  text: string
+}) {
+  let words = text.split(' ')
   return words.map((word, i) => {
     return (
       <div
-        key={children + i}
+        key={text + i}
         style={{ display: 'inline-block', overflow: 'hidden' }}
       >
         <motion.div

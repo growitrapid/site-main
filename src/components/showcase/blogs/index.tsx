@@ -55,12 +55,11 @@ export default function Blog({ data }: {
                 }
               })
             }}
-          >
-            {blogTitles[index]}
-          </SplitText>
+            text={blogTitles[index]}
+          />
         </motion.div>
         <p className={`text-sm py-4`}>
-          Discover a wealth of knowledge and stay engaged with our blog, where you&apos;ll find a treasure trove of insights, expert tips, and thought-provoking articles across diverse subjects. Stay informed and inspired with the latest trends and knowledge by diving into our thought-provoking blog posts.
+          {data[index]?.description}
         </p>
         <Link href={`/blogs`} className={style['learn_more_btn']}>
           <div>
@@ -95,7 +94,7 @@ export default function Blog({ data }: {
             setTimeout(() => {
               // Override prevEl & nextEl now that refs are defined
 
-              if(swiper.params.navigation !== undefined) {
+              if (swiper.params.navigation !== undefined) {
                 // @ts-ignore
                 swiper.params.navigation.prevEl = navigationPrevRef.current;
                 // @ts-ignore
@@ -132,10 +131,10 @@ export default function Blog({ data }: {
             })
           }
           <div ref={navigationPrevRef}>
-            <AiFillCaretLeft  className={style.prevBtn}/>
+            <AiFillCaretLeft className={style.prevBtn} />
           </div>
           <div ref={navigationNextRef}>
-          <AiFillCaretRight className={style.nextBtn}/>
+            <AiFillCaretRight className={style.nextBtn} />
           </div>
         </Swiper>
       </div>
