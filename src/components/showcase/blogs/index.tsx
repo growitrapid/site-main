@@ -56,7 +56,7 @@ export default function Blog({ data }: {
             text={blogTitles[index]}
           />
         </motion.div>
-        <p className={`text-sm py-1`}>
+        <p className={`text-sm py-4`}>
           {data[index]?.description}
         </p>
         <Link href={`/blogs`} className={style['learn_more_btn']}>
@@ -93,11 +93,14 @@ export default function Blog({ data }: {
             setTimeout(() => {
               // Override prevEl & nextEl now that refs are defined
 
-              if (swiper.params.navigation !== undefined) {
-                // @ts-ignore
-                swiper.params.navigation.prevEl = navigationPrevRef.current;
-                swiper.params.navigation.nextEl = navigationNextRef.current;
+
+              if(swiper !== undefined) {
+              // @ts-ignore
+              swiper.params.navigation.prevEl = navigationPrevRef.current;
+              // @ts-ignore
+              swiper.params.navigation.nextEl = navigationNextRef.current;
               }
+              
               swiper.navigation.destroy()
               swiper.navigation.init()
               swiper.navigation.update()
@@ -119,9 +122,7 @@ export default function Blog({ data }: {
                     height={720}
                     alt={item?.title}
                     src={item.image || ""}
-                    onError={(e) => {
-                      console.error("Error loading image:", e);
-                    }}
+    
                   />
                 </SwiperSlide>
               )
