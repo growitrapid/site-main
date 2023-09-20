@@ -25,7 +25,7 @@ export default function Stories({ data }: {
                 grabCursor={true}
                 centeredSlides={true}
                 slidesPerView={'auto'}
-                initialSlide={2}
+                initialSlide={data.length/2}
                 navigation={true}
                 coverflowEffect={{
                     rotate: 0,
