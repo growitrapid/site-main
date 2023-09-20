@@ -42,6 +42,13 @@ export default async function page({ }: {}) {
         "image": image.asset->url,
     }`));
 
+    const storiesData = (await clientFetch(groq`*[ _type == "testimonials" ] | order(order asc)[0...10] {
+        name,
+        role,
+        description,
+        "image": image.asset->url,
+    }`));
+
     return (
         <div>
 
@@ -185,7 +192,7 @@ export default async function page({ }: {}) {
                 </section>
 
                 <section id='stories' className={`relative max-w-7xl mx-auto`}>
-                    <Stories data={{}} />
+                    <Stories data={storiesData} />
                 </section>
 
                 <section id='testimonials' className={`relative max-w-7xl mx-auto`}>
