@@ -57,6 +57,11 @@ export default function RootLayout({
     <html lang="en">
       <Analytics GA_MEASUREMENT_ID={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string} />
 
+      <head>
+        {/* @ts-ignore */}
+        <meta name='impact-site-verification' value='406796d3-78f1-4b12-949e-d33ed215ebce' />
+      </head>
+
       <body className={`${inter.className} ${inter.variable} ${barlow.variable} ${roboto.variable} ${theme?.value === "light" ? "" : "dark"}`}>
 
         <Navbar />
