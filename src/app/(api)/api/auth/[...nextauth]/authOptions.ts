@@ -17,6 +17,10 @@ export const FirebaseAuthAdapter = FirestoreAdapter(
     },
 );
 
+const useSecureCookies = process.env.NEXTAUTH_URL ? process.env.NEXTAUTH_URL.startsWith('https://') : false;
+const cookiePrefix = useSecureCookies ? '__Secure-' : ''
+const hostName = new URL(process.env.NEXTAUTH_URL ?? "").hostname;
+
 export const nextAuthOptions: AuthOptions = {
     /**
      * Configure one or more authentication providers here.
@@ -132,6 +136,70 @@ export const nextAuthOptions: AuthOptions = {
 
     session: {
         maxAge: 7 * (24 * (60 * 60)), // 7 days
+    },
+
+    cookies: {
+        sessionToken: {
+            name: `${cookiePrefix}next-auth.session-token`,
+            options: {
+                httpOnly: true,
+                sameSite: "lax",
+                path: "/",
+                secure: useSecureCookies,
+                domain: hostName == 'localhost' ? hostName : '.' + hostName // add a . in front so that subdomains are included
+            },
+        },
+        callbackUrl: {
+            name: `${cookiePrefix}next-auth.callback-url`,
+            options: {
+                sameSite: 'lax',
+                path: '/',
+                secure: useSecureCookies,
+                domain: hostName == 'localhost' ? hostName : '.' + hostName // add a . in front so that subdomains are included
+            }
+        },
+        csrfToken: {
+            name: `${cookiePrefix}next-auth.csrf-token`,
+            options: {
+                httpOnly: true,
+                sameSite: 'lax',
+                path: '/',
+                secure: useSecureCookies,
+                domain: hostName == 'localhost' ? hostName : '.' + hostName // add a . in front so that subdomains are included
+            }
+        },
+        pkceCodeVerifier: {
+            name: `${cookiePrefix}next-auth.pkce.code_verifier`,
+            options: {
+                httpOnly: true,
+                sameSite: 'lax',
+                path: '/',
+                secure: useSecureCookies,
+                maxAge: 900,
+                domain: hostName == 'localhost' ? hostName : '.' + hostName // add a . in front so that subdomains are included
+            }
+        },
+        state: {
+            name: `${cookiePrefix}next-auth.state`,
+            options: {
+                httpOnly: true,
+                sameSite: "lax",
+                path: "/",
+                secure: useSecureCookies,
+                maxAge: 900,
+                domain: hostName == 'localhost' ? hostName : '.' + hostName // add a . in front so that subdomains are included
+            },
+        },
+        nonce: {
+            name: `${cookiePrefix}next-auth.nonce`,
+            options: {
+                httpOnly: true,
+                sameSite: "lax",
+                path: "/",
+                secure: useSecureCookies,
+                domain: hostName == 'localhost' ? hostName : '.' + hostName // add a . in front so that subdomains are included
+            },
+        },
     },
 }
 
